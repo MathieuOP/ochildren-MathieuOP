@@ -70,4 +70,5 @@ docker-compose up
 ```
 
 Can be used with the --build flag to rebuild the app
+
 Will expose the builded version on the port 80. can
