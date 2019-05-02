@@ -2,6 +2,7 @@ import React from 'react';
 import { bubble as Menu } from 'react-burger-menu';
 import { NavLink } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
+import { FaSignInAlt, FaHome } from 'react-icons/fa';
 // fichier scss
 import './index.scss';
 
@@ -12,18 +13,18 @@ const Header = () => {
 
       <MediaQuery query="(max-width: 768px)">
         <Menu right width="250px" >
-          <NavLink exact to="/">Accueil</NavLink>
-          <NavLink to="/login">Connexion</NavLink>
+          <p className="header-p"><FaHome size="1.5em" color="#99c9e5" /><NavLink className="header-link" exact to="/">Accueil</NavLink></p>
+          <p className="header-p"><FaSignInAlt size="1.5em" color="#99c9e5" /><NavLink className="header-link" to="/login">Connexion</NavLink></p>
         </Menu>
       </MediaQuery>
 
-      <NavLink className="header-link" href="/"> <img className="header-img" src="src/components/App/assets/img/logo.png" alt="logo du site" /> </NavLink>
+      <NavLink className="header-link" to="/"> <img className="header-img" src="src/components/App/assets/img/logo.png" alt="logo du site" /> </NavLink>
 
       <MediaQuery query="(min-width: 769px)">
         <nav className="header-nav-desktop">
           <ul>
-            <li><NavLink className="header-link bm-item" exact to="/">Accueil</NavLink></li>
-            <li><NavLink className="header-link bm-item" to="/login">Connexion</NavLink></li>
+            <li><FaHome size="1.5em" color="#EDC71C" /> <NavLink className="header-link bm-item" exact to="/">Accueil</NavLink></li>
+            <li><FaSignInAlt size="1.5em" color="#EDC71C" /> <NavLink className="header-link bm-item" to="/login">Connexion</NavLink></li>
           </ul>
         </nav>
       </MediaQuery>

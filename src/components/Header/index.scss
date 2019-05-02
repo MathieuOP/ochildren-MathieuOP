@@ -59,12 +59,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item {
   display: inline-block;
   color: #000;
-  font-size: 1.2em;
-  margin-top: 10px;
-}
-
-.bm-item:link {
-  outline: none;
 }
   
 /* Styling of overlay */
@@ -92,9 +86,19 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
       li {
         margin-left: 20px;
-        
+        display: flex;
+        align-items: flex-end;
       }
     }
+  }
+
+  &-p {
+    margin-top: 10px;
+    display: flex !important;
+  }
+
+  &-p:focus {
+    outline: none;
   }
 
   &-img {
@@ -104,5 +108,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
   &-link {
     font-size: 1.5em;
+    padding-left: 5px;
   }
 }
