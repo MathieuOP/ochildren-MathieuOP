@@ -2,22 +2,22 @@
  * Import
  */
 import React from 'react';
+import { BrowserRouter as Router} from "react-router-dom"
 
 /**
  * Local import
  */
 // Composants
-
+import Header from '../Header';
 // Styles et assets
-import './app.sass';
+import './app.scss';
 
 /**
  * Code
  */
 const App = () => (
   <div id="app">
-    <h1 id="app-title">Modèle React</h1>
-    <p id="app-content">Hello tout le monde :)</p>
+    <Header />
   </div>
 );
 
