@@ -2,13 +2,12 @@
  * Initial State
  */
 const initialState = {
-  menuBurgerIsActive: false,
+  
 };
 
 /**
  * Types
  */
-const NAVBAR_IS_ACTIVE = 'NAVBAR_IS_ACTIVE';
 
 /**
  * Traitements
@@ -19,11 +18,6 @@ const NAVBAR_IS_ACTIVE = 'NAVBAR_IS_ACTIVE';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case NAVBAR_IS_ACTIVE:
-      return {
-        ...state,
-        menuBurgerIsActive: !state.menuBurgerIsActive,
-      };
 
     default:
       return state;
@@ -33,9 +27,6 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const handleClickMenuBurger = () => ({
-  type: NAVBAR_IS_ACTIVE,
-});
 
 /**
  * Selectors
