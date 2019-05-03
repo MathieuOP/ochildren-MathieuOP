@@ -1,5 +1,5 @@
 .home {
-    
+
     &-content {
         text-align: center;
     }
@@ -26,19 +26,13 @@
     }
 }
 
-.category {
+.home-category {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     margin: 3em 0;
     color: #fff;
-
-    hr {
-        color: #fff;
-        width: 50px;
-        margin-top: 2.5em;
-    }
 
     @media screen and (min-width: 769px) {
         flex-direction: row;
@@ -47,33 +41,70 @@
     &-one, &-two{
         width: 200px;
         height: 200px;
+        border: 10px solid #FF2626;
         border-radius: 50%;
-        background-color: #FF2626;
-        box-shadow: 0 0 10px 1px #000;
+        background-color: #fff;
+        color: #000;
+        // box-shadow: 0 0 10px 1px #000;
         text-align: center;
+        cursor: pointer;
+
+        img {
+            margin-top: 10px;
+            width: 100px;
+        }
         
         h2 {
-            padding-top: 1.5em;
-            font-size: 1.7em;
+            font-size: 2em;
+            margin-top: 10px;
             font-weight: bold;
         }
 
         &-link {
-            margin-top: 0.7em;
-            font-size: 2.5em;
-            text-transform: uppercase;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             
             a {
-                color: #fff;
+                color: #000;
+                font-size: 3em;
+                font-weight: bold;
+                text-transform: uppercase;
             }
+        }
+    }
+
+    &-one {
+        img {
+            margin-top: 15px;
+        }
+
+        @media screen and (min-width: 769px) {
+            margin-right: 60px;
         }
     }
 
     &-two {
         margin-top: 5em;
+
         @media screen and (min-width: 769px) {
-            margin-left: 150px;
+            margin-left: 60px;
             margin-top: 0;
         }
     }
+}
+
+.css-12ghumh:nth-child(2) {
+    @media screen and (max-width: 768px) {
+        margin-top: -100px;
+    }
+}
+
+.css-bfsnla, .css-hjq2k1, .css-16k597g, .css-1getsqo {
+    background: none !important;
+}
+
+.css-16k597g:focus, .css-1getsqo:focus {
+    outline: none !important;
+    border: none !important;
 }

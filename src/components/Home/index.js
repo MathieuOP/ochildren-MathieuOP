@@ -1,8 +1,10 @@
 import React from 'react';
 import { Grid } from 'semantic-ui-react';
-import 'semantic-ui-css/semantic.min.css';
 import { Link } from 'react-router-dom';
+import FlipCard from 'react-flipcard3d';
+
 import './index.scss';
+import 'semantic-ui-css/semantic.min.css';
 
 const Home = () => {
 
@@ -23,17 +25,34 @@ const Home = () => {
         </Grid.Row>
       </Grid>
 
-      <div className="category">
-        <div className="category-one">
-          <h2>3-6 ans</h2>
-          <hr />
-          <p className="category-one-link"><Link to="">jouer</Link></p>
-        </div>
-        <div className="category-two">
-          <h2>7-10 ans</h2>
-          <hr />
-          <p className="category-one-link"><Link to="">jouer</Link></p>
-        </div>
+      <div className="home-category">
+        <FlipCard>
+          <FlipCard.Front>
+            <div className="home-category-one">
+              <img src="src/components/App/assets/img/bear.svg" alt="icon" />
+              <h2>3-6 ans</h2>
+            </div>
+          </FlipCard.Front>
+          <FlipCard.Back>
+            <div className="home-category-one home-category-one-link">
+              <p className=""><Link to="">jouer</Link></p>
+            </div>
+          </FlipCard.Back>
+        </FlipCard>
+        
+        <FlipCard>
+        <FlipCard.Front>
+          <div className="home-category-two">
+            <img src="src/components/App/assets/img/lego.svg" alt="icon" />
+            <h2>7-10 ans</h2>
+          </div>
+        </FlipCard.Front>
+        <FlipCard.Back>
+          <div className="home-category-two home-category-one-link">
+            <p className=""><Link to="">jouer</Link></p>
+          </div>
+        </FlipCard.Back>
+      </FlipCard>
       </div>
     </div>
   )
