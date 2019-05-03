@@ -112,6 +112,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
     padding-bottom: 4px;
     color: #fff;
 
+    &:hover {
+      color: #fff;
+    }
+
+    @media screen and (min-width: 769px) {
+      &:hover {
+        color: #FF2626;
+      }
+    }
+
     @media screen and (min-width: 769px) {
       color: #FF2626;
     }
