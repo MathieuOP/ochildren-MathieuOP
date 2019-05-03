@@ -9,7 +9,7 @@ import 'semantic-ui-css/semantic.min.css';
 const Home = () => {
 
   return (
-    <div>
+    <div className="home">
       <h1 className="home-title">Bienvenue sur O'Children</h1>
       <Grid className="home centered"> 
         <Grid.Row>
@@ -24,7 +24,7 @@ const Home = () => {
           </Grid.Column>
         </Grid.Row>
       </Grid>
-
+     
       <div className="home-category">
         <FlipCard>
           <FlipCard.Front>
