@@ -12,19 +12,19 @@ const GameMenu = () => {
       <nav className="gameMenu-nav">
         <ul>
           <li>
-            <Link to="/Discovery">
+            <Link to="/discovery">
               <FaGamepad size="3em" />
               <span>Discovery</span>
             </Link>
           </li>
           <li>
-            <Link to="/Quiz">
+            <Link to="/quiz">
               <FaCheckSquare size="2em" className="gameMenu-icon--square" />
               <span className="gameMenu-link--quiz">Quiz</span> 
             </Link>
           </li>
           <li>
-            <Link to="Puzzle">
+            <Link to="puzzle">
               <FaPuzzlePiece size="2em" className="gameMenu-icon--puzzle" />
               <span className="gameMenu-link--puzzle">Puzzle</span>
             </Link>

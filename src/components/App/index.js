@@ -10,6 +10,7 @@ import { Route, Switch } from "react-router-dom";
 // Composants
 import Header from '../Header';
 import Home from '../Home';
+import MyPuzzle from '../MyPuzzle';
 import Quiz from '../../containers/Quiz';
 // Styles et assets
 import './app.scss';
@@ -23,6 +24,7 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/quiz" component={Quiz} />
+      <Route exact path="/puzzle" component={MyPuzzle} />
     </Switch>
   </div>
 );
