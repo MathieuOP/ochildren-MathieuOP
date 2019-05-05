@@ -9,7 +9,7 @@ import { Route, Switch } from "react-router-dom";
  */
 // Composants
 import Header from '../Header';
-import Home from '../Home';
+import Home from '../../containers/Home';
 import MyPuzzle from '../MyPuzzle';
 import Quiz from '../../containers/Quiz';
 // Styles et assets
