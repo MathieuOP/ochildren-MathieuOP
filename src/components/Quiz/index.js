@@ -1,11 +1,9 @@
 import React from 'react';
-import GameMenu from '../GameMenu';
 
 import './index.scss';
 
-
 const Quiz = ({ handleClickButtonNext, indexQuiz, datas}) => {
-
+  console.log(datas);
   return (
     <div className="quiz">
       <div className="quiz-questions">
@@ -22,9 +20,7 @@ const Quiz = ({ handleClickButtonNext, indexQuiz, datas}) => {
               </button>
             )
           }
-          
       </div>
-      <GameMenu />
     </div>
   )
 }

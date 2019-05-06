@@ -11,8 +11,6 @@ const ajaxMiddleware = store => next => (action) => {
       axios.get(`http://localhost/Ochildren-Back/public/api/worlds`, {
       })
         .then((response) => {
-          console.log(response);
-
           store.dispatch(next({
             ...action,
             data: response.data,

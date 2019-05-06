@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import slugify from 'slugify';
+import { world } from '../../datas';
 
 import './index.scss';
 import 'semantic-ui-css/semantic.min.css';
 
 class Home extends Component {
   componentDidMount() {
-    console.log(this.props.dataForHomePage());
+    // console.log(this.props.dataForHomePage());
   }
 
   handleClickCard = (e) => {
@@ -32,39 +34,31 @@ class Home extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
-  
+
         <div className="container">
-          <div className="wrapper">
-            <div onClick={this.handleClickCard} className="card">
-              <div className="card__face card__face--front">
-                <div className="home-category-one">
-                  <img src="src/components/App/assets/img/bear.svg" alt="icon" />
-                  <h2>3-6 ans</h2>
+          {
+            world.map( ({ id, name, image }) => {
+              const category = slugify(name);
+              
+              return (
+                <div key={id} className="wrapper">
+                  <div onClick={this.handleClickCard} className="card">
+                      <div className="card__face card__face--front">
+                        <div className="home-category">
+                            <img src={`src/components/App/assets/img/${image}`} alt="icon" />
+                            <h2>{name}</h2>
+                        </div>
+                      </div>
+                      <div className="card__face card__face--back">
+                        <div className="home-category home-category--link">
+                            <p className=""><Link to={`/home-game/${category}`}>jouer</Link></p>
+                        </div>
+                      </div>
+                  </div>
                 </div>
-              </div>
-              <div className="card__face card__face--back">
-                <div className="home-category-one home-category-one-link">
-                  <p className=""><Link to="/quiz">jouer</Link></p>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-          <div className="wrapper">
-            <div onClick={this.handleClickCard} className="card">
-              <div className="card__face card__face--front">
-                <div className="home-category-one">
-                  <img src="src/components/App/assets/img/lego.svg" alt="icon" />
-                  <h2>7-10 ans</h2>
-                </div>
-              </div>
-              <div className="card__face card__face--back">
-                <div className="home-category-one home-category-one-link">
-                  <p className=""><Link to="/quiz">jouer</Link></p>
-                </div>
-              </div>
-            </div>
-          </div>
+              )
+            })
+          }
         </div>
       </div>
     )

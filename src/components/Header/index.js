@@ -18,7 +18,7 @@ const Header = () => {
         </Menu>
       </MediaQuery>
 
-      <NavLink className="header-link" to="/"> <img className="header-img" src="src/components/App/assets/img/logo_ochildren.png" alt="logo du site" /> </NavLink>
+      <NavLink className="header-link" to="/"> <img className="header-img" src="http://localhost:3000/src/components/App/assets/img/logo_ochildren.png" alt="logo du site" /> </NavLink>
 
       <MediaQuery query="(min-width: 769px)">
         <nav className="header-nav-desktop">

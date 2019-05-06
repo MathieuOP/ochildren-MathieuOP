@@ -1,4 +1,4 @@
-import datas from 'src/datas';
+import { datas } from 'src/datas';
 /**
  * Initial State
  */
@@ -55,7 +55,7 @@ export const handleClickButtonNext = () => ({
 export const dataForHomePage = () => ({
   type: DATA_HOME_PAGE,
 })
-
+ 
 /**
  * Export
  */
