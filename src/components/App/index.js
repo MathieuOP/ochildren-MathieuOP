@@ -2,14 +2,18 @@
  * Import
  */
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
  */
 // Composants
 import Header from '../Header';
-import Home from '../Home';
+import Home from '../../containers/Home';
+import HomeGame from '../HomeGame';
+
+import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
 import './app.scss';
 
@@ -19,7 +23,19 @@ import './app.scss';
 const App = () => (
   <div id="app">
     <Header />
-    <Route exact path="/" component={Home} />
+    <Switch>
+      <Route exact path="/" component={Home} />
+
+      <Route
+        path="/home-game/:slug"
+        render={({ match }) => {
+          const { slug } = match.params;
+          const singleCategory = selectCategoryFromSlug(slug);
+
+          return <HomeGame {...singleCategory} />;
+        }}
+      />
+    </Switch>
   </div>
 );
 

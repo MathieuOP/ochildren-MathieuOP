@@ -30,7 +30,7 @@ const Header = () => {
         {' '}
         <img
           className="header-img"
-          src="src/assets/img/logo_ochildren.png"
+          src="http://localhost:3000/src/assets/img/logo_ochildren.png"
           alt="logo du site"
         />{' '}
       </NavLink>
