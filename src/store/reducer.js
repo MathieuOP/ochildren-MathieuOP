@@ -2,27 +2,55 @@
  * Initial State
  */
 const initialState = {
-  message: 'Hello',
+  userForm: {
+    loggedIn: false,
+    loading: false,
+    step: 1,
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    identifiant: '',
+    birthday: '',
+  }
 };
 
 /**
  * Types
  */
-const DO_SOMETHING = 'DO_SOMETHING';
+
+// form
+export const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
+export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
 
 /**
  * Traitements
  */
+
 
 /**
  * Reducer
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
-      return {
-        ...state,
-      };
+    // form
+   case HANDLE_LOGIN_CHANGE:
+    return {
+      ...state,
+      userForm: {
+        ...state.userForm,
+        [action.name]: action.text,
+      }
+    };
+   case ON_LOGIN_SUBMIT:
+   return {
+     ...state,
+     userForm: {
+       ...state.userForm,
+       loading: true
+     }
+   };
+    
 
     default:
       return state;
@@ -32,8 +60,14 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const doSomething = () => ({
-  type: DO_SOMETHING,
+export const handleloginChange = (text, name) => ({
+  type: HANDLE_LOGIN_CHANGE,
+  text,
+  name
+});
+
+export const onLoginSubmit = () => ({
+  type: ON_LOGIN_SUBMIT,
 });
 
 /**

@@ -20,7 +20,8 @@
     "react/no-access-state-in-setstate": "warn",
     "react/jsx-one-expression-per-line": "off",
     "react/destructuring-assignment": "warn",
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "indent": ["error", 2]
   },
   "settings": {
     "import/resolver": "webpack"

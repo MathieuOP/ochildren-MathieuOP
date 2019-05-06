@@ -26,18 +26,18 @@ class UserForm extends Component {
     });
   };
 
-// retour etape antérieur
-prevStep = () => {
-  const { step } = this.state;
-  this.setState({
-    step: step - 1
-  });
-};
+  // retour etape antérieur
+  prevStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step - 1
+    });
+  };
 
 
-handleChange = input => evt => {
-  this.setState({ [input]: evt.target.value });
-};
+  handleChange = input => evt => {
+    this.setState({ [input]: evt.target.value });
+  };
 
   render() {
     const { step } = this.state;
@@ -72,6 +72,8 @@ handleChange = input => evt => {
         );
       case 4:
         return <Success />;
+      default:
+        return <div />;
     }
   }
 }
