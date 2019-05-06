@@ -2,7 +2,7 @@
  * Import
  */
 import React from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 /**
@@ -11,9 +11,7 @@ import PropTypes from 'prop-types';
 // Composants
 import Header from '../Header';
 import Home from '../../containers/Home';
-import MyPuzzle from '../MyPuzzle';
 import HomeGame from '../HomeGame';
-import Quiz from '../../containers/Quiz';
 
 import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
@@ -27,17 +25,16 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/home-game/jeux/quiz" component={Quiz} />
-      <Route path="/home-game/jeux/puzzle" component={MyPuzzle} />
 
-      <Route path="/home-game/:slug" render={ ({ match }) => {
-        const { slug } = match.params;
-        const singleCategory = selectCategoryFromSlug(slug);
+      <Route
+        path="/home-game/:slug"
+        render={({ match }) => {
+          const { slug } = match.params;
+          const singleCategory = selectCategoryFromSlug(slug);
 
-        return (
-          <HomeGame {...singleCategory} />
-        )
-      }} />
+          return <HomeGame {...singleCategory} />;
+        }}
+      />
     </Switch>
   </div>
 );
