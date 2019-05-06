@@ -20,7 +20,7 @@ import './style.scss';
      <div className='succes'>
         <React.Fragment>
           <h1>Merci de vous être enregisté!</h1>
-          <p>Vous allez recevoir un email d condirmation</p>
+          <p>Vous allez recevoir un email de condirmation</p>
         </React.Fragment>
      </div>
     );

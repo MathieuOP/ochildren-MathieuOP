@@ -9,7 +9,7 @@ import './style.scss';
 class FormUserDetails extends Component {
   continue = evt => {
     evt.preventDefault();
-    this.props.nexStep();
+    this.props.nextStep();
   };
 
 

@@ -14,7 +14,7 @@ class UserForm extends Component {
     firstName: '',
     lastName: '',
     email: '',
-    indentifiant: '',
+    identifiant: '',
     birthday: '',
   }
 
@@ -41,8 +41,8 @@ handleChange = input => evt => {
 
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, indentifiant, birthday } = this.state;
-    const values = { firstName, lastName, email, indentifiant, birthday };
+    const { firstName, lastName, email, identifiant, birthday } = this.state;
+    const values = { firstName, lastName, email, identifiant, birthday };
 
     switch (step) {
       case 1:

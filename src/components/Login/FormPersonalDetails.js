@@ -22,7 +22,7 @@ class FormPersonalDetails extends Component {
       <div className='form-personal-details'>
         <Form>
           <Form.Field>
-            <label>Choisissez et Entrez votre Identifiant</label>
+            <label>Entrez votre Identifiant</label>
             <input 
               placeholder='Choisissez et Entrez votre Identifiant'
               onChange={handleChange('identifiant')}
@@ -47,7 +47,7 @@ class FormPersonalDetails extends Component {
             <Button
             id='back-button'
             primary={false}
-            onClick={this.continue}
+            onClick={this.back}
             >
             Précedent
             </Button>

@@ -22,13 +22,28 @@ class Confirm extends Component {
       values: { firstName, lastName, email, identifiant, birthday }
     } = this.props;
     return (
-      <div classNAme='confirmation'>
+      <div className='confirmation'>
       <List>
-        <List.Item primaryText="First Name" secondaryText={firstName} />
-        <List.Item primaryText="Last Name" secondaryText={lastName} />
-        <List.Item primaryText="Email" secondaryText={email} />
-        <List.Item primaryText="Identifiant" secondaryText={identifiant} />
-        <List.Item primaryText="Birthday" secondaryText={birthday} />  
+      <List.Item>
+            <List.Header>First Name</List.Header>
+            {firstName}
+          </List.Item>
+          <List.Item>
+            <List.Header>Last Name</List.Header>
+            {lastName}
+          </List.Item>
+          <List.Item>
+            <List.Header>Email</List.Header>
+            {email}
+          </List.Item>
+          <List.Item >
+            <List.Header>Identifiant</List.Header>
+            {identifiant}
+          </List.Item>
+          <List.Item>
+            <List.Header>Birthday</List.Header>
+            {birthday}
+          </List.Item>  
       </List>
       <Button
         id='continue-button'
@@ -40,7 +55,7 @@ class Confirm extends Component {
       <Button
         id='back-button'
         primary={false}
-        onClick={this.continue}
+        onClick={this.back}
       >
         Précedent
       </Button>
