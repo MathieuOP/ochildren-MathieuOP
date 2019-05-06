@@ -113,6 +113,7 @@ module.exports = {
     stats: 'minimal', // Infos en console limitées
     progress: true, // progression du build en console
     inline: true, // Rechargement du navigateur en cas de changement
+    open: true,
     historyApiFallback: true,
     host: host,
     port: port

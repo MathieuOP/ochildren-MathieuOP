@@ -1,3 +1,7 @@
+###> docker ###
+.docker/data/*
+###< docker ###
+
 node_modules/
 dist/
 .vs/
