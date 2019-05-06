@@ -34,8 +34,8 @@
     "optimize-css-assets-webpack-plugin": "*",
     "postcss": "*",
     "postcss-loader": "*",
-    "sass-loader": "*",
     "prettier": "*",
+    "sass-loader": "*",
     "style-loader": "*",
     "uglifyjs-webpack-plugin": "*",
     "webpack": "*",
@@ -54,6 +54,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "*",
+    "axios": "*",
     "classnames": "*",
     "http-server": "^0.11.1",
     "prop-types": "*",
@@ -61,6 +62,6 @@
     "react-dom": "*",
     "react-redux": "*",
     "redux": "*",
-    "axios": "*"
+    "semantic-ui-react": "^0.86.0"
   }
 }

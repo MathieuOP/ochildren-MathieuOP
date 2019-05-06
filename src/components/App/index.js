@@ -7,17 +7,18 @@ import React from 'react';
  * Local import
  */
 // Composants
-
+import LoginForm from 'src/components/Login/LoginForm';
+import   UserForm   from 'src/components/Login/UserForm';
 // Styles et assets
-import './app.sass';
+
 
 /**
  * Code
  */
 const App = () => (
   <div id="app">
-    <h1 id="app-title">Modèl Reactt</h1>
-    <p id="app-content">Hello tout le monde :)</p>
+
+ <UserForm />
   </div>
 );
 
