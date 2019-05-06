@@ -36,7 +36,7 @@ const Home = () => {
           <div onClick={handleClickCard} className="card">
             <div className="card__face card__face--front">
               <div className="home-category-one">
-                <img src="src/components/App/assets/img/bear.svg" alt="icon" />
+                <img src="src/assets/img/bear.svg" alt="icon" />
                 <h2>3-6 ans</h2>
               </div>
             </div>
@@ -53,7 +53,7 @@ const Home = () => {
           <div onClick={handleClickCard} className="card">
             <div className="card__face card__face--front">
               <div className="home-category-one">
-                <img src="src/components/App/assets/img/lego.svg" alt="icon" />
+                <img src="src/assets/img/lego.svg" alt="icon" />
                 <h2>7-10 ans</h2>
               </div>
             </div>
