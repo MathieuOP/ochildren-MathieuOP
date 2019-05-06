@@ -6,28 +6,28 @@
   right: 36px;
   top: 36px;
 }
-  
+
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #EDC71C;
+  background: #ff2626;
 }
-  
+
 /* Color/shape of burger icon bars on hover*/
 // .bm-burger-bars-hover {
 //   background: #a90000;
 // }
-  
+
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
   width: 24px;
 }
-  
+
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #000;
+  background: #fff;
 }
-  
+
 /*
 Sidebar wrapper styles
 Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
@@ -36,31 +36,31 @@ Note: Beware of modifying this element as it can break the animations - you shou
   position: fixed;
   height: 100%;
 }
-  
+
 /* General sidebar styles */
 .bm-menu {
-  background: #EDC71C;
+  background: #ff2626;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
-  
+
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #EDC71C;
+  fill: #ff2626;
 }
-  
+
 /* Wrapper for item list */
 .bm-item-list {
   color: #b8b7ad;
   padding: 0.8em;
 }
-  
+
 /* Individual item */
 .bm-item {
   display: inline-block;
   color: #000;
 }
-  
+
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
@@ -71,12 +71,11 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 .header {
-
   @media screen and (min-width: 769px) {
     display: flex;
     justify-content: space-between;
   }
-  
+
   &-nav-desktop {
     margin-top: 36px;
     margin-right: 36px;
@@ -109,5 +108,21 @@ Note: Beware of modifying this element as it can break the animations - you shou
   &-link {
     font-size: 1.5em;
     padding-left: 5px;
+    padding-bottom: 4px;
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+
+    @media screen and (min-width: 769px) {
+      &:hover {
+        color: #ff2626;
+      }
+    }
+
+    @media screen and (min-width: 769px) {
+      color: #ff2626;
+    }
   }
 }
