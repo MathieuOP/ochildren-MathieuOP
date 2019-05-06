@@ -7,17 +7,16 @@ import React from 'react';
  * Local import
  */
 // Composants
-
+import Header from '../Header';
 // Styles et assets
-import './app.sass';
+import './app.scss';
 
 /**
  * Code
  */
 const App = () => (
   <div id="app">
-    <h1 id="app-title">Modèl Reactt</h1>
-    <p id="app-content">Hello tout le monde :)</p>
+    <Header />
   </div>
 );
 
