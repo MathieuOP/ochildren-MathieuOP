@@ -7,7 +7,7 @@ const HomeGame = ({ description, image, slug }) => {
   return(
     <div className="homeGame">
       <div className="homeGame-title">
-        <img src={`../src/components/App/assets/img/${image}`} alt="catégorie" />
+        <img src={`../src/assets/img/${image}`} alt="catégorie" />
         <h2> { description } </h2>
       </div>
       <GameMenu slug={slug}/>
