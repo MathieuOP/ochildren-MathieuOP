@@ -11,6 +11,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../Header';
 import Home from '../../containers/Home';
 import HomeGame from '../HomeGame';
+import MyPuzzle from '../MyPuzzle';
 
 import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
