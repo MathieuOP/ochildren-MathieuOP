@@ -1,71 +1,70 @@
 .gameMenu {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 
-    &-nav {
-        position: fixed;
-        bottom: 0;
-        ul {
-            display: flex;
-            
-            li {
-                a {
-                    font-size: 1.2em;
-                    color: #000;
-                    font-weight: bold;
-                    width: 100px;
-                    height: 100px;
-                    border-radius: 50%;
-                    border: 7px solid #FF2626;
-                    background-color: #fff;
-                    margin: 0 10px;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
+  &-nav {
+    position: fixed;
+    bottom: 0;
+    ul {
+      display: flex;
 
-                    @media screen and (min-width: 769px) {
-                        font-size: 1.7em;
-                        width: 150px;
-                        height: 150px;
-                    }
+      li {
+        a {
+          font-size: 1.2em;
+          color: #000;
+          font-weight: bold;
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          border: 7px solid #ff2626;
+          background-color: #fff;
+          margin: 0 10px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
 
-                    span {
-                        @media screen and (min-width: 769px) {
-                            margin-top: 10px;
-                        }
-                    }
-                }
+          @media screen and (min-width: 769px) {
+            font-size: 1.7em;
+            width: 150px;
+            height: 150px;
+          }
+
+          span {
+            @media screen and (min-width: 769px) {
+              margin-top: 10px;
             }
+          }
         }
+      }
     }
+  }
 
-    &-icon--square {
-        margin-top: 10px; 
-    }
+  &-icon--square {
+    margin-top: 10px;
+  }
 
-    &-link--quiz {
-        width: 2em;
-        margin-top: 5px !important;
-        @media screen and (min-width: 769px) {
-            margin-top: 25px !important;
-            width: 2.5em;
-        }
+  &-link--quiz {
+    width: 2em;
+    margin-top: 5px !important;
+    @media screen and (min-width: 769px) {
+      margin-top: 25px !important;
+      width: 2.5em;
     }
+  }
 
-    &-icon--puzzle {
-        width: 2em;
-        margin-top: 5px;
-        @media screen and (min-width: 769px) {
-            width: 2.7em;
-            margin-top: 12px;
-        }
+  &-icon--puzzle {
+    width: 2em;
+    margin-top: 5px;
+    @media screen and (min-width: 769px) {
+      width: 2.7em;
+      margin-top: 12px;
     }
+  }
 
-    &-link--puzzle {
-        margin-top: 10px !important;
-        @media screen and (min-width: 769px) {
-            margin-top: 25px !important;
-        }
+  &-link--puzzle {
+    margin-top: 10px !important;
+    @media screen and (min-width: 769px) {
+      margin-top: 25px !important;
     }
+  }
 }
-  
