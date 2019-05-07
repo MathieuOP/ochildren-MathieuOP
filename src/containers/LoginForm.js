@@ -12,7 +12,7 @@ import LoginForm from 'src/components/Login/LoginForm';
 
 // Action Creators
 import {
-  handleloginChange,
+  handleLoginChange,
   onLoginSubmit
 } from 'src/store/reducer';
 
@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleLoginChange: (text, name) => dispatch(handleloginChange(text, name)),
+  handleLoginChange: (text, name) => dispatch(handleLoginChange(text, name)),
   onLoginSubmit: () => dispatch(onLoginSubmit()),
 });
 

@@ -60,7 +60,7 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const handleloginChange = (text, name) => ({
+export const handleLoginChange = (text, name) => ({
   type: HANDLE_LOGIN_CHANGE,
   text,
   name

@@ -11,6 +11,22 @@
 
 }
 
+.forgotten-form{
+    width: 380px;
+    margin: 10em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    box-shadow: 0px 10px 20px #aaa;
+    padding: 1.5em;
+    border-radius: 6px;
+}
+
+.login-form {
+    padding: 1em;
+    width: 20em;
+}
 
 
 #connexion{
@@ -23,11 +39,17 @@
    
 }
 
-.login-form {
-    padding: 1em;
-    width: 20em;
+#forgotten-pw a {
+    margin: 10em auto;
 }
 
 a {
     padding-left: 1em;
+}
+
+
+
+h1 {
+    font-size: 1.4em;
+    font-weight: bold; 
 }

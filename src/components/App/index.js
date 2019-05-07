@@ -8,7 +8,7 @@ import React from 'react';
  */
 // Composants
 import Login from 'src/components/Login';
-// import   UserForm   from 'src/components/Register/UserForm';
+
 // Styles et assets
 
 
@@ -17,6 +17,7 @@ import Login from 'src/components/Login';
  */
 const App = () => (
   <div id="app">
+  
     <Login />
   </div>
 );
