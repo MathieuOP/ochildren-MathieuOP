@@ -4,9 +4,7 @@ import { FaGamepad, FaPuzzlePiece, FaCheckSquare } from 'react-icons/fa';
 
 import './index.scss';
 
-
 const GameMenu = () => {
-
   return (
     <div className="gameMenu">
       <nav className="gameMenu-nav">
@@ -20,7 +18,7 @@ const GameMenu = () => {
           <li>
             <Link to="/home-game/jeux/quiz">
               <FaCheckSquare size="2em" className="gameMenu-icon--square" />
-              <span className="gameMenu-link--quiz">Quiz</span> 
+              <span className="gameMenu-link--quiz">Quiz</span>
             </Link>
           </li>
           <li>
@@ -32,7 +30,7 @@ const GameMenu = () => {
         </ul>
       </nav>
     </div>
-  )
-}
+  );
+};
 
 export default GameMenu;
