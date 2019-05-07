@@ -9,7 +9,7 @@ const GameMenu = () => (
     <nav className="gameMenu-nav">
       <ul>
         <li>
-          <Link to="home-game/jeux/discovery">
+          <Link to="/home-game/jeux/discovery">
             <FaGamepad size="3em" />
             <span>Discovery</span>
           </Link>
