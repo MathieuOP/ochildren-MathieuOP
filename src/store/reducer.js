@@ -1,14 +1,16 @@
+import { datas } from 'src/datas';
 /**
  * Initial State
  */
 const initialState = {
-  message: 'Hello',
+  datas,
+  dataHomePage: []
 };
 
 /**
  * Types
  */
-const DO_SOMETHING = 'DO_SOMETHING';
+export const DATA_HOME_PAGE = 'DATA_HOME_PAGE';
 
 /**
  * Traitements
@@ -19,11 +21,11 @@ const DO_SOMETHING = 'DO_SOMETHING';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
+    case DATA_HOME_PAGE:
       return {
         ...state,
+        dataHomePage: [...action.data]
       };
-
     default:
       return state;
   }
@@ -32,13 +34,13 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const doSomething = () => ({
-  type: DO_SOMETHING,
-});
 
 /**
  * Selectors
  */
+export const dataForHomePage = () => ({
+  type: DATA_HOME_PAGE
+});
 
 /**
  * Export
