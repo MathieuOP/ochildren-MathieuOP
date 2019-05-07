@@ -4,21 +4,21 @@ import GameMenu from '../GameMenu';
 import './index.scss';
 
 const HomeGame = ({ description, image, slug }) => {
-  return(
+  return (
     <div className="homeGame">
       <div className="homeGame-title">
         <img src={`../src/assets/img/${image}`} alt="catégorie" />
-        <h2> { description } </h2>
+        <h2> {description} </h2>
       </div>
-      <GameMenu slug={slug}/>
+      <GameMenu slug={slug} />
     </div>
-  )
-}
+  );
+};
 
 HomeGame.propTypes = {
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired,
-}
+  slug: PropTypes.string.isRequired
+};
 
 export default HomeGame;

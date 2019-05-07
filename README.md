@@ -2,7 +2,23 @@
 
 ---
 
-## Installation for Ubuntu
+## Installation for dev
+
+#### Install dependencies
+
+With yarn :
+
+```
+yarn
+```
+
+with npm :
+
+```
+npm i
+```
+
+## Installation for prod
 
 #### Install Docker
 
@@ -21,15 +37,28 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
+#### Build the app
+
+```
+docker-compose build
+```
+
 ---
 
 ## Usage
 
 #### Dev
 
+With yarn :
+
 ```
-docker-compose up
-open http://localhost:3000
+yarn start
+```
+
+With npm :
+
+```
+npm run start
 ```
 
 Will run webpack client on the port 3000 and the api on the port 4000
@@ -37,7 +66,9 @@ Will run webpack client on the port 3000 and the api on the port 4000
 #### Prod
 
 ```
-yarn prod
+docker-compose up
 ```
 
-Will expose the builded version on the port 80.
+Can be used with the --build flag to rebuild the app
+
+Will expose the builded version on the port 80. can

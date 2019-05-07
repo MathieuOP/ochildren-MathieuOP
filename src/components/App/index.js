@@ -10,7 +10,6 @@ import { Route, Switch } from 'react-router-dom';
 // Composants
 import Header from '../Header';
 import Home from '../../containers/Home';
-import MyPuzzle from '../MyPuzzle';
 import HomeGame from '../HomeGame';
 
 import { selectCategoryFromSlug } from '../../datas';
