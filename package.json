@@ -57,10 +57,11 @@
     "axios": "*",
     "classnames": "*",
     "http-server": "^0.11.1",
-    "prop-types": "*",
+    "prop-types": "^15.7.2",
     "react": "*",
-    "react-dom": "*",
-    "react-redux": "*",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "react-spring": "^8.0.20",
     "redux": "*",
     "semantic-ui-react": "^0.86.0"
   }

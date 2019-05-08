@@ -13,7 +13,7 @@ import ForgottenPassword from 'src/components/Login/ForgottenPassword';
 // Action Creators
 import {
   handleLoginChange,
-  // onLoginSubmit
+  forgottenSubmit
 } from 'src/store/reducer';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -21,8 +21,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleChange: (text, name) => console.log(text) && dispatch(handleLoginChange(text, name)),
-  // onLoginSubmit: () => dispatch(onLoginSubmit()),
+  handleChange: (text, name) => dispatch(handleLoginChange(text, name)),
+  handleForgottenSubmit: () => dispatch(forgottenSubmit()),
 });
 
 // Container

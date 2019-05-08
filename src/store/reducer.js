@@ -22,6 +22,7 @@ const initialState = {
 // form
 export const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
 export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
+export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
 
 /**
  * Traitements
@@ -34,27 +35,30 @@ export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
     // form
-   case HANDLE_LOGIN_CHANGE:
-    return {
-      ...state,
-      userForm: {
-        ...state.userForm,
-        [action.name]: action.text,
+    case HANDLE_LOGIN_CHANGE:
+      return {
+        ...state,
+        userForm: {
+          ...state.userForm,
+          [action.name]: action.text,
+        }
+      };
+    case ON_LOGIN_SUBMIT:
+      return {
+        ...state,
+        userForm: {
+          ...state.userForm,
+          loading: true
+        }
+      };
+    case FORGOTTEN_SUBMIT:
+      return {
+        ...state,
       }
-    };
-   case ON_LOGIN_SUBMIT:
-   return {
-     ...state,
-     userForm: {
-       ...state.userForm,
-       loading: true
-     }
-   };
-    
 
     default:
       return state;
-  }
+    }
 };
 
 /**
@@ -68,6 +72,10 @@ export const handleLoginChange = (text, name) => ({
 
 export const onLoginSubmit = () => ({
   type: ON_LOGIN_SUBMIT,
+});
+
+export const forgottenSubmit = () => ({
+  type: FORGOTTEN_SUBMIT,
 });
 
 /**

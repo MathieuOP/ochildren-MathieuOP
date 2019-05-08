@@ -5,7 +5,7 @@ import './style.scss';
 
 
 
-const ForgottenPassword = (handleChange, email) => {
+const ForgottenPassword = ({ handleChange, email, handleForgottenSubmit }) => {
   const handleEmailChange = name => e => handleChange(e.target.value, name);
   return (
     <Fragment>
@@ -13,7 +13,7 @@ const ForgottenPassword = (handleChange, email) => {
       <br/>
       <p>Suivez les instructions ci-dessous</p>
       <br/>
-      <Form>
+      <Form onSubmit={handleForgottenSubmit}>
         <Form.Field>
           <label>Veuillez renseigner votre Email</label>
           <input

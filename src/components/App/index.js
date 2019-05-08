@@ -7,7 +7,7 @@ import React from 'react';
  * Local import
  */
 // Composants
-import Login from 'src/components/Login';
+
 
 // Styles et assets
 
@@ -18,7 +18,7 @@ import Login from 'src/components/Login';
 const App = () => (
   <div id="app">
   
-    <Login />
+    
   </div>
 );
 

@@ -29,7 +29,7 @@ class Login extends Component {
         {view === 'forgottenPassword' && (
           <div id='forgotten-pw'>
             <div className='forgotten-form'>
-              < ForgottenPassword / >
+              <ForgottenPassword / >
               <a className="app-link" onClick={this.changeView('login')}>Retourner sur la page précèdente</a>
             </div>
           </div>
