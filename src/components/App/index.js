@@ -8,19 +8,12 @@ import React from 'react';
  */
 // Composants
 
-
 // Styles et assets
-
 
 /**
  * Code
  */
-const App = () => (
-  <div id="app">
-  
-    
-  </div>
-);
+const App = () => <div id="app" />;
 
 /**
  * Export
