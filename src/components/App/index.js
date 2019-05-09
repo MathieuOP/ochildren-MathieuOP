@@ -12,6 +12,8 @@ import Header from '../Header';
 import Home from '../../containers/Home';
 import HomeGame from '../HomeGame';
 import MyPuzzle from '../MyPuzzle';
+import Login from '../Login';
+import Register from '../../containers/Register';
 
 import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
@@ -26,6 +28,9 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/home-game/jeux/puzzle" component={MyPuzzle} />
+
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
 
       <Route
         path="/home-game/:slug"

@@ -6,21 +6,23 @@ import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
 import Success from './Succes';
 
-
-
-class UserForm extends Component {
+class Register extends Component {
   state = {
-    step: 1,
-    firstName: '',
-    lastName: '',
-    email: '',
-    identifiant: '',
-    birthday: '',
-  }
+    step: 1
+  };
 
   // etape suivante
   nextStep = () => {
     const { step } = this.state;
+    // console.log(
+    //   Object.values(this.state).map(e => (typeof e === 'string' ? e))
+    // );
+    // if (
+    //   Object.values(this.state)
+    //     .map(e => typeof e === 'string')
+    //     .trim().length <= 0
+    // )
+    // return;
     this.setState({
       step: step + 1
     });
@@ -34,32 +36,35 @@ class UserForm extends Component {
     });
   };
 
-
-  handleChange = input => evt => {
-    this.setState({ [input]: evt.target.value });
-  };
-
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, identifiant, birthday } = this.state;
-    const values = { firstName, lastName, email, identifiant, birthday };
-
+    const {
+      handleRegisterChange,
+      emailValue,
+      firstNameValue,
+      lastNameValue,
+      identifiantValue,
+      birthdayValue
+    } = this.props;
     switch (step) {
       case 1:
         return (
           <FormUserDetails
             nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-            />
+            handleRegisterChange={handleRegisterChange}
+            emailValue={emailValue}
+            firstNameValue={firstNameValue}
+            lastNameValue={lastNameValue}
+          />
         );
-        case 2:
+      case 2:
         return (
           <FormPersonalDetails
             nextStep={this.nextStep}
             prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
+            handleRegisterChange={handleRegisterChange}
+            identifiantValue={identifiantValue}
+            birthdayValue={birthdayValue}
           />
         );
       case 3:
@@ -67,7 +72,7 @@ class UserForm extends Component {
           <Confirm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
-            values={values}
+            {...this.props}
           />
         );
       case 4:
@@ -78,10 +83,4 @@ class UserForm extends Component {
   }
 }
 
-
-
-
-
-
-
-export default UserForm;
+export default Register;

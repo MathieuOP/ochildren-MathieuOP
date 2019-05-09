@@ -1,10 +1,8 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { Component } from 'react';
-import {Button, Form } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 import './style.scss';
-
-
 
 class FormUserDetails extends Component {
   continue = evt => {
@@ -12,49 +10,48 @@ class FormUserDetails extends Component {
     this.props.nextStep();
   };
 
-
   render() {
-    const { values, handleChange } = this.props;
+    const {
+      handleRegisterChange,
+      emailValue,
+      firstNameValue,
+      lastNameValue
+    } = this.props;
+
     return (
-      <div className='form-user-details'> 
+      <div className="form-user-details">
         <Form>
           <Form.Field>
             <label>Prénom</label>
-            <input 
-              placeholder='Entrez votre Prénom'
-              onChange={handleChange('firstName')}
-              defaultValue={values.firstName}
-             />
+            <input
+              placeholder="Entrez votre Prénom"
+              onChange={handleRegisterChange('firstName')}
+              value={firstNameValue}
+            />
           </Form.Field>
           <Form.Field>
             <label>Nom</label>
-            <input 
-              placeholder='Entrez votre Nom'
-              onChange={handleChange('lastName')}
-              defaultValue={values.lastName}
-             />
+            <input
+              placeholder="Entrez votre Nom"
+              onChange={handleRegisterChange('lastName')}
+              value={lastNameValue}
+            />
           </Form.Field>
           <Form.Field>
             <label>Email</label>
-            <input 
-              placeholder='Entrez votre Email'
-              onChange={handleChange('email')}
-              defaultValue={values.email}
-             />
+            <input
+              placeholder="Entrez votre Email"
+              onChange={handleRegisterChange('email')}
+              value={emailValue}
+            />
           </Form.Field>
-          <Button
-            id='continue-button'
-            primary={true}
-            onClick={this.continue}
-            >
+          <Button id="continue-button" primary={true} onClick={this.continue}>
             Continuer
-            </Button>
-          </Form>
-        
+          </Button>
+        </Form>
       </div>
-    )
+    );
   }
 }
-
 
 export default FormUserDetails;

@@ -14,7 +14,14 @@ const initialState = {
     email: '',
     password: '',
     identifiant: '',
-    birthday: '',
+    birthday: ''
+  },
+  registerForm: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    identifiant: '',
+    birthday: ''
   }
 };
 
@@ -27,11 +34,11 @@ export const DATA_HOME_PAGE = 'DATA_HOME_PAGE';
 export const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
 export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
 export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
+export const REGISTER_INPUT_CHANGE = 'REGISTER_INPUT_CHANGE';
 
 /**
  * Traitements
  */
-
 
 /**
  * Reducer
@@ -43,15 +50,17 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         dataHomePage: [...action.data]
       };
+
     // form
     case HANDLE_LOGIN_CHANGE:
       return {
         ...state,
         userForm: {
           ...state.userForm,
-          [action.name]: action.text,
+          [action.name]: action.text
         }
       };
+
     case ON_LOGIN_SUBMIT:
       return {
         ...state,
@@ -60,14 +69,24 @@ const reducer = (state = initialState, action = {}) => {
           loading: true
         }
       };
-    case FORGOTTEN_SUBMIT:
+
+    case REGISTER_INPUT_CHANGE:
       return {
         ...state,
-      }
+        registerForm: {
+          ...state.registerForm,
+          [action.name]: action.text
+        }
+      };
+
+    case FORGOTTEN_SUBMIT:
+      return {
+        ...state
+      };
 
     default:
       return state;
-    }
+  }
 };
 
 /**
@@ -79,20 +98,27 @@ export const handleLoginChange = (text, name) => ({
   name
 });
 
+export const registerInputChange = (text, name) => ({
+  type: REGISTER_INPUT_CHANGE,
+  text,
+  name
+});
+
 export const onLoginSubmit = () => ({
-  type: ON_LOGIN_SUBMIT,
+  type: ON_LOGIN_SUBMIT
 });
 
 export const forgottenSubmit = () => ({
-  type: FORGOTTEN_SUBMIT,
+  type: FORGOTTEN_SUBMIT
+});
+
+export const dataForHomePage = () => ({
+  type: DATA_HOME_PAGE
 });
 
 /**
  * Selectors
  */
-export const dataForHomePage = () => ({
-  type: DATA_HOME_PAGE
-});
 
 /**
  * Export

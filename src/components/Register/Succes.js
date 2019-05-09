@@ -1,9 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 import './style.scss';
 
-
- class Succes extends Component {
+class Succes extends Component {
   continue = evt => {
     evt.preventDefault();
     // PROCESS FORM //
@@ -17,12 +16,12 @@ import './style.scss';
 
   render() {
     return (
-     <div className='succes'>
+      <div className="succes">
         <React.Fragment>
           <h1>Merci de vous être enregisté!</h1>
-          <p>Vous allez recevoir un email de condirmation</p>
+          <p>Vous allez recevoir un email de confirmation</p>
         </React.Fragment>
-     </div>
+      </div>
     );
   }
 }
