@@ -1,7 +1,10 @@
+import { datas } from 'src/datas';
 /**
  * Initial State
  */
 const initialState = {
+  datas,
+  dataHomePage: [],
   userForm: {
     loggedIn: false,
     loading: false,
@@ -18,6 +21,7 @@ const initialState = {
 /**
  * Types
  */
+export const DATA_HOME_PAGE = 'DATA_HOME_PAGE';
 
 // form
 export const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
@@ -34,6 +38,11 @@ export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case DATA_HOME_PAGE:
+      return {
+        ...state,
+        dataHomePage: [...action.data]
+      };
     // form
     case HANDLE_LOGIN_CHANGE:
       return {
@@ -81,6 +90,9 @@ export const forgottenSubmit = () => ({
 /**
  * Selectors
  */
+export const dataForHomePage = () => ({
+  type: DATA_HOME_PAGE
+});
 
 /**
  * Export
