@@ -5,7 +5,8 @@ interface Verify {
   errorComp: () => void;
   successComp: () => void;
   init: (inputsEntry: string[]) => void;
-  cond: (cond: boolean, inputName: string) => void;
+  cond: (cond: boolean, inputName: string) => object;
+  verifyAll: () => boolean;
   setErrorComp: (comp: () => void) => void;
   setSuccessComp: (comp: () => void) => void;
 }
@@ -33,6 +34,9 @@ export default class VerifyForm extends Component {
 
       return newInputs;
     },
+
+    verifyAll: () =>
+      Object.values(this.verify.inputs).filter(e => e).length > 0,
 
     // set the error comp
     setErrorComp: (comp: () => void) => (this.verify.errorComp = comp),

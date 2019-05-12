@@ -62,6 +62,10 @@ onChange={e => {
   : this.verify.successComp('green', 'This input is right')}
 ```
 
-See `verifyForm.exemple.js` for an exemple.
+9 - You can verify every inputs with the `this.verify.verifyAll` method. This method return a boolean, true if there's an error, and false if there's not.
+
+9.1 - You can use this method (for exemple) for knowing if you can submit you form. See in the exemple file for more informations.
+
+See `verifyForm.exemple.js` for a full working exemple.
 
 You are now done ! \o/

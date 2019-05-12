@@ -22,7 +22,13 @@ class Exemple extends verifyForm {
 
   render() {
     return (
-      <form>
+      <form
+        onSubmit={() =>
+          this.verify.verifyAll()
+            ? alert("Can't submit, please verify every inputs")
+            : alert('Submited ! \\o/')
+        }
+      >
         <input
           type="text"
           placeholder="Email"
@@ -56,6 +62,7 @@ class Exemple extends verifyForm {
         {this.state.errors.password
           ? this.verify.errorComp('Invalid password')
           : this.verify.successComp('This password is valide')}
+        <button type="submit">Submit</button>
       </form>
     );
   }
