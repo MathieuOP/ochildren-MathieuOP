@@ -21,7 +21,8 @@ module.exports = {
   resolve: {
     alias: {
       src: path.resolve(__dirname, 'src/')
-    }
+    },
+    extensions: ['.js', '.json', '.d.ts', '.ts', '.tsx']
   },
   // Points d'entrée pour le travail de Webpack
   entry: {
@@ -50,21 +51,22 @@ module.exports = {
     },
     // Minification
     minimizer: [
-      new UglifyJsPlugin({
-        cache: true,
-        parallel: true,
-        sourceMap: false // passer à true pour JS source maps
-      }),
+      // new UglifyJsPlugin({
+      //   cache: true,
+      //   parallel: true,
+      //   sourceMap: false // passer à true pour JS source maps
+      // }),
       new OptimizeCSSAssetsPlugin({})
     ]
   },
+  context: __dirname,
   // Modules
   module: {
     rules: [
-      // JS
+      // JS / TS
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
+        test: /\.(js|ts|tsx)$/,
+        exclude: /node_modules|src\/(\S+\/)*\w+\.exemple\.(js|ts|tsx)$/,
         use: [
           // babel avec une option de cache
           {
