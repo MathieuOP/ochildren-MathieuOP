@@ -17,7 +17,7 @@ const initialState = {
     birthday: ''
   },
   indexQuiz: 0,
-  dataHomeGame: [],
+  dataHomeGame: {},
   categoriesQuizzs: [],
   currentSlugCatAge: '',
   currrentSlugCatQuizzs: '',
@@ -100,7 +100,7 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_GAME:
       return {
         ...state,
-        dataHomeGame: [...action.data]
+        dataHomeGame: {...action.data}
       };
     case CATEGORIES_QUIZZS:
       return {
