@@ -1,6 +1,5 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import slugify from 'slugify';
 import GameMenu from '../GameMenu';
 import './index.scss';
 
@@ -10,8 +9,8 @@ class HomeGame extends Component {
   }
 
   render() {
-    console.log(dataHomeGame);
     const { category, dataHomeGame } = this.props;
+    console.log(dataHomeGame);
     return (
       <div className="homeGame">
         <div className="homeGame-title">

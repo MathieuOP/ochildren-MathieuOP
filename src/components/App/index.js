@@ -10,7 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 // Composants
 import Header from '../Header';
 import Home from '../../containers/Home';
-import HomeGame from '../HomeGame';
+import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
 import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
@@ -28,21 +28,19 @@ const App = () => (
     <Header />
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/home-game/jeux/puzzle" component={MyPuzzle} />
+      <Route path="/home-game/:category/puzzle" component={MyPuzzle} />
       <Route
         path="/home-game/:category/categories"
         component={CategoriesQuizzs}
       />
       <Route path="/home-game/:catAge/:catQuizzs/quiz" component={Quiz} />
       <Route path="/home-game/:catAge/:catQuizzs" component={Quizzs} />
-
       <Route
-        path="/home-game/:slug"
+        path="/home-game/:category"
         render={({ match }) => {
-          const { slug } = match.params;
-          const singleCategory = selectCategoryFromSlug(slug);
+          const { category } = match.params;
 
-          return <HomeGame {...singleCategory} />;
+          return <HomeGame category={category} />;
         }}
       />
     </Switch>

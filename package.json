@@ -67,6 +67,7 @@
     "react-redux": "*",
     "react-responsive": "^6.1.2",
     "react-router-dom": "^5.0.0",
+    "react-typed": "^1.1.2",
     "redux": "*",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
