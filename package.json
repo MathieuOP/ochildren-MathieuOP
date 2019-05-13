@@ -70,6 +70,7 @@
     "redux": "*",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
+    "shuffle-array": "^1.0.1",
     "slugify": "^1.3.4",
     "url-loader": "^1.1.2"
   }

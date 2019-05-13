@@ -1,24 +1,38 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import slugify from 'slugify';
 import GameMenu from '../GameMenu';
 import './index.scss';
 
-const HomeGame = ({ description, image, slug }) => {
-  return (
-    <div className="homeGame">
-      <div className="homeGame-title">
-        <img src={`../src/assets/img/${image}`} alt="catégorie" />
-        <h2> {description} </h2>
+class HomeGame extends Component {
+  componentDidMount() {
+    this.props.dataForHomeGame(this.props.category);
+  }
+
+  render() {
+    console.log(dataHomeGame);
+    const { category, dataHomeGame } = this.props;
+    return (
+      <div className="homeGame">
+        <div className="homeGame-title">
+          <h1 />
+        </div>
+        <GameMenu category={category} />
       </div>
-      <GameMenu slug={slug} />
-    </div>
-  );
-};
+    );
+  }
+}
 
 HomeGame.propTypes = {
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired
+  category: PropTypes.string.isRequired,
+  dataHomeGame: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      image: PropTypes.string
+    })
+  ).isRequired
 };
 
 export default HomeGame;

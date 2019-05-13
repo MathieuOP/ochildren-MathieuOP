@@ -26,7 +26,7 @@ class MyPuzzle extends Component {
           </p>
           <div ref={this.puzzle}>
             <Puzzle
-              image="https://upload.wikimedia.org/wikipedia/en/6/68/John_Coltrane_-_Blue_Train.jpg"
+              image="http://localhost:3000/src/assets/img/tony_404.png"
               size={500}
               onDone={this.puzzleFinished}
             />
@@ -34,7 +34,7 @@ class MyPuzzle extends Component {
           <img
             className="puzzle-img"
             ref={this.imgPuzzle}
-            src="https://upload.wikimedia.org/wikipedia/en/6/68/John_Coltrane_-_Blue_Train.jpg"
+            src="http://localhost:3000/src/assets/img/tony_404.png"
             alt=""
           />
         </div>

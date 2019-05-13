@@ -14,6 +14,7 @@ class CategoriesQuizzs extends Component {
     const { getQuizzsById, currentSlugCatQuizzs } = this.props;
 
     getQuizzsById(id);
+    console.log(slugCatQuizzs);
     currentSlugCatQuizzs(slugCatQuizzs);
   };
 

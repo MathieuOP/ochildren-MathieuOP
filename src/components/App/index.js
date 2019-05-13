@@ -12,6 +12,8 @@ import Header from '../Header';
 import Home from '../../containers/Home';
 import HomeGame from '../HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
+import Quizzs from '../../containers/Quizzs';
+import Quiz from '../../containers/Quiz';
 import MyPuzzle from '../MyPuzzle';
 
 import { selectCategoryFromSlug } from '../../datas';
@@ -31,6 +33,8 @@ const App = () => (
         path="/home-game/:category/categories"
         component={CategoriesQuizzs}
       />
+      <Route path="/home-game/:catAge/:catQuizzs/quiz" component={Quiz} />
+      <Route path="/home-game/:catAge/:catQuizzs" component={Quizzs} />
 
       <Route
         path="/home-game/:slug"
