@@ -15,7 +15,7 @@ const GameMenu = () => (
           </Link>
         </li>
         <li>
-          <Link to="/home-game/jeux/quiz">
+          <Link to="/home-game/jeux/categories">
             <FaCheckSquare size="2em" className="gameMenu-icon--square" />
             <span className="gameMenu-link--quiz">Quiz</span>
           </Link>
