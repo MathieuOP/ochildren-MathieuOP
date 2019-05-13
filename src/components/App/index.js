@@ -17,7 +17,6 @@ import Quiz from '../../containers/Quiz';
 import MyPuzzle from '../MyPuzzle';
 import Page404 from '../Page404';
 
-import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
 import './app.scss';
 
@@ -34,8 +33,19 @@ const App = () => (
         path="/home-game/:category/categories"
         component={CategoriesQuizzs}
       />
-      <Route path="/home-game/:catAge/:catQuizzs/quiz" component={Quiz} />
-      <Route path="/home-game/:catAge/:catQuizzs" component={Quizzs} />
+      <Route path="/home-game/:worldId/:catQuizzs/:quizId"
+        render={({ match }) => {
+          const { quizId } = match.params;
+          return <Quiz quizId={quizId} />;
+        }}
+      />
+      <Route
+        path="/home-game/:worldId/:catQuizName"
+        render={({ match }) => {
+          const { worldId, catQuizName } = match.params;
+          return <Quizzs worldId={worldId} catQuizName={catQuizName}/>;
+        }}
+      />
       <Route
         path="/home-game/:category"
         render={({ match }) => {
