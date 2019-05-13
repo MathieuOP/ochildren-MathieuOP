@@ -11,6 +11,7 @@ import { Route, Switch } from 'react-router-dom';
 import Header from '../Header';
 import Home from '../../containers/Home';
 import HomeGame from '../HomeGame';
+import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
 import MyPuzzle from '../MyPuzzle';
 
 import { selectCategoryFromSlug } from '../../datas';
@@ -26,6 +27,10 @@ const App = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/home-game/jeux/puzzle" component={MyPuzzle} />
+      <Route
+        path="/home-game/:category/categories"
+        component={CategoriesQuizzs}
+      />
 
       <Route
         path="/home-game/:slug"
