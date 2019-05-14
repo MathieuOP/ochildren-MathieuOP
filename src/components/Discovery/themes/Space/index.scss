@@ -1,0 +1,183 @@
+.discovery--space {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+
+  &--pic1,
+  // &--pic2,
+  &--pic5,
+  &--pic13,
+  &--pic15,
+  &--pic14,
+  &--pic17,
+  &--pic20 {
+    position: absolute;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    will-change: transform;
+  }
+
+  &--pic1 {
+    border-radius: 50%;
+    min-width: 100ch;
+    min-height: 100ch;
+    width: 55vw;
+    height: 55vw;
+    max-width: 200ch;
+    max-height: 200ch;
+    background-image: url(https://image.flaticon.com/icons/svg/284/284449.svg);
+  }
+
+  &--pic2 {
+    width: 50ch;
+    height: 50ch;
+  }
+
+  &--pic3 {
+    opacity: 0.85;
+    width: 25ch;
+    height: 25ch;
+  }
+
+  &--pic4 {
+    width: 10ch;
+    height: 10ch;
+    transform: rotate(315deg);
+  }
+
+  &--pic5 {
+    //border-radius: 50%;
+    min-width: 100ch;
+    min-height: 100ch;
+    width: 120vw;
+    height: 45vw;
+    max-width: 200ch;
+    max-height: 200ch;
+    background-image: url(https://telesel.ch/wp/wp-content/uploads/2017/08/a7c4b20e9bf9c64ce9b455a5f2e371a9-space-stars-background.jpg);
+  }
+
+  &--pic6 {
+    width: 45ch;
+    height: 45ch;
+  }
+
+  &--pic7 {
+    width: 8ch;
+    height: 8ch;
+    opacity: 0.7;
+  }
+
+  &--pic8 {
+    width: 21ch;
+    height: 21ch;
+    opacity: 0.95;
+  }
+
+  &--pic9 {
+    width: 32ch;
+    height: 32ch;
+
+  }
+
+  &--pic10 {
+    width: 7ch;
+    height: 7ch;
+    opacity: 0.95;
+  }
+
+  &--pic11 {
+    width: 4.2ch;
+    height: 4.2ch;
+  }
+  &--pic12 {
+    width: 4ch;
+    height: 4ch;
+    background-image: url(https://image.flaticon.com/icons/svg/639/639373.svg);
+    background-repeat: no-repeat;
+    transform: rotate(45deg);
+  }
+
+  &--pic13 {
+    opacity: 0.7;
+    width: 7ch;
+    height: 7ch;
+  }
+
+  &--pic15 {
+    width: 35ch;
+    height: 35ch;
+    /*background-image: url(https://image.flaticon.com/icons/svg/1751/1751853.svg);*/
+  }
+
+  &--pic14 {
+    width: 15ch;
+    height: 15ch;
+    opacity: 0.95;
+    /*background-image: url(https://image.flaticon.com/icons/svg/124/124558.svg);*/
+  }
+
+  &--pic16 {
+    width: 25ch;
+    height: 25ch;
+    background-image: url(https://image.flaticon.com/icons/svg/639/639373.svg);
+    background-repeat: no-repeat;
+  }
+
+  &--pic17 {
+    width: 8ch;
+    height: 8ch;
+    opacity: 0.94;
+  }
+
+  &--pic18 {
+    width: 37ch;
+    height: 37ch;
+  }
+
+  &--pic19 {
+    width: 28ch;
+    height: 28ch;
+    opacity: 0.97;
+  }
+
+  &--pic20 {
+    width: 6ch;
+    height: 6ch;
+    opacity: 0.9;
+  }
+
+  &--pic21 {
+    width: 17ch;
+    height: 17ch;
+    opacity: 0.94;
+    background-image: url(https://image.flaticon.com/icons/svg/639/639373.svg);
+    background-repeat: no-repeat;
+  }
+
+  &--pic22 {
+    width: 8ch;
+    height: 8ch;
+    background-image: url(https://image.flaticon.com/icons/svg/433/433924.svg);
+    background-repeat: no-repeat;
+  }
+
+  &--pic23 {
+    width: 14ch;
+    height: 14ch;
+    background-image: url(https://image.flaticon.com/icons/svg/433/433924.svg);
+    background-repeat: no-repeat;
+  }
+
+  &--pic24 {
+    width: 32ch;
+    height: 32ch;
+    opacity: 0.97;
+    background-image: url(https://image.flaticon.com/icons/svg/433/433924.svg);
+    background-repeat: no-repeat;
+  }
+}

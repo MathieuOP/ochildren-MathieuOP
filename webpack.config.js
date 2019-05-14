@@ -37,7 +37,7 @@ module.exports = {
     // Nom du bundle
     filename: 'app.js',
     // Nom du bundle vendors si l'option d'optimisation / splitChunks est activée
-    chunkFilename: 'vendors.js',
+    chunkFilename: '[name].js',
     // Cible des bundles
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'

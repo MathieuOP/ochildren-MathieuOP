@@ -12,12 +12,12 @@ import Header from '../Header';
 import Home from '../../containers/Home';
 import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
+import Discovery from '../Discovery';
 import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
 import MyPuzzle from '../MyPuzzle';
 import Page404 from '../Page404';
 
-import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
 import './app.scss';
 
@@ -26,7 +26,11 @@ import './app.scss';
  */
 const App = () => (
   <div id="app">
-    <Header />
+    <Route
+      exact
+      path={/^(?!.*(\/home-game\/\d+\/discovery\/)).*$/}
+      component={Header}
+    />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/home-game/:category/puzzle" component={MyPuzzle} />
@@ -34,6 +38,11 @@ const App = () => (
         path="/home-game/:category/categories"
         component={CategoriesQuizzs}
       />
+      <Route
+        path="/home-game/:category/discovery"
+        render={({ match }) => <Discovery url={match.url} />}
+      />
+
       <Route path="/home-game/:catAge/:catQuizzs/quiz" component={Quiz} />
       <Route path="/home-game/:catAge/:catQuizzs" component={Quizzs} />
       <Route
