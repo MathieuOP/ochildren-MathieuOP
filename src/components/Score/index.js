@@ -8,7 +8,7 @@ const Score = ({ score, messageScore }) => {
       <div className="score-title">
         <h2> {score}/10</h2>
         <img
-          src={`/src/components/App/assets/img/${messageScore}.svg`}
+          src={`/src/assets/img/${messageScore}.svg`}
           alt=""
         />
       </div>
