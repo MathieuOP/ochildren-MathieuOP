@@ -15,6 +15,7 @@ import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
 import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
 import MyPuzzle from '../MyPuzzle';
+import Page404 from '../Page404';
 
 import { selectCategoryFromSlug } from '../../datas';
 // Styles et assets
@@ -43,6 +44,7 @@ const App = () => (
           return <HomeGame category={category} />;
         }}
       />
+      <Route component={Page404} />
     </Switch>
   </div>
 );
