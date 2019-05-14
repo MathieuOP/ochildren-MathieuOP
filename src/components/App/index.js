@@ -27,9 +27,12 @@ import './app.scss';
 const App = () => (
   <div id="app">
     <Route
-      exact
-      path={/^(?!.*(\/home-game\/\d+\/discovery\/)).*$/}
-      component={Header}
+      path="*"
+      render={({ location }) =>
+        /^(?!.*(\/home-game\/\d+\/discovery\/)).*$/.test(location.pathname) && (
+          <Header />
+        )
+      }
     />
     <Switch>
       <Route exact path="/" component={Home} />
