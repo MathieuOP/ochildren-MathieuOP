@@ -97,11 +97,6 @@ const reducer = (state = initialState, action = {}) => {
         message: '',
         answerTrue: false
       };
-    case DATA_HOME_PAGE:
-      return {
-        ...state,
-        dataHomePage: [...action.data]
-      };
     case DATA_HOME_GAME:
       return {
         ...state,
