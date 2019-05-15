@@ -1,12 +1,16 @@
 import axios from 'axios';
 import shuffle from 'shuffle-array';
+// import createHistory from 'history/createBrowserHistory';
+
 import {
   DATA_HOME_PAGE,
   CATEGORIES_QUIZZS,
-  QUIZZS_BY_ID,
+  // QUIZZS_BY_ID,
+  QUIZ_BY_WORLD_ID,
   DATA_HOME_GAME,
   QUESTION_BY_ID,
-  receivedDataQuestions
+  receivedDataQuestions,
+  getPage404,
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -23,19 +27,16 @@ const ajaxMiddleware = store => next => action => {
 
     case DATA_HOME_GAME: // Requete qui récupère les données nécessaire pour la page home
       return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/categories/${
-            action.categoryId
-          }/`,
-          {}
-        )
+        .get(`http://92.243.9.67/plateforme-educative-api/public/api/worlds/${action.categoryId}/`)
         .then(response => {
           next({
             ...action,
             data: response.data
           });
+        })
+        .catch(error => {
+          if (error.response.status === 404) store.dispatch(getPage404());
         });
-
     case CATEGORIES_QUIZZS: // Requete qui récupère les catégories pour les quizzs
       return axios
         .get(
@@ -47,36 +48,34 @@ const ajaxMiddleware = store => next => action => {
             data: response.data
           });
         });
-
-    case QUIZZS_BY_ID:
-      return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/categories/${
-            action.id
-          }/quizzs/`
-        )
-        .then(response => {
+    case QUIZ_BY_WORLD_ID:
+      axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/categories/${action.worldId}/quizzs`, {
+        
+      })
+        .then((response) => {
+          console.log(response.data);
           next({
             ...action,
-            data: response.data
-          });
+            data: response.data,
+          })
+        })
+        .catch((error) => {
+          if (error.response.status === 404) store.dispatch(getPage404());
         });
-
+      break;
     case QUESTION_BY_ID:
       next(action);
-      return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${
-            action.id
-          }`
-        )
-        .then(response => {
+      axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${action.id}`, {
+        
+      })
+        .then((response) => {
           response.data.questions.map(data => shuffle(data.answers));
-          store.dispatch(
-            receivedDataQuestions(shuffle(response.data.questions))
-          );
+          store.dispatch(receivedDataQuestions(shuffle(response.data.questions)))
+        })
+        .catch((error) => {
+          if (error.response.status === 404) store.dispatch(getPage404());
         });
-
+      break;
     default:
       return next(action);
   }

@@ -1,10 +1,13 @@
-import { datas } from 'src/datas';
+import { puzzles } from 'src/datas';
+
 /**
  * Initial State
  */
 const initialState = {
-  datas,
   dataHomePage: [],
+  puzzles: [
+    ...puzzles,
+  ],
   userForm: {
     loggedIn: false,
     loading: false,
@@ -17,19 +20,20 @@ const initialState = {
     birthday: ''
   },
   indexQuiz: 0,
-  dataHomeGame: [],
+  dataHomeGame: {},
   categoriesQuizzs: [],
   currentSlugCatAge: '',
   currrentSlugCatQuizzs: '',
-  quizzsByCategoryId: [],
+  quizzsByWorldId: [],
   idCatAge: '',
   questionsOfQuiz: [],
-  loading: false,
+  loaded: false,
   disabledButton: true,
   message: '',
   score: 0,
   myScore: false,
-  answerTrue: false
+  answerTrue: false,
+  error404: false,
 };
 
 /**
@@ -48,7 +52,6 @@ const INCREMENT_INDEX_QUIZ = 'INCREMENT_INDEX_QUIZ';
 export const CATEGORIES_QUIZZS = 'CATEGORIES_QUIZZS';
 const CURRENT_SLUG_CAT_AGE = 'CURRENT_SLUG_CAT_AGE';
 const CURRENT_SLUG_CAT_QUIZZS = 'CURRENT_SLUG_CAT_QUIZZS';
-export const QUIZZS_BY_ID = 'QUIZZS_BY_ID';
 export const QUESTION_BY_ID = 'QUESTION_BY_ID';
 const RECEIVED_DATA_QUESTIONS = 'RECEIVED_DATA_QUESTIONS';
 const CHOSEN_ANSWER = 'CHOSEN_ANSWER';
@@ -57,6 +60,8 @@ const GET_MESSAGE = 'GET_MESSAGE';
 const MY_SCORE = 'MY_SCORE';
 const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
+export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
+export const ERROR_404 = 'ERROR_404';
 
 /**
  * Traitements
@@ -70,7 +75,8 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_PAGE:
       return {
         ...state,
-        dataHomePage: [...action.data]
+        dataHomePage: [...action.data],
+        error404: false,
       };
     // form
     case HANDLE_LOGIN_CHANGE:
@@ -100,12 +106,14 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_GAME:
       return {
         ...state,
-        dataHomeGame: [...action.data]
+        dataHomeGame: {...action.data},
+        error404: false,
       };
     case CATEGORIES_QUIZZS:
       return {
         ...state,
-        categoriesQuizzs: [...action.data]
+        categoriesQuizzs: [...action.data],
+        error404: false,
       };
     case CURRENT_SLUG_CAT_AGE:
       return {
@@ -118,21 +126,25 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currrentSlugCatQuizzs: action.slug
       };
-    case QUIZZS_BY_ID:
+    case QUIZ_BY_WORLD_ID:
       return {
         ...state,
-        quizzsByCategoryId: action.data
+        quizzsByWorldId: action.data,
+        error404: false,
       };
     case QUESTION_BY_ID:
       return {
         ...state,
-        loading: true
+        loaded: false,
       };
     case RECEIVED_DATA_QUESTIONS:
       return {
         ...state,
-        loading: false,
-        questionsOfQuiz: action.data
+        loaded: true,
+        questionsOfQuiz: [
+          ...action.data,
+        ],
+        error404: false,
       };
     case CHOSEN_ANSWER:
       return {
@@ -169,6 +181,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         answerTrue: true
       };
+    case ERROR_404: {
+      return {
+        ...state,
+        error404: true,
+      }
+    }
     default:
       return state;
   }
@@ -200,11 +218,6 @@ export const currentSlugCatQuizzs = slug => ({
   slug
 });
 
-export const getQuizzsById = id => ({
-  type: QUIZZS_BY_ID,
-  id
-});
-
 export const dataForHomePage = () => ({
   type: DATA_HOME_PAGE
 });
@@ -214,9 +227,14 @@ export const dataForHomeGame = categoryId => ({
   categoryId
 });
 
+export const getQuizByWorldId = worldId => ({
+  type: QUIZ_BY_WORLD_ID,
+  worldId,
+})
+
 export const getQuestionsByQuizId = id => ({
   type: QUESTION_BY_ID,
-  id
+  id,
 });
 
 export const getMyScore = () => ({
@@ -264,6 +282,9 @@ export const infosCatAge = (category, id) => ({
   id
 });
 
+export const getPage404 = () => ({
+  type: ERROR_404,
+});
 /**
  * Selectors
  */
