@@ -1,26 +1,51 @@
-export const world = [
+export const puzzles = [
   {
-    "id": 5,
-    "name": "3-6 ans",
-    "description": "Activités pour les 3 à 6 ans",
-    "image": "bear.svg",
-    "slug": "3-6-ans",
+    "id": 1,
+    "description": "",
+    "icon": "/src/assets/img/tiger.svg",
+    "image": "/src/assets/img/puzzle_tiger.jpg",
+    "title": "Un tigre",
+    "world": {
+      "id": 2,
+      "name": "7-10 ans"
+    },
   },
   {
-    "id": 6,
-    "name": "7-10 ans",
-    "description": "Activités pour les 7 à 10 ans",
-    "image": "lego.svg",
-    "slug": "7-10-ans",
+    "id": 2,
+    "description": "",
+    "icon": "/src/assets/img/lion.svg",
+    "image": "/src/assets/img/puzzle_lion.jpg",
+    "title": "Un lion",
+    "world": {
+      "id": 2,
+      "name": "7-10 ans"
+    },
+  },
+  {
+    "id": 3,
+    "description": "",
+    "icon": "/src/assets/img/dog.svg",
+    "image": "/src/assets/img/puzzle_dog.jpg",
+    "title": "Un chien",
+    "world": {
+      "id": 1,
+      "name": "3-6 ans"
+    },
+  },
+  {
+    "id": 4,
+    "description": "",
+    "icon": "/src/assets/img/cat.svg",
+    "image": "/src/assets/img/puzzle-cat.jpg",
+    "title": "Un chat",
+    "world": {
+      "id": 1,
+      "name": "3-6 ans"
+    },
   },
 ];
 
-export const selectCategoryFromSlug = (slug) => {
-  const uniqueCategory = world.find(category => category.slug === slug);
-  return uniqueCategory;
-};
-
-export const datas = [
+export const quiz = [
   {
     question: 'Combien de planètes il y a t-il dans le système solaire ?',
     response: 8,

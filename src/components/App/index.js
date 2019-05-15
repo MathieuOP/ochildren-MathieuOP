@@ -14,7 +14,8 @@ import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
 import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
-import MyPuzzle from '../MyPuzzle';
+import Puzzles from '../../containers/Puzzles';
+import MyPuzzle from '../../containers/MyPuzzle';
 import Page404 from '../Page404';
 
 // Styles et assets
@@ -29,7 +30,20 @@ const App = ({ error404 }) => (
 
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/home-game/:category/puzzle" component={MyPuzzle} />
+      <Route exact path="/puzzles/:worldId" 
+        render={({ match }) => {
+          const { worldId } = match.params;
+          
+          return <Puzzles worldId={worldId} />;
+        }}
+      />
+      <Route exact path="/puzzle/:puzzleId" 
+        render={({ match }) => {
+          const { puzzleId } = match.params;
+            
+          return <MyPuzzle puzzleId={puzzleId} />;
+        }}
+      />
       <Route // is ok
         exact
         path="/home-game/:categories/categories"

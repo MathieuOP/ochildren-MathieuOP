@@ -1,10 +1,13 @@
-import { datas } from 'src/datas';
+import { puzzles } from 'src/datas';
+
 /**
  * Initial State
  */
 const initialState = {
-  datas,
   dataHomePage: [],
+  puzzles: [
+    ...puzzles,
+  ],
   userForm: {
     loggedIn: false,
     loading: false,
