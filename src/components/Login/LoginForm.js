@@ -61,6 +61,7 @@ class LoginForm extends VerifyForm {
             <input
               placeholder="Identifiant"
               type="text"
+              value={identifiant}
               onChange={this.handleChange('identifiant')}
               style={{
                 borderColor: this.verify.verifyOne(
