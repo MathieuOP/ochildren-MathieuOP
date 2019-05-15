@@ -53,7 +53,7 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Le Soleil"
+          header={title}
           content="hello"
           trigger={
             <Image
