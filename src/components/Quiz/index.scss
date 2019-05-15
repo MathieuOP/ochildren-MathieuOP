@@ -1,6 +1,12 @@
 .quiz {
     margin-top: 50px;
     
+    h1 {
+        text-align: center;
+        font-size: 3em;
+        margin-bottom: 50px;
+    }
+    
     &-answer--bad {
         animation: shake 0.5s; 
     }

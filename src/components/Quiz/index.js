@@ -55,9 +55,23 @@ class Quiz extends Component {
   }
 
   render() {
-    const { loaded, myScore, questionsOfQuiz, indexQuiz, message, answerTrue, disabledButton, getMyScore, score, messageScore } = this.props;
+    const { 
+      loaded,
+      myScore,
+      descriptionCurrentQuiz,
+      currentNameQuiz,
+      questionsOfQuiz,
+      indexQuiz,
+      message,
+      answerTrue,
+      disabledButton,
+      getMyScore,
+      score,
+      messageScore 
+    } = this.props;
     return loaded && !myScore ? (
       <div ref={this.quiz} className="quiz">
+        <h1>{ descriptionCurrentQuiz }</h1>
         <div ref={this.quizQuestion} className="quiz-questions">
           <p className="quiz-question">{questionsOfQuiz[indexQuiz].content}</p>
           <div className="quiz-responses">
@@ -105,7 +119,7 @@ class Quiz extends Component {
         </div>
       </div>
     ) : (
-      myScore && <Score score={score} messageScore={messageScore} />
+      myScore && <Score score={score} messageScore={messageScore} currentNameQuiz={currentNameQuiz}/>
     );
   }
 };
