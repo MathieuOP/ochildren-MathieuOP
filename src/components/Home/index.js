@@ -52,6 +52,7 @@ class Home extends Component {
 
         <div className="container">
           {dataHomePage.map(({ id, name, image }) => {
+
             return (
               <div key={id} className="wrapper">
                 <div onClick={this.handleClickCard} className="card">
