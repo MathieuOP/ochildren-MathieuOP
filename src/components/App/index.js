@@ -2,7 +2,7 @@
  * Import
  */
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 /**
  * Local import
@@ -23,31 +23,38 @@ import './app.scss';
 /**
  * Code
  */
-const App = () => (
+const App = ({ error404 }) => (
   <div id="app">
     <Header />
+
     <Switch>
       <Route exact path="/" component={Home} />
       <Route exact path="/home-game/:category/puzzle" component={MyPuzzle} />
       <Route // is ok
         exact
-        strict
-        path="/categories"
+        path="/home-game/:categories/categories"
         component={CategoriesQuizzs}
       />
       <Route exact path="/quiz/:quizId"
         render={({ match }) => {
           const { quizId } = match.params;
-
-          return <Quiz quizId={quizId} />;
+          
+          if (!error404) {
+            return <Quiz quizId={quizId} />;
+          }
+          return <Redirect to="/not-found" />
         }}
       />
       <Route
         exact
-        path="/category/:worldId"
+        path="/category/:categoryQuizId"
         render={({ match }) => {
-          const { worldId, catQuizName } = match.params;
-          return <Quizzs worldId={worldId} catQuizName={catQuizName}/>;
+          const { categoryQuizId } = match.params;
+
+          if (!error404) {
+            return <Quizzs categoryQuizId={categoryQuizId} />;
+          }
+          return <Redirect to="/not-found" />
         }}
       />
       <Route // is ok
@@ -55,8 +62,11 @@ const App = () => (
         path="/home-game/:category"
         render={({ match }) => {
           const { category } = match.params;
-
-          return <HomeGame category={category} />;
+          
+          if (!error404) {
+            return <HomeGame category={category} />;
+          }
+          return <Redirect to="/not-found" />
         }}
       />
       <Route component={Page404} />

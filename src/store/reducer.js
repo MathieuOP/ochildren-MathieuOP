@@ -30,6 +30,7 @@ const initialState = {
   score: 0,
   myScore: false,
   answerTrue: false,
+  error404: false,
 };
 
 /**
@@ -57,6 +58,7 @@ const MY_SCORE = 'MY_SCORE';
 const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
+export const ERROR_404 = 'ERROR_404';
 
 /**
  * Traitements
@@ -70,7 +72,8 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_PAGE:
       return {
         ...state,
-        dataHomePage: [...action.data]
+        dataHomePage: [...action.data],
+        error404: false,
       };
     // form
     case HANDLE_LOGIN_CHANGE:
@@ -100,12 +103,14 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_GAME:
       return {
         ...state,
-        dataHomeGame: {...action.data}
+        dataHomeGame: {...action.data},
+        error404: false,
       };
     case CATEGORIES_QUIZZS:
       return {
         ...state,
-        categoriesQuizzs: [...action.data]
+        categoriesQuizzs: [...action.data],
+        error404: false,
       };
     case CURRENT_SLUG_CAT_AGE:
       return {
@@ -121,7 +126,8 @@ const reducer = (state = initialState, action = {}) => {
     case QUIZ_BY_WORLD_ID:
       return {
         ...state,
-        quizzsByWorldId: action.data
+        quizzsByWorldId: action.data,
+        error404: false,
       };
     case QUESTION_BY_ID:
       return {
@@ -134,7 +140,8 @@ const reducer = (state = initialState, action = {}) => {
         loaded: true,
         questionsOfQuiz: [
           ...action.data,
-        ]
+        ],
+        error404: false,
       };
     case CHOSEN_ANSWER:
       return {
@@ -171,6 +178,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         answerTrue: true
       };
+    case ERROR_404: {
+      return {
+        ...state,
+        error404: true,
+      }
+    }
     default:
       return state;
   }
@@ -266,6 +279,9 @@ export const infosCatAge = (category, id) => ({
   id
 });
 
+export const getPage404 = () => ({
+  type: ERROR_404,
+});
 /**
  * Selectors
  */

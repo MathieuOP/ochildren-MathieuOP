@@ -1,5 +1,6 @@
 import axios from 'axios';
 import shuffle from 'shuffle-array';
+// import createHistory from 'history/createBrowserHistory';
 
 import {
   DATA_HOME_PAGE,
@@ -8,7 +9,8 @@ import {
   QUIZ_BY_WORLD_ID,
   DATA_HOME_GAME,
   QUESTION_BY_ID,
-  receivedDataQuestions
+  receivedDataQuestions,
+  getPage404,
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -31,8 +33,10 @@ const ajaxMiddleware = store => next => action => {
             ...action,
             data: response.data
           });
+        })
+        .catch(error => {
+          if (error.response.status === 404) store.dispatch(getPage404());
         });
-
     case CATEGORIES_QUIZZS: // Requete qui récupère les catégories pour les quizzs
       return axios
         .get(
@@ -49,15 +53,14 @@ const ajaxMiddleware = store => next => action => {
         
       })
         .then((response) => {
-
+          console.log(response.data);
           next({
             ...action,
             data: response.data,
-          });
+          })
         })
         .catch((error) => {
-          // console.log(error);
-          
+          if (error.response.status === 404) store.dispatch(getPage404());
         });
       break;
     case QUESTION_BY_ID:
@@ -70,8 +73,7 @@ const ajaxMiddleware = store => next => action => {
           store.dispatch(receivedDataQuestions(shuffle(response.data.questions)))
         })
         .catch((error) => {
-          console.log(error);
-          
+          if (error.response.status === 404) store.dispatch(getPage404());
         });
       break;
     default:

@@ -16,7 +16,7 @@ const GameMenu = ({ category }) => {
             </Link>
           </li>
           <li>
-            <Link to="/categories">
+            <Link to={`/home-game/${category}/categories`}>
               <FaCheckSquare size="2em" className="gameMenu-icon--square" />
               <span className="gameMenu-link--quiz">Quiz</span>
             </Link>

@@ -7,7 +7,7 @@ import './index.scss';
 
 class Quizzs extends Component {
   componentDidMount() {
-    this.props.getQuizByWorldId(this.props.worldId)
+    this.props.getQuizByWorldId(this.props.categoryQuizId)
   }
 
   handleClick = id => () => {
@@ -16,10 +16,9 @@ class Quizzs extends Component {
   };
 
   render() {
-    const { catQuizName, quizzsByWorldId } = this.props;
+    const { quizzsByWorldId } = this.props;
     return (
       <div className="quizzs">
-        <h1>{ catQuizName }</h1>
 
         <div className="wrapper-quizzs">
           {quizzsByWorldId.map(quiz => (

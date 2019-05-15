@@ -18,6 +18,7 @@ class Home extends Component {
   };
 
   render() {
+
     const { dataHomePage, infosCatAge } = this.props;
     return (
       <div className="home">
