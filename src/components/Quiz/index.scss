@@ -27,6 +27,12 @@
         padding: 20px 0;
         border-radius: 15px;
         box-shadow: 0px 7px 17px 0px rgba(0,0,0,0.06);
+
+        button:hover {
+            color: #5e457d !important;
+            background-color: #FFF !important;
+            transition: .5s !important;
+        }
     }
 
     &-question {
@@ -89,6 +95,7 @@
         border-radius: 10px !important;
         font-size: 1.2em !important;
         margin: 20px 0 0 !important;
+        border: 1px solid #5e457d !important;
     }
 }
 

@@ -139,7 +139,9 @@ Quiz.propTypes = {
   getMyScore: PropTypes.func.isRequired,
   answerTrue: PropTypes.bool.isRequired,
   answerIsTrue: PropTypes.func.isRequired,
-  messageScore: PropTypes.string.isRequired
+  messageScore: PropTypes.string.isRequired,
+  descriptionCurrentQuiz: PropTypes.string.isRequired,
+  currentNameQuiz: PropTypes.string.isRequired,
 };
 
 export default Quiz;
