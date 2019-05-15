@@ -78,7 +78,7 @@ module.exports = {
         ]
       },
       {
-        test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+        test: /\.(png|woff|woff2|eot|ttf|svg|ico)$/,
         loader: 'url-loader?limit=100000'
       },
       // CSS / SASS / SCSS
@@ -100,7 +100,7 @@ module.exports = {
           'sass-loader'
         ]
       },
-      // Inages
+      // Images
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [

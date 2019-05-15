@@ -7,6 +7,11 @@ interface Verify {
   init: (inputsEntry: string[]) => void;
   cond: (cond: boolean, inputName: string) => object;
   verifyAll: () => boolean;
+  verifyOne: (
+    inputName: string,
+    inputValue: string,
+    callback: (error: boolean) => object
+  ) => void;
   setErrorComp: (comp: () => void) => void;
   setSuccessComp: (comp: () => void) => void;
 }
@@ -25,7 +30,7 @@ export default class VerifyForm extends Component {
       )),
 
     // cond
-    cond: (cond: boolean, inputName: string) => {
+    cond: (cond, inputName) => {
       const newInputs = {
         ...this.verify.inputs,
         [inputName]: cond
@@ -38,11 +43,16 @@ export default class VerifyForm extends Component {
     verifyAll: () =>
       Object.values(this.verify.inputs).filter(e => e).length > 0,
 
+    verifyOne: (inputName, inputValue, callback) => {
+      if (inputValue.length <= 0) return;
+      return callback((this.verify.inputs as any)[inputName]);
+    },
+
     // set the error comp
-    setErrorComp: (comp: () => void) => (this.verify.errorComp = comp),
+    setErrorComp: comp => (this.verify.errorComp = comp),
 
     // set the success comp
-    setSuccessComp: (comp: () => void) => (this.verify.successComp = comp)
+    setSuccessComp: comp => (this.verify.successComp = comp)
   };
 
   constructor(props: object) {

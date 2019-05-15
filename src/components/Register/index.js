@@ -14,15 +14,6 @@ class Register extends Component {
   // etape suivante
   nextStep = () => {
     const { step } = this.state;
-    // console.log(
-    //   Object.values(this.state).map(e => (typeof e === 'string' ? e))
-    // );
-    // if (
-    //   Object.values(this.state)
-    //     .map(e => typeof e === 'string')
-    //     .trim().length <= 0
-    // )
-    // return;
     this.setState({
       step: step + 1
     });
