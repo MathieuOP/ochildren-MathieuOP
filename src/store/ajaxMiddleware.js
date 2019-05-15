@@ -53,7 +53,6 @@ const ajaxMiddleware = store => next => action => {
         
       })
         .then((response) => {
-          console.log(response.data);
           next({
             ...action,
             data: response.data,
@@ -70,7 +69,8 @@ const ajaxMiddleware = store => next => action => {
       })
         .then((response) => {
           response.data.questions.map(data => shuffle(data.answers));
-          store.dispatch(receivedDataQuestions(shuffle(response.data.questions)))
+
+          store.dispatch(receivedDataQuestions(shuffle(response.data.questions), response.data.description, response.data.title))
         })
         .catch((error) => {
           if (error.response.status === 404) store.dispatch(getPage404());

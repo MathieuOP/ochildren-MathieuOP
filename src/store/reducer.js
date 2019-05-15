@@ -34,6 +34,8 @@ const initialState = {
   myScore: false,
   answerTrue: false,
   error404: false,
+  descriptionCurrentQuiz: '',
+  currentNameQuiz: '',
 };
 
 /**
@@ -142,8 +144,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         loaded: true,
         questionsOfQuiz: [
-          ...action.data,
+          ...action.dataQuestions,
         ],
+        descriptionCurrentQuiz: action.dataDescription,
+        currentNameQuiz: action.dataName,
         error404: false,
       };
     case CHOSEN_ANSWER:
@@ -271,9 +275,11 @@ export const initialQuiz = () => ({
   type: INITIAL_QUIZ
 });
 
-export const receivedDataQuestions = data => ({
+export const receivedDataQuestions = (dataQuestions, dataDescription, dataName) => ({
   type: RECEIVED_DATA_QUESTIONS,
-  data
+  dataQuestions,
+  dataDescription,
+  dataName,
 });
 
 export const infosCatAge = (category, id) => ({

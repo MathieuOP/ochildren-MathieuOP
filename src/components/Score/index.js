@@ -1,10 +1,11 @@
 import React from 'react';
 import './index.scss';
 
-const Score = ({ score, messageScore }) => {
+const Score = ({ score, messageScore, currentNameQuiz }) => {
   console.log(messageScore);
   return (
     <div className="score">
+      <h1>Ton score pour le quiz: <span>{ currentNameQuiz }</span></h1>
       <div className="score-title">
         <h2> {score}/10</h2>
         <img
