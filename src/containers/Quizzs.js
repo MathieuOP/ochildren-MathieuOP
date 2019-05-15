@@ -2,7 +2,6 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import slugify from 'slugify';
 /**
  * Local import
  */

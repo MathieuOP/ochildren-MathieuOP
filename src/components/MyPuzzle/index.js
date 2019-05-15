@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import Puzzle from 'react-image-puzzle';
 import MediaQuery from 'react-responsive';
 import './index.scss';
@@ -53,6 +54,10 @@ class MyPuzzle extends Component {
       </Fragment>
     );
   }
+}
+
+MyPuzzle.propTypes = {
+  puzzle: PropTypes.object.isRequired,
 }
 
 export default MyPuzzle;

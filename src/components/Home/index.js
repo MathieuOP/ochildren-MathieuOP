@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import slugify from 'slugify';
 import Typed from 'react-typed';
 
 import './index.scss';
@@ -54,7 +52,7 @@ class Home extends Component {
 
         <div className="container">
           {dataHomePage.map(({ id, name, image }) => {
-            const category = slugify(name);
+
             return (
               <div key={id} className="wrapper">
                 <div onClick={this.handleClickCard} className="card">
@@ -68,7 +66,7 @@ class Home extends Component {
                     <div className="home-category home-category--link">
                       <p className="">
                         <Link
-                          onClick={() => infosCatAge(category, id)}
+                          onClick={() => infosCatAge(name, id)}
                           to={`/home-game/${id}`}
                         >
                           jouer
