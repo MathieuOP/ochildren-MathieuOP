@@ -98,8 +98,8 @@ class LoginForm extends VerifyForm {
             {this.verify.verifyOne('password', password, error =>
               error
                 ? this.verify.errorComp(
-                    'Votre password doit être superieur a 7 characters'
-                  )
+                    'Votre password doit être superieur a 7 characters' // eslint-disable-line indent
+                  ) // eslint-disable-line indent
                 : this.verify.successComp('Votre password est valide')
             )}
           </label>
