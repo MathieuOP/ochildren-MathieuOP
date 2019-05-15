@@ -7,11 +7,13 @@ import Score from '../Score';
 import './index.scss';
 
 class Quiz extends Component {
+  quizQuestion = React.createRef();
+  
   componentDidMount() {
     this.props.getQuestionsByQuizId(this.props.quizId);
   }
 
-  handleClick = e => {
+  handleClickAnswer = e => {
     const { questionsOfQuiz, getMessage, answerIsTrue, disabledButton, indexQuiz, updateScore, userChosenAnswer } = this.props
     const userAnswer = e.currentTarget;
     const goodAnswer = () => questionsOfQuiz[indexQuiz].right_answer.content;
@@ -20,13 +22,16 @@ class Quiz extends Component {
       // si disabledButton vaut true c'est que l'user a deja repondu, il ne peut donc plus choisir de reponse
 
       if (userAnswer.textContent.trim() === goodAnswer()) {
-        e.currentTarget.classList.add('quiz-responses--good');
+        e.currentTarget.classList.add('quiz-responses--good'); // add green color on right answer
+        this.quizQuestion.current.classList.add('quiz-answer--good'); // add animation if right answer
         const messageForUser = 'Bravo, tu as trouvé la bonne réponse !';
         getMessage(messageForUser);
         answerIsTrue();
         updateScore();
       } else {
-        e.currentTarget.classList.add('quiz-responses--bad');
+        e.currentTarget.classList.add('quiz-responses--bad'); // add red color on right answer
+        this.quizQuestion.current.classList.add('quiz-answer--bad'); // add animation if right answer
+
         const messageForUser = `Désolé! Mauvaise réponse. La réponse est ${goodAnswer()}`;
         getMessage(messageForUser);
 
@@ -42,17 +47,23 @@ class Quiz extends Component {
     userChosenAnswer();
   };
 
+  handleClickNextQuestion = () => {
+    this.props.handleClickButtonNext();
+    // delete class
+    this.quizQuestion.current.classList.remove('quiz-answer--bad');
+    this.quizQuestion.current.classList.remove('quiz-answer--good');
+  }
+
   render() {
-    const { loaded, myScore, questionsOfQuiz, indexQuiz, message, answerTrue, handleClickButtonNext, disabledButton, getMyScore, score, messageScore } = this.props;
-    console.log(questionsOfQuiz);
+    const { loaded, myScore, questionsOfQuiz, indexQuiz, message, answerTrue, disabledButton, getMyScore, score, messageScore } = this.props;
     return loaded && !myScore ? (
-      <div className={myScore ? 'quiz quiz--score' : 'quiz'}>
-        <div className="quiz-questions">
+      <div ref={this.quiz} className="quiz">
+        <div ref={this.quizQuestion} className="quiz-questions">
           <p className="quiz-question">{questionsOfQuiz[indexQuiz].content}</p>
           <div className="quiz-responses">
             {questionsOfQuiz[indexQuiz].answers.map(answer => {
               return (
-                <p key={answer.id} onClick={this.handleClick}>
+                <p key={answer.id} onClick={this.handleClickAnswer}>
                   {answer.content}
                 </p>
               );
@@ -66,8 +77,7 @@ class Quiz extends Component {
                   : 'quiz-message quiz-message--bad'
               }
             >
-              {' '}
-              {message}{' '}
+              {message}
             </p>
           )}
   
@@ -78,7 +88,7 @@ class Quiz extends Component {
           {indexQuiz < questionsOfQuiz.length - 1 ? (
             <Button
               disabled={disabledButton}
-              onClick={handleClickButtonNext}
+              onClick={this.handleClickNextQuestion}
               className="quiz-button-next"
             >
               Question suivante
