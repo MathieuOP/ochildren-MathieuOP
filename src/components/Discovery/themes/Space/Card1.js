@@ -43,8 +43,8 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
-          header={title}
-          content="rr"
+          header="Observatoir"
+          content="hello"
           trigger={
             <Image
               className="discovery--space--pic2"
@@ -60,7 +60,7 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header={title}
+          header="Soleil"
           content="hello"
           trigger={
             <Image
@@ -94,8 +94,8 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header={title}
-          content="rr"
+          header="Radiotelescope"
+          content="hello"
           trigger={
             <Image
               className="discovery--space--pic4-1"
@@ -110,8 +110,8 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans5) }}
       >
         <Popup
-          header={title}
-          content="rr"
+          header="Radiotelescope"
+          content="hello"
           trigger={
             <Image
               className="discovery--space--pic4-2"
@@ -126,8 +126,8 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans6) }}
       >
         <Popup
-          header={title}
-          content="rr"
+          header="Radiotelescope"
+          content="hello"
           trigger={
             <Image
               className="discovery--space--pic4-3"
