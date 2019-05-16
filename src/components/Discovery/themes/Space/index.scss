@@ -23,14 +23,14 @@
   }
 
   &--pic1 {
-    border-radius: 50%;
-    min-width: 100ch;
+    //border-radius: 50%;
+    min-width: 300ch;
     min-height: 100ch;
     width: 55vw;
     height: 55vw;
     max-width: 200ch;
-    max-height: 200ch;
-    background-image: url(https://image.flaticon.com/icons/svg/284/284449.svg);
+    max-height: 100ch;
+    background-image: url(https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/edb33749110005.58ab71bf52e1c.png);
   }
 
   &--pic2 {
@@ -48,12 +48,37 @@
     width: 10ch;
     height: 10ch;
     transform: rotate(315deg);
+    opacity: 0.9;
+  }
+
+  &--pic4-1 {
+    width: 10ch;
+    height: 10ch;
+    background-image: url(https://image.flaticon.com/icons/svg/1137/1137463.svg);
+    transform: rotate(355deg);
+    opacity: 0.97;
+  }
+
+  &--pic4-2 {
+    width: 8ch;
+    height: 8ch;
+    transform: rotate(355deg);
+    opacity: 0.97;
+    background-image: url(https://image.flaticon.com/icons/svg/1137/1137463.svg);
+  }
+
+  &--pic4-3 {
+    width: 10ch;
+    height: 10ch;
+    transform: rotate(355deg);
+    opacity: 0.97;
+    background-image: url(https://image.flaticon.com/icons/svg/1137/1137463.svg);
   }
 
   &--pic5 {
     //border-radius: 50%;
-    min-width: 100ch;
-    min-height: 100ch;
+    min-width: 300ch;
+    min-height: 150ch;
     width: 120vw;
     height: 45vw;
     max-width: 200ch;
@@ -181,3 +206,5 @@
     background-repeat: no-repeat;
   }
 }
+
+

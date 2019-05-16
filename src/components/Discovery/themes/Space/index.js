@@ -15,7 +15,7 @@ const Space = ({ cardId }) => {
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <section className="discovery">
-        <Card {...data[0]} />
+        <Card {...data} />
       </section>
     </Suspense>
   );
