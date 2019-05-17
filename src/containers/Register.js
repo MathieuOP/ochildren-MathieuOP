@@ -9,23 +9,32 @@ import { connect } from 'react-redux';
 import Register from 'src/components/Register';
 
 // Action Creators
-import { registerInputChange } from 'src/store/reducer';
+import {
+  registerInputChange,
+  signupSubmit,
+  signeUpReset
+} from 'src/store/reducer';
 
 const mapStateToProps = state => ({
   emailValue: state.registerForm.email,
   firstNameValue: state.registerForm.firstName,
   lastNameValue: state.registerForm.lastName,
   identifiantValue: state.registerForm.identifiant,
-  birthdayValue: state.registerForm.birthday
+  passwordValue: state.registerForm.password,
+  confirmPasswordValue: state.registerForm.confirmPassword,
+  loading: state.registerForm.loading,
+  signedUp: state.registerForm.signedUp,
+  error: state.registerForm.error
 });
 
 const mapDispatchToProps = dispatch => ({
   handleRegisterChange: name => e =>
-    dispatch(registerInputChange(e.target.value, name))
+    dispatch(registerInputChange(e.target.value, name)),
+  signupSubmit: () => dispatch(signupSubmit()),
+  signeUpReset: () => dispatch(signeUpReset())
 });
 
 // Container
-// connect(Ce dont j'ai besoin)(Qui en a besoin)
 const RegisterContainer = connect(
   mapStateToProps,
   mapDispatchToProps

@@ -8,20 +8,22 @@ const initialState = {
   userForm: {
     loggedIn: false,
     loading: false,
-    step: 1,
     firstName: '',
     lastName: '',
     email: '',
     password: '',
-    identifiant: '',
-    birthday: ''
+    identifiant: ''
   },
   registerForm: {
     firstName: '',
     lastName: '',
     email: '',
     identifiant: '',
-    birthday: ''
+    password: '',
+    confirmPassword: '',
+    loading: false,
+    signedUp: false,
+    error: false
   }
 };
 
@@ -30,11 +32,19 @@ const initialState = {
  */
 export const DATA_HOME_PAGE = 'DATA_HOME_PAGE';
 
-// form
-export const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
+// login
+const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
 export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
+
+// forgotten
 export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
-export const REGISTER_INPUT_CHANGE = 'REGISTER_INPUT_CHANGE';
+
+// signup
+const REGISTER_INPUT_CHANGE = 'REGISTER_INPUT_CHANGE';
+export const SIGNUP_SUBMIT = 'SIGNUP_SUBMIT';
+const SIGNEDUP = 'SIGNEDUP';
+const SIGNUP_TOGGLE_ERROR = 'SIGNUP_TOGGLE_ERROR';
+const SIGNUP_RESET = 'SIGNUP_RESET';
 
 /**
  * Traitements
@@ -79,6 +89,43 @@ const reducer = (state = initialState, action = {}) => {
         }
       };
 
+    case SIGNUP_SUBMIT:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          loading: true
+        }
+      };
+
+    case SIGNEDUP:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          loading: false,
+          signedUp: true,
+          data: action.data
+        }
+      };
+
+    case SIGNUP_TOGGLE_ERROR:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          error: !state.registerForm.error
+        }
+      };
+
+    case SIGNUP_RESET:
+      return {
+        ...state,
+        registerForm: {
+          ...initialState.registerForm
+        }
+      };
+
     case FORGOTTEN_SUBMIT:
       return {
         ...state
@@ -114,6 +161,23 @@ export const forgottenSubmit = () => ({
 
 export const dataForHomePage = () => ({
   type: DATA_HOME_PAGE
+});
+
+export const signupSubmit = () => ({
+  type: SIGNUP_SUBMIT
+});
+
+export const signedUp = data => ({
+  type: SIGNEDUP,
+  data
+});
+
+export const signeUpToggleError = () => ({
+  type: SIGNUP_TOGGLE_ERROR
+});
+
+export const signeUpReset = () => ({
+  type: SIGNUP_RESET
 });
 
 /**

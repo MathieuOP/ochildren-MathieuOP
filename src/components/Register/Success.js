@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
-class Succes extends Component {
+class Success extends Component {
   continue = evt => {
     evt.preventDefault();
-    // PROCESS FORM //
     this.props.nextStep();
   };
 
@@ -16,7 +16,7 @@ class Succes extends Component {
 
   render() {
     return (
-      <div className="succes">
+      <div className="success">
         <React.Fragment>
           <h1>Merci de vous être enregisté!</h1>
           <p>Vous allez recevoir un email de confirmation</p>
@@ -26,4 +26,9 @@ class Succes extends Component {
   }
 }
 
-export default Succes;
+Success.propTypes = {
+  nextStep: PropTypes.func.isRequired,
+  prevStep: PropTypes.func.isRequired
+};
+
+export default Success;
