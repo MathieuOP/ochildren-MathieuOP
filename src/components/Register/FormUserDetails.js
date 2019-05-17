@@ -8,7 +8,15 @@ import './style.scss';
 class FormUserDetails extends VerifyForm {
   constructor(props) {
     super(props);
-    this.verify.init(['firstName', 'lastName', 'email']);
+
+    this.verify.init([
+      'username',
+      'firstName',
+      'lastName',
+      'email',
+      'password',
+      'confirmPassword'
+    ]);
 
     this.verify.setErrorComp(text => (
       <span style={{ color: 'red' }}>{text}</span>
@@ -33,7 +41,7 @@ class FormUserDetails extends VerifyForm {
       inputsErrors: this.verify.cond(
         (() => {
           switch (name) {
-            case 'identifiant':
+            case 'username':
               return value.length <= 0;
             case 'firstName':
               return value.length <= 0;
@@ -68,7 +76,7 @@ class FormUserDetails extends VerifyForm {
       lastNameValue,
       passwordValue,
       confirmPasswordValue,
-      identifiantValue
+      usernameValue
     } = this.props;
     return (
       <div className="form-user-details">
@@ -79,17 +87,17 @@ class FormUserDetails extends VerifyForm {
               <input
                 id="username"
                 placeholder="Entrez votre Identifiant"
-                onChange={this.verifyChange('identifiant')}
-                value={identifiantValue}
+                onChange={this.verifyChange('username')}
+                value={usernameValue}
                 style={{
                   borderColor: this.verify.verifyOne(
-                    'identifiant',
-                    identifiantValue,
+                    'username',
+                    usernameValue,
                     err => (err ? 'red' : 'green')
                   )
                 }}
               />
-              {this.verify.verifyOne('identifiant', identifiantValue, err =>
+              {this.verify.verifyOne('username', usernameValue, err =>
                 err
                   ? this.verify.errorComp("Cette identifiant n'est pas valide")
                   : this.verify.successComp('Cette identifiant est valide')

@@ -27,7 +27,7 @@ class Confirm extends Component {
       emailValue,
       firstNameValue,
       lastNameValue,
-      identifiantValue,
+      usernameValue,
       loading
     } = this.props;
     return (
@@ -35,7 +35,7 @@ class Confirm extends Component {
         <List>
           <List.Item>
             <List.Header>Identifiant</List.Header>
-            {identifiantValue}
+            {usernameValue}
           </List.Item>
           <List.Item>
             <List.Header>Prénom</List.Header>
@@ -81,7 +81,7 @@ Confirm.propTypes = {
   emailValue: PropTypes.string.isRequired,
   firstNameValue: PropTypes.string.isRequired,
   lastNameValue: PropTypes.string.isRequired,
-  identifiantValue: PropTypes.string.isRequired
+  usernameValue: PropTypes.string.isRequired
 };
 
 export default Confirm;

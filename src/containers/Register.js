@@ -19,7 +19,7 @@ const mapStateToProps = state => ({
   emailValue: state.registerForm.email,
   firstNameValue: state.registerForm.firstName,
   lastNameValue: state.registerForm.lastName,
-  identifiantValue: state.registerForm.identifiant,
+  usernameValue: state.registerForm.username,
   passwordValue: state.registerForm.password,
   confirmPasswordValue: state.registerForm.confirmPassword,
   loading: state.registerForm.loading,

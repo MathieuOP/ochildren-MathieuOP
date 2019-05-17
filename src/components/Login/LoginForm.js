@@ -1,7 +1,6 @@
 import React from 'react';
-import { Button, Form } from 'semantic-ui-react';
-
-import { Link } from 'react-router-dom';
+import { Button, Form, Message } from 'semantic-ui-react';
+import { Link, Redirect } from 'react-router-dom';
 
 import VerifyForm from '../../modules/verifyForm';
 
@@ -11,7 +10,7 @@ class LoginForm extends VerifyForm {
   constructor(props) {
     super(props);
 
-    this.verify.init(['identifiant', 'password']);
+    this.verify.init(['username', 'password']);
 
     this.verify.setErrorComp(text => (
       <span style={{ color: 'red' }}>{text}</span>
@@ -25,6 +24,10 @@ class LoginForm extends VerifyForm {
     };
   }
 
+  componentWillUnmount() {
+    this.props.loginReset();
+  }
+
   handleChange = name => evt => {
     const { value } = evt.target;
     this.props.handleLoginChange(value, name);
@@ -33,10 +36,8 @@ class LoginForm extends VerifyForm {
         (() => {
           if (value.length <= 0) return true;
           switch (name) {
-            case 'identifiant':
+            case 'email':
               return !/^.\S*@\w+\.[\w]+(\w+\.[\w]+)*$/.test(value);
-            case 'password':
-              return value.length <= 7;
             default:
               return false;
           }
@@ -52,61 +53,56 @@ class LoginForm extends VerifyForm {
   };
 
   render() {
-    const { password, identifiant, loading } = this.props;
+    const { password, email, loading, error, loggedIn } = this.props;
+    if (loggedIn) return <Redirect to="/" />;
     return (
       <Form className="login-form" onSubmit={this.handleSubmit}>
+        {error && (
+          <Message negative>
+            <Message.Header>La connexion a échoué</Message.Header>
+            <p>Verifiez vos ifentifiants</p>
+          </Message>
+        )}
         <Form.Field>
-          <label>
-            Identifiant
+          <label htmlFor="email">
+            Email
             <input
-              placeholder="Identifiant"
+              id="email"
+              placeholder="Email"
               type="text"
-              value={identifiant}
-              onChange={this.handleChange('identifiant')}
+              value={email}
+              onChange={this.handleChange('email')}
               style={{
-                borderColor: this.verify.verifyOne(
-                  'identifiant',
-                  identifiant,
-                  error => (error ? 'red' : 'green')
+                borderColor: this.verify.verifyOne('email', email, err =>
+                  err ? 'red' : 'green'
                 )
               }}
             />
-            {this.verify.verifyOne('identifiant', identifiant, error =>
-              error
-                ? this.verify.errorComp("Cette identifiant n'est pas valide")
-                : this.verify.successComp('Votre identifiant est valide')
+            {this.verify.verifyOne('email', email, err =>
+              err
+                ? this.verify.errorComp("Cette email n'est pas valide")
+                : this.verify.successComp('Votre email est valide')
             )}
           </label>
         </Form.Field>
         <Form.Field>
-          <label>
+          <label htmlFor="password">
             Password
             <input
+              id="password"
               placeholder="Password"
               type="password"
               value={password}
               onChange={this.handleChange('password')}
-              loading={loading}
-              disabled={loading}
-              style={{
-                borderColor: this.verify.verifyOne(
-                  'password',
-                  password,
-                  error => (error ? 'red' : 'green')
-                )
-              }}
             />
-            {this.verify.verifyOne('password', password, error =>
-              error
-                ? this.verify.errorComp(
-                    'Votre password doit être superieur a 7 characters' // eslint-disable-line indent
-                  ) // eslint-disable-line indent
-                : this.verify.successComp('Votre password est valide')
-            )}
           </label>
         </Form.Field>
         <div className="ui two buttons">
-          <Button disabled={this.verify.verifyAll()} id="connexion">
+          <Button
+            disabled={loading && this.verify.verifyAll()}
+            loading={loading}
+            id="connexion"
+          >
             Connexion
           </Button>
           <Link to="/register" id="inscription" className="ui button">

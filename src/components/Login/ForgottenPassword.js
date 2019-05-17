@@ -49,9 +49,10 @@ class ForgottenPassword extends VerifyForm {
         <br />
         <Form onSubmit={handleForgottenSubmit}>
           <Form.Field>
-            <label>
+            <label htmlFor="email">
               Veuillez renseigner votre Email
               <input
+                id="email"
                 placeholder="Email"
                 type="text"
                 onChange={this.handleEmailChange('email')}

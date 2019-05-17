@@ -6,8 +6,6 @@ class Exemple extends verifyForm {
   constructor(props) {
     super(props);
 
-    this.verify.init(['email', 'password']);
-
     this.verify.setErrorComp(text => (
       <span style={{ color: 'red' }}>{text}</span>
     ));

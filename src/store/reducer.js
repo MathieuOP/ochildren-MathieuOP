@@ -5,26 +5,25 @@ import { datas } from 'src/datas';
 const initialState = {
   datas,
   dataHomePage: [],
-  userForm: {
-    loggedIn: false,
-    loading: false,
-    firstName: '',
-    lastName: '',
+  loginForm: {
     email: '',
     password: '',
-    identifiant: ''
+    loading: false,
+    loggedIn: false,
+    error: false
   },
   registerForm: {
     firstName: '',
     lastName: '',
     email: '',
-    identifiant: '',
+    username: '',
     password: '',
     confirmPassword: '',
     loading: false,
     signedUp: false,
     error: false
-  }
+  },
+  usersToken: ''
 };
 
 /**
@@ -34,7 +33,10 @@ export const DATA_HOME_PAGE = 'DATA_HOME_PAGE';
 
 // login
 const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
-export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
+export const LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
+const LOGIN_RESET = 'LOGIN_RESET';
+const LOGIN_ERROR = 'LOGIN_ERROR';
+const LOGGED_IN = 'LOGGED_IN';
 
 // forgotten
 export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
@@ -43,7 +45,7 @@ export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
 const REGISTER_INPUT_CHANGE = 'REGISTER_INPUT_CHANGE';
 export const SIGNUP_SUBMIT = 'SIGNUP_SUBMIT';
 const SIGNEDUP = 'SIGNEDUP';
-const SIGNUP_TOGGLE_ERROR = 'SIGNUP_TOGGLE_ERROR';
+const SIGNUP_ERROR = 'SIGNUP_ERROR';
 const SIGNUP_RESET = 'SIGNUP_RESET';
 
 /**
@@ -65,18 +67,48 @@ const reducer = (state = initialState, action = {}) => {
     case HANDLE_LOGIN_CHANGE:
       return {
         ...state,
-        userForm: {
-          ...state.userForm,
-          [action.name]: action.text
+        loginForm: {
+          ...state.loginForm,
+          [action.name]: action.text,
+          error: false
         }
       };
 
-    case ON_LOGIN_SUBMIT:
+    case LOGIN_SUBMIT:
       return {
         ...state,
-        userForm: {
-          ...state.userForm,
+        loginForm: {
+          ...state.loginForm,
           loading: true
+        }
+      };
+
+    case LOGGED_IN:
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
+          loading: false,
+          loggedIn: true
+        },
+        usersToken: action.token
+      };
+
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
+          error: true,
+          loading: false
+        }
+      };
+
+    case LOGIN_RESET:
+      return {
+        ...state,
+        loginForm: {
+          ...initialState.loginForm
         }
       };
 
@@ -104,17 +136,16 @@ const reducer = (state = initialState, action = {}) => {
         registerForm: {
           ...state.registerForm,
           loading: false,
-          signedUp: true,
-          data: action.data
+          signedUp: true
         }
       };
 
-    case SIGNUP_TOGGLE_ERROR:
+    case SIGNUP_ERROR:
       return {
         ...state,
         registerForm: {
           ...state.registerForm,
-          error: !state.registerForm.error
+          error: true
         }
       };
 
@@ -151,8 +182,21 @@ export const registerInputChange = (text, name) => ({
   name
 });
 
-export const onLoginSubmit = () => ({
-  type: ON_LOGIN_SUBMIT
+export const loginSubmit = () => ({
+  type: LOGIN_SUBMIT
+});
+
+export const loggedIn = token => ({
+  type: LOGGED_IN,
+  token
+});
+
+export const loginError = () => ({
+  type: LOGIN_ERROR
+});
+
+export const loginReset = () => ({
+  type: LOGIN_RESET
 });
 
 export const forgottenSubmit = () => ({
@@ -167,13 +211,12 @@ export const signupSubmit = () => ({
   type: SIGNUP_SUBMIT
 });
 
-export const signedUp = data => ({
-  type: SIGNEDUP,
-  data
+export const signedUp = () => ({
+  type: SIGNEDUP
 });
 
-export const signeUpToggleError = () => ({
-  type: SIGNUP_TOGGLE_ERROR
+export const signeUpError = () => ({
+  type: SIGNUP_ERROR
 });
 
 export const signeUpReset = () => ({
