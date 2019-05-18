@@ -5,9 +5,7 @@ import { puzzles } from 'src/datas';
  */
 const initialState = {
   dataHomePage: [],
-  puzzles: [
-    ...puzzles
-  ],
+  puzzles: [...puzzles],
   loginForm: {
     email: '',
     password: '',
@@ -43,7 +41,7 @@ const initialState = {
   answerTrue: false,
   error404: false,
   descriptionCurrentQuiz: '',
-  currentNameQuiz: '',
+  currentNameQuiz: ''
 };
 
 /**
@@ -94,6 +92,12 @@ export const ERROR_404 = 'ERROR_404';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    case DATA_HOME_PAGE:
+      return {
+        ...state,
+        dataHomePage: [...action.data],
+        error404: false
+      };
     // form
     case HANDLE_LOGIN_CHANGE:
       return {
@@ -204,14 +208,14 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_GAME:
       return {
         ...state,
-        dataHomeGame: {...action.data},
-        error404: false,
+        dataHomeGame: { ...action.data },
+        error404: false
       };
     case CATEGORIES_QUIZZS:
       return {
         ...state,
         categoriesQuizzs: [...action.data],
-        error404: false,
+        error404: false
       };
     case CURRENT_SLUG_CAT_AGE:
       return {
@@ -228,23 +232,21 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         quizzsByWorldId: action.data,
-        error404: false,
+        error404: false
       };
     case QUESTION_BY_ID:
       return {
         ...state,
-        loaded: false,
+        loaded: false
       };
     case RECEIVED_DATA_QUESTIONS:
       return {
         ...state,
         loaded: true,
-        questionsOfQuiz: [
-          ...action.dataQuestions,
-        ],
+        questionsOfQuiz: [...action.dataQuestions],
         descriptionCurrentQuiz: action.dataDescription,
         currentNameQuiz: action.dataName,
-        error404: false,
+        error404: false
       };
     case CHOSEN_ANSWER:
       return {
@@ -284,8 +286,8 @@ const reducer = (state = initialState, action = {}) => {
     case ERROR_404: {
       return {
         ...state,
-        error404: true,
-      }
+        error404: true
+      };
     }
     default:
       return state;
@@ -364,12 +366,12 @@ export const dataForHomeGame = categoryId => ({
 
 export const getQuizByWorldId = worldId => ({
   type: QUIZ_BY_WORLD_ID,
-  worldId,
-})
+  worldId
+});
 
 export const getQuestionsByQuizId = id => ({
   type: QUESTION_BY_ID,
-  id,
+  id
 });
 
 export const getMyScore = () => ({
@@ -406,11 +408,15 @@ export const initialQuiz = () => ({
   type: INITIAL_QUIZ
 });
 
-export const receivedDataQuestions = (dataQuestions, dataDescription, dataName) => ({
+export const receivedDataQuestions = (
+  dataQuestions,
+  dataDescription,
+  dataName
+) => ({
   type: RECEIVED_DATA_QUESTIONS,
   dataQuestions,
   dataDescription,
-  dataName,
+  dataName
 });
 
 export const infosCatAge = (category, id) => ({
@@ -420,7 +426,7 @@ export const infosCatAge = (category, id) => ({
 });
 
 export const getPage404 = () => ({
-  type: ERROR_404,
+  type: ERROR_404
 });
 /**
  * Selectors

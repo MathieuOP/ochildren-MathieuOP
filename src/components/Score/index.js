@@ -5,11 +5,13 @@ const Score = ({ score, messageScore, currentNameQuiz }) => {
   console.log(messageScore);
   return (
     <div className="score">
-      <h1>Ton score pour le quiz: <span>{ currentNameQuiz }</span></h1>
+      <h1>
+        Ton score pour le quiz: <span>{currentNameQuiz}</span>
+      </h1>
       <div className="score-title">
         <h2> {score}/10</h2>
         <img
-          src={`/src/assets/img/${messageScore}.svg`}
+          src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${messageScore}.svg`}
           alt=""
         />
       </div>

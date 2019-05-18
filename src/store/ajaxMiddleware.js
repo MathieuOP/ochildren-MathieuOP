@@ -3,10 +3,10 @@ import shuffle from 'shuffle-array';
 // import createHistory from 'history/createBrowserHistory';
 
 import {
-  DATA_HOME_PAGE,
   CATEGORIES_QUIZZS,
   QUIZ_BY_WORLD_ID,
   DATA_HOME_GAME,
+  DATA_HOME_PAGE,
   QUESTION_BY_ID,
   receivedDataQuestions,
   getPage404,
@@ -32,7 +32,11 @@ const ajaxMiddleware = store => next => action => {
 
     case DATA_HOME_GAME: // Requete qui récupère les données nécessaire pour la page home
       return axios
-        .get(`http://92.243.9.67/plateforme-educative-api/public/api/worlds/${action.categoryId}/`)
+        .get(
+          `http://92.243.9.67/plateforme-educative-api/public/api/worlds/${
+            action.categoryId
+          }/`
+        )
         .then(response => {
           next({
             ...action,
@@ -54,30 +58,43 @@ const ajaxMiddleware = store => next => action => {
           });
         });
     case QUIZ_BY_WORLD_ID:
-      axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/categories/${action.worldId}/quizzs`, {
-        
-      })
-        .then((response) => {
+      return axios
+        .get(
+          `http://92.243.9.67/plateforme-educative-api/public/api/categories/${
+            action.worldId
+          }/quizzs`,
+          {}
+        )
+        .then(response => {
           next({
             ...action,
-            data: response.data,
-          })
+            data: response.data
+          });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
-      break;
     case QUESTION_BY_ID:
       next(action);
-      axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${action.id}`, {
-        
-      })
-        .then((response) => {
+      return axios
+        .get(
+          `http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${
+            action.id
+          }`,
+          {}
+        )
+        .then(response => {
           response.data.questions.map(data => shuffle(data.answers));
 
-          store.dispatch(receivedDataQuestions(shuffle(response.data.questions), response.data.description, response.data.title))
+          store.dispatch(
+            receivedDataQuestions(
+              shuffle(response.data.questions),
+              response.data.description,
+              response.data.title
+            )
+          );
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
 

@@ -36,17 +36,21 @@ const App = ({ error404 }) => (
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
 
-      <Route exact path="/puzzles/:worldId" 
+      <Route
+        exact
+        path="/puzzles/:worldId"
         render={({ match }) => {
           const { worldId } = match.params;
-          
+
           return <Puzzles worldId={worldId} />;
         }}
       />
-      <Route exact path="/puzzle/:puzzleId" 
+      <Route
+        exact
+        path="/puzzle/:puzzleId"
         render={({ match }) => {
           const { puzzleId } = match.params;
-            
+
           return <MyPuzzle puzzleId={puzzleId} />;
         }}
       />
@@ -55,14 +59,16 @@ const App = ({ error404 }) => (
         path="/home-game/:categories/categories"
         component={CategoriesQuizzs}
       />
-      <Route exact path="/quiz/:quizId"
+      <Route
+        exact
+        path="/quiz/:quizId"
         render={({ match }) => {
           const { quizId } = match.params;
-          
+
           if (!error404) {
             return <Quiz quizId={quizId} />;
           }
-          return <Redirect to="/not-found" />
+          return <Redirect to="/not-found" />;
         }}
       />
       <Route
@@ -74,7 +80,7 @@ const App = ({ error404 }) => (
           if (!error404) {
             return <Quizzs categoryQuizId={categoryQuizId} />;
           }
-          return <Redirect to="/not-found" />
+          return <Redirect to="/not-found" />;
         }}
       />
       <Route // is ok
@@ -82,11 +88,11 @@ const App = ({ error404 }) => (
         path="/home-game/:category"
         render={({ match }) => {
           const { category } = match.params;
-          
+
           if (!error404) {
             return <HomeGame category={category} />;
           }
-          return <Redirect to="/not-found" />
+          return <Redirect to="/not-found" />;
         }}
       />
       <Route component={Page404} />
