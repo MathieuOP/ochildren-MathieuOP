@@ -1,0 +1,141 @@
+.quiz {
+    margin-top: 50px;
+    
+    h1 {
+        text-align: center;
+        font-size: 3em;
+        margin-bottom: 50px;
+    }
+    
+    &-answer--bad {
+        animation: shake 0.5s; 
+    }
+
+    &-answer--good {
+        animation: good 0.8s; 
+    }
+
+    &--score {
+        margin-top: 200px;
+    }
+
+    &-questions {
+        background-color: #FFF;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px 0;
+        border-radius: 15px;
+        box-shadow: 0px 7px 17px 0px rgba(0,0,0,0.06);
+
+        button:hover {
+            color: #5e457d !important;
+            background-color: #FFF !important;
+            transition: .5s !important;
+        }
+    }
+
+    &-question {
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 30px 
+    }
+
+    &-message {
+        font-size: 1.5em;
+        margin: 40px 0 20px;
+
+        &--good {
+            color: green;
+        }
+
+        &--bad {
+            color: red;
+        }
+    }
+
+    &-nbQuestions {
+        font-size: 1.5em;
+    }
+
+    &-responses {
+        font-size: 1.5em;
+        margin: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &--good {
+            font-weight: bold;
+            color: #FFF;
+            background-color: green;
+        }
+
+        &--bad {
+            font-weight: bold;
+            color: #fff;
+            background-color: red;
+        }
+
+        p {
+            cursor: pointer;
+            margin: 0 30px;
+            border-radius: 10px;
+            border: 1px solid #777;
+            padding: 15px;
+            width: 50%;
+            margin: 5px;
+        }
+    }
+
+    &-button-next {
+        background-color: #5e457d !important;
+        color: #FFF !important;
+        padding: 20px 30px !important;
+        border-radius: 10px !important;
+        font-size: 1.2em !important;
+        margin: 20px 0 0 !important;
+        border: 1px solid #5e457d !important;
+    }
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+@keyframes good {
+    16.65% {
+        -webkit-transform: translateY(8px);
+        transform: translateY(8px);
+    }
+    33.3% {
+        -webkit-transform: translateY(-6px);
+        transform: translateY(-6px);
+    }
+    49.95% {
+        -webkit-transform: translateY(4px);
+        transform: translateY(4px);
+    }
+    66.6% {
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+    }
+    83.25% {
+        -webkit-transform: translateY(1px);
+        transform: translateY(1px);
+    }
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}

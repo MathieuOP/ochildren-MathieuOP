@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import GameMenu from '../GameMenu';
 import './index.scss';
 
-const HomeGame = ({ description, image, slug }) => {
-  return (
-    <div className="homeGame">
-      <div className="homeGame-title">
-        <img src={`../src/assets/img/${image}`} alt="catégorie" />
-        <h2> {description} </h2>
+class HomeGame extends Component {
+  componentDidMount() {
+    this.props.dataForHomeGame(this.props.category);
+  }
+
+  render() {
+    const { category, dataHomeGame } = this.props;
+    return (
+      <div className="homeGame">
+        <div className="homeGame-title">
+          <h1> { dataHomeGame.description } </h1>
+        </div>
+        <GameMenu category={category} />
       </div>
-      <GameMenu slug={slug} />
-    </div>
-  );
-};
+    );
+  }
+}
 
 HomeGame.propTypes = {
-  description: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  slug: PropTypes.string.isRequired
+  category: PropTypes.string.isRequired,
+  dataHomeGame: PropTypes.object.isRequired,
 };
 
 export default HomeGame;

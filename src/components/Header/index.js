@@ -30,7 +30,7 @@ const Header = () => {
         {' '}
         <img
           className="header-img"
-          src="http://localhost:3000/src/assets/img/logo_ochildren.png"
+          src="/src/assets/img/logo.png"
           alt="logo du site"
         />{' '}
       </NavLink>
@@ -39,13 +39,13 @@ const Header = () => {
         <nav className="header-nav-desktop">
           <ul>
             <li>
-              <FaHome size="1.7em" color="#FF2626" />{' '}
+              <FaHome size="1.7em" color="lightgreen" />{' '}
               <NavLink className="header-link bm-item" exact to="/">
                 Accueil
               </NavLink>
             </li>
             <li>
-              <FaSignInAlt size="1.7em" color="#FF2626" />{' '}
+              <FaSignInAlt size="1.7em" color="lightgreen" />{' '}
               <NavLink className="header-link bm-item" to="/login">
                 Connexion
               </NavLink>

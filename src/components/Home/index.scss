@@ -1,6 +1,4 @@
 .home {
-  margin-top: 150px;
-
   &-content {
     text-align: center;
   }
@@ -22,6 +20,19 @@
     margin: 2em auto;
     font-size: 1.2em;
   }
+    span {
+      font-weight: bold;
+      font-size: 1.5em;
+      margin: 3em 0 0.7em !important;
+      display: flex;
+      justify-content: center;
+
+      @media screen and (min-width: 769px) {
+        margin: 1.3em 0 0.7em !important;
+        font-size: 2.5em;
+      }
+    }
+  }
 
   &-category {
     display: flex;
@@ -31,9 +42,9 @@
     color: #fff;
 
     // &-two
-    width: 200px;
-    height: 200px;
-    border: 10px solid #ff2626;
+    width: 220px;
+    height: 220px;
+    border: 10px solid lightgreen;
     border-radius: 50%;
     background-color: #fff;
     color: #000;
@@ -46,8 +57,8 @@
     }
 
     img {
-      margin-top: 10px;
-      width: 100px;
+      margin-top: 15px;
+      width: 120px;
     }
 
     h2 {
@@ -68,7 +79,7 @@
         text-transform: uppercase;
 
         &:hover {
-          color: #ff2626;
+          color: lightgreen;
         }
       }
     }
@@ -98,7 +109,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 250px;
 
   @media screen and (min-width: 769px) {
     flex-direction: row;
@@ -110,7 +121,11 @@
   width: 200px;
   height: 200px;
   perspective: 600px;
-  margin: 50px 70px;
+  margin: 50px 0;
+
+  @media screen and (min-width: 769px) {
+    margin: 0 100px;
+  }
 }
 
 .card {
