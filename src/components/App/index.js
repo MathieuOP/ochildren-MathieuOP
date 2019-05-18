@@ -10,6 +10,8 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 // Composants
 import Header from '../Header';
 import Home from '../../containers/Home';
+import Login from '../Login';
+import Register from '../../containers/Register';
 import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
 import Quizzs from '../../containers/Quizzs';
@@ -30,17 +32,25 @@ const App = ({ error404 }) => (
 
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/puzzles/:worldId" 
+
+      <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
+
+      <Route
+        exact
+        path="/puzzles/:worldId"
         render={({ match }) => {
           const { worldId } = match.params;
-          
+
           return <Puzzles worldId={worldId} />;
         }}
       />
-      <Route exact path="/puzzle/:puzzleId" 
+      <Route
+        exact
+        path="/puzzle/:puzzleId"
         render={({ match }) => {
           const { puzzleId } = match.params;
-            
+
           return <MyPuzzle puzzleId={puzzleId} />;
         }}
       />
@@ -49,14 +59,16 @@ const App = ({ error404 }) => (
         path="/home-game/:categories/categories"
         component={CategoriesQuizzs}
       />
-      <Route exact path="/quiz/:quizId"
+      <Route
+        exact
+        path="/quiz/:quizId"
         render={({ match }) => {
           const { quizId } = match.params;
-          
+
           if (!error404) {
             return <Quiz quizId={quizId} />;
           }
-          return <Redirect to="/not-found" />
+          return <Redirect to="/not-found" />;
         }}
       />
       <Route
@@ -68,7 +80,7 @@ const App = ({ error404 }) => (
           if (!error404) {
             return <Quizzs categoryQuizId={categoryQuizId} />;
           }
-          return <Redirect to="/not-found" />
+          return <Redirect to="/not-found" />;
         }}
       />
       <Route // is ok
@@ -76,11 +88,11 @@ const App = ({ error404 }) => (
         path="/home-game/:category"
         render={({ match }) => {
           const { category } = match.params;
-          
+
           if (!error404) {
             return <HomeGame category={category} />;
           }
-          return <Redirect to="/not-found" />
+          return <Redirect to="/not-found" />;
         }}
       />
       <Route component={Page404} />

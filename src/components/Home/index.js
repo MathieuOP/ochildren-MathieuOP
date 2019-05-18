@@ -16,7 +16,6 @@ class Home extends Component {
   };
 
   render() {
-
     const { dataHomePage, infosCatAge } = this.props;
     return (
       <div className="home">
@@ -51,33 +50,33 @@ class Home extends Component {
         }
 
         <div className="container">
-          {dataHomePage.map(({ id, name, image }) => {
-
-            return (
-              <div key={id} className="wrapper">
-                <div onClick={this.handleClickCard} className="card">
-                  <div className="card__face card__face--front">
-                    <div className="home-category">
-                      <img src={`/src/assets/img/${image}`} alt="icon" />
-                      <h2>{name}</h2>
-                    </div>
+          {dataHomePage.map(({ id, name, image }) => (
+            <div key={id} className="wrapper">
+              <div onClick={this.handleClickCard} className="card">
+                <div className="card__face card__face--front">
+                  <div className="home-category">
+                    <img
+                      src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${image}`}
+                      alt="icon"
+                    />
+                    <h2>{name}</h2>
                   </div>
-                  <div className="card__face card__face--back">
-                    <div className="home-category home-category--link">
-                      <p className="">
-                        <Link
-                          onClick={() => infosCatAge(name, id)}
-                          to={`/home-game/${id}`}
-                        >
-                          jouer
-                        </Link>
-                      </p>
-                    </div>
+                </div>
+                <div className="card__face card__face--back">
+                  <div className="home-category home-category--link">
+                    <p className="">
+                      <Link
+                        onClick={() => infosCatAge(name, id)}
+                        to={`/home-game/${id}`}
+                      >
+                        jouer
+                      </Link>
+                    </p>
                   </div>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     );
