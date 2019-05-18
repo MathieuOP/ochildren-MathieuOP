@@ -62,6 +62,14 @@ const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
+//memory
+const COUNT_PAIRS = 'COUNT_PAIRS';
+const FINISHED = 'FINISHED';
+const TENTATIVE = 'TENTATIVE';
+const INCREMENTE_COUNT_CLICK = 'INCREMENTE_COUNT_CLICK';
+const RESET_COUNT_CLICK = 'RESET_COUNT_CLICK';
+const UPDATED_DATA = 'UPDATED_DATA';
+const UPDATED_OPENED_CARD = 'UPDATED_OPENED_CARD';
 
 /**
  * Traitements
@@ -187,6 +195,43 @@ const reducer = (state = initialState, action = {}) => {
         error404: true,
       }
     }
+    case COUNT_PAIRS:
+      return {
+        ...state,
+        getCountPaire: state.getCountPaire += 1,
+      };
+    case TENTATIVE:
+      return {
+        ...state,
+        getTentative: state.getTentative += 1,
+      };
+    case FINISHED:
+      return {
+        ...state,
+        finished: true,
+      };
+    case INCREMENTE_COUNT_CLICK:
+      return {
+        ...state,
+        getCountClick: state.getCountClick +=1,
+      }
+    case RESET_COUNT_CLICK:
+      return {
+        ...state,
+        getCountClick: 0,
+      };
+    case UPDATED_DATA:
+      return {
+        ...state,
+        dataMemory: [
+          ...action.data,
+        ],
+      };
+    case UPDATED_OPENED_CARD:
+      return {
+        ...state,
+        openedCard: state.openedCard.length === 2 ? action.data : [...state.openedCard, action.data],
+      }
     default:
       return state;
   }
@@ -284,6 +329,36 @@ export const infosCatAge = (category, id) => ({
 
 export const getPage404 = () => ({
   type: ERROR_404,
+});
+
+export const countPairs = () => ({
+  type: COUNT_PAIRS,
+});
+
+export const memoryFinished = () => ({
+  type: FINISHED,
+});
+
+export const tentative = () => ({
+  type: TENTATIVE,
+});
+
+export const incrementeCountClick = () => ({
+  type: INCREMENTE_COUNT_CLICK,
+});
+
+export const resetCountClick = () => ({
+  type: RESET_COUNT_CLICK,
+});
+
+export const updatedData = data => ({
+  type: UPDATED_DATA,
+  data,
+});
+
+export const updatedOpenedCard = data => ({
+  type: UPDATED_OPENED_CARD,
+  data,
 });
 /**
  * Selectors

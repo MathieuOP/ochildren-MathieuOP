@@ -36,7 +36,7 @@ export const puzzles = [
     "id": 4,
     "description": "",
     "icon": "/src/assets/img/cat.svg",
-    "image": "/src/assets/img/puzzle-cat.jpg",
+    "image": "/src/assets/img/puzzle_cat.jpg",
     "title": "Un chat",
     "world": {
       "id": 1,
@@ -45,26 +45,54 @@ export const puzzles = [
   },
 ];
 
-export const quiz = [
+export const memory = [
   {
-    question: 'Combien de planètes il y a t-il dans le système solaire ?',
-    response: 8,
+    id: 1,
+    name: 'tiger',
+    complete: false,
+    close: true,
   },
   {
-    question: 'Combien de temps met la Terre pour faire un tour sur elle même ?',
-    response: '24 heures',
+    id: 2,
+    name: 'tiger',
+    complete: false,
+    close: true,
   },
   {
-    question: 'Quelle planètes n\'est pas une géante gazeuse ?',
-    response: 'Mars',
+    id: 3,
+    name: 'dog',
+    complete: false,
+    close: true,
+  },
+  { 
+    id: 4,
+    name: 'dog',
+    complete: false,
+    close: true,
   },
   {
-    question: 'La Terre est composée d \'un noyau et d\'une croûte terrestre. Trouvez parmis les réponses ce qui lui manque.',
-    response: 'Un manteau',
+    id: 5,
+    name: 'lion',
+    complete: false,
+    close: true,
   },
   {
-    question: 'Est-ce que la Terre orbite (tourne) autours du Soleil ?',
-    response: 'Oui',
+    id: 6,
+    name: 'lion',
+    complete: false,
+    close: true,
+  },
+  {
+    id: 7,
+    name: 'cat',
+    complete: false,
+    close: true,
+  },
+  {
+    id: 8,
+    name: 'cat',
+    complete: false,
+    close: true,
   },
 ];
 

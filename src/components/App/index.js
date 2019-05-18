@@ -16,6 +16,7 @@ import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
 import Puzzles from '../../containers/Puzzles';
 import MyPuzzle from '../../containers/MyPuzzle';
+import Memory from '../../containers/Memory';
 import Page404 from '../Page404';
 
 // Styles et assets
