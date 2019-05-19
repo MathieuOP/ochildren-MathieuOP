@@ -1,12 +1,13 @@
-import { puzzles } from 'src/datas';
+import memory from 'src/datas';
 
 /**
  * Initial State
  */
 const initialState = {
   dataHomePage: [],
-  puzzles: [
-    ...puzzles,
+  puzzles: [],
+  dataMemory: [
+    ...memory,
   ],
   userForm: {
     loggedIn: false,
@@ -34,6 +35,11 @@ const initialState = {
   myScore: false,
   answerTrue: false,
   error404: false,
+  getCountPaire: 0,
+  getCountClick: 0,
+  getTentative: 0,
+  finished: false,
+  openedCard: [],
 };
 
 /**
@@ -62,6 +68,7 @@ const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
+export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
 //memory
 const COUNT_PAIRS = 'COUNT_PAIRS';
 const FINISHED = 'FINISHED';
@@ -70,6 +77,7 @@ const INCREMENTE_COUNT_CLICK = 'INCREMENTE_COUNT_CLICK';
 const RESET_COUNT_CLICK = 'RESET_COUNT_CLICK';
 const UPDATED_DATA = 'UPDATED_DATA';
 const UPDATED_OPENED_CARD = 'UPDATED_OPENED_CARD';
+const RESET_MEMORY = 'RESET_MEMORY';
 
 /**
  * Traitements
@@ -189,12 +197,18 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         answerTrue: true
       };
-    case ERROR_404: {
+    case ERROR_404:
       return {
         ...state,
         error404: true,
       }
-    }
+    case DATA_FOR_PUZZLES:
+      return {
+        ...state,
+        puzzles: [
+          ...action.data
+        ],
+      }
     case COUNT_PAIRS:
       return {
         ...state,
@@ -221,16 +235,38 @@ const reducer = (state = initialState, action = {}) => {
         getCountClick: 0,
       };
     case UPDATED_DATA:
+    // console.log(action.data);
       return {
         ...state,
-        dataMemory: [
-          ...action.data,
-        ],
+        dataMemory: action.data,
       };
     case UPDATED_OPENED_CARD:
       return {
         ...state,
         openedCard: state.openedCard.length === 2 ? action.data : [...state.openedCard, action.data],
+      }
+    case RESET_MEMORY:
+      return {
+        ...state,
+        dataMemory: memory.map((data) => {
+          const memoryArray = data.memory.map(arrayData => {
+            return {
+              ...arrayData,
+              complete: false,
+              close: true,
+            }
+          })
+        
+          return {
+            ...data,
+            memory: [...memoryArray],
+          }
+        }),
+        openedCard: [],
+        getCountPaire: 0,
+        getCountClick: 0,
+        getTentative: 0,
+        finished: false,
       }
     default:
       return state;
@@ -331,6 +367,11 @@ export const getPage404 = () => ({
   type: ERROR_404,
 });
 
+export const dataForPuzzles = (worldId) => ({
+  type: DATA_FOR_PUZZLES,
+  worldId,
+})
+
 export const countPairs = () => ({
   type: COUNT_PAIRS,
 });
@@ -359,6 +400,10 @@ export const updatedData = data => ({
 export const updatedOpenedCard = data => ({
   type: UPDATED_OPENED_CARD,
   data,
+});
+
+export const resetMemory = () => ({
+  type: RESET_MEMORY,
 });
 /**
  * Selectors

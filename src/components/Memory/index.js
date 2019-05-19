@@ -7,6 +7,7 @@ class CardFlip extends Component {
   container = React.createRef();
 
   componentDidMount() {
+    this.props.resetMemory;
     const cards = this.container.current.childNodes;
     cards.forEach((card, index) => {
       card.childNodes[0].addEventListener('click', this.handleClickCard(index, card.name));
@@ -27,12 +28,9 @@ class CardFlip extends Component {
       countPairs();
 
       setTimeout(() => {
-        dataMemory[openedCard[0].index].complete = true;
-        dataMemory[openedCard[1].index].complete = true;
-
-        updatedData([
-          ...dataMemory,
-        ]);
+        dataMemory.memory[openedCard[0].index].complete = true;
+        dataMemory.memory[openedCard[1].index].complete = true;
+        updatedData([dataMemory]);
 
         resetCountClick();
         updatedOpenedCard([]);
@@ -47,12 +45,10 @@ class CardFlip extends Component {
     if (openedCard.length === 2 && openedCard[0].name !== openedCard[1].name && openedCard[0].index !== openedCard[1].index) {
       
       setTimeout(() => {
-        dataMemory[openedCard[0].index].close = true;
-        dataMemory[openedCard[1].index].close = true;
+        dataMemory.memory[openedCard[0].index].close = true;
+        dataMemory.memory[openedCard[1].index].close = true;
 
-        updatedData([
-          ...dataMemory,
-        ]);
+        updatedData([dataMemory]);
 
         updatedOpenedCard([]);
         tentative();
@@ -62,9 +58,9 @@ class CardFlip extends Component {
   }
 
   gameFinished = () => {
-    const { memoryFinished, dataMemory, getCountPaire } = this.props;
+    const { memoryFinished, dataMemory, getCountPaire, openedCard } = this.props;
 
-    if (getCountPaire == dataMemory.length / 2) {
+    if (getCountPaire == dataMemory.memory.length / 2) {
       setTimeout(() => {
         memoryFinished();
       }, 1200);
@@ -79,17 +75,16 @@ class CardFlip extends Component {
       updatedOpenedCard,
     } = this.props;
 
-    if (!dataMemory[indexCard].close) return;
+    if (!dataMemory.memory[indexCard].close) return;
     incrementeCountClick();
 
-    if (this.props.getCountClick <= 2 && dataMemory[indexCard].close) {
-      dataMemory[indexCard].close = false;
-      updatedData([
-        ...dataMemory,
-      ]);
+    if (this.props.getCountClick <= 2 && dataMemory.memory[indexCard].close) {
+      dataMemory.memory[indexCard].close = false;
 
+      updatedData([dataMemory]);
+      
       updatedOpenedCard({
-        ...dataMemory[indexCard],
+        ...dataMemory.memory[indexCard],
         index: indexCard,
       });
       
@@ -108,19 +103,19 @@ class CardFlip extends Component {
           <p>Nombre de paire trouvée: { getCountPaire }</p>
           <p>Nombre de tentative: {getTentative}</p>
         </div>
-        <div ref={this.container} className="container">
+        <div ref={this.container} className="memory-container">
           {
-            dataMemory.map((card, index) => (
-              <div key={index} className="wrapper">
-                <div data-animal={card.name} className={"card" + (!card.close ? ' is-flipped' : '') + (card.complete ? ' matched' : '')}>
-                  <div className="card__face card__face--front">
+            dataMemory.memory.map((card, index) => (
+              <div key={index} className="memory-wrapper">
+                <div data-animal={card.name} className={"memory-card" + (!card.close ? ' is-flipped' : '') + (card.complete ? ' matched' : '')}>
+                  <div className="memory-card__face memory-card__face--front">
                     <p>
                       o'children
                     </p>
                   </div>
-                  <div className="card__face card__face--back">
-                    <div className="home-category home-category--link">
-                      <img src={`src/assets/img/puzzle_${card.name}.jpg`} alt="animal" />
+                  <div className="memory-card__face memory-card__face--back">
+                    <div className="memory-category memory-category--link">
+                      <img src={`/src/assets/img/puzzle_${card.name}.jpg`} alt="card.name" />
                     </div>
                   </div>
                 </div>
