@@ -6,6 +6,7 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 // Config pour le devServer
 const host = 'localhost';
@@ -38,7 +39,7 @@ module.exports = {
     // Nom du bundle
     filename: 'app.js',
     // Nom du bundle vendors si l'option d'optimisation / splitChunks est activée
-    chunkFilename: 'vendors.js',
+    chunkFilename: '[name].js',
     // Cible des bundles
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/'
@@ -66,7 +67,9 @@ module.exports = {
       // JS / TS
       {
         test: /\.(js|ts|tsx)$/,
-        exclude: /node_modules|src\/(\S+\/)*\w+\.exemple\.(js|ts|tsx)$/,
+        exclude: {
+          test: [/node_modules$/, /src\/(\S+\/)*\w+\.exemple\.(js|ts|tsx)$/]
+        },
         use: [
           // babel avec une option de cache
           {
@@ -79,7 +82,10 @@ module.exports = {
       },
       {
         test: /\.(png|woff|woff2|eot|ttf|svg|ico)$/,
-        loader: 'url-loader?limit=100000'
+        loader: 'url-loader',
+        options: {
+          limit: 100000
+        }
       },
       // CSS / SASS / SCSS
       {
@@ -99,19 +105,20 @@ module.exports = {
           // SASS
           'sass-loader'
         ]
-      },
-      // Images
-      {
-        test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath: 'assets/'
-            }
-          }
-        ]
       }
+      // Images
+      // {
+      //   test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|svg|ico)$/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         outputPath: 'src/assets/img',
+      //         name: '[name].[ext]'
+      //       }
+      //     }
+      //   ]
+      // }
     ]
   },
   devServer: {
@@ -134,6 +141,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
-    })
+    }),
+    new CopyPlugin([{ from: 'src/assets', to: 'src/assets' }])
   ]
 };

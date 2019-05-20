@@ -14,15 +14,18 @@ const appliedMiddlewares = applyMiddleware(ajaxMiddleware);
 /*
  * Code
  */
-const devTools = [];
-if (window.devToolsExtension) {
-  devTools.push(window.devToolsExtension());
-}
 
 // createStore
-const enhancers = compose(appliedMiddlewares, ...devTools);
+const enhancers = compose(
+  appliedMiddlewares,
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
-const store = createStore(reducer, enhancers);
+const store = createStore(
+  reducer,
+  process.env.NODE_ENV === 'development' ? enhancers : appliedMiddlewares
+);
 
 /*
  * Export
