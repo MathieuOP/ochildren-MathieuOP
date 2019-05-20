@@ -18,6 +18,12 @@ const Home = () => (
       <li className="discovery--theme-list--elem">
         <Link to="discovery/space&card=1">Space</Link>
       </li>
+      <li className="discovery--theme-list--elem">
+        <Link to="discovery/science&card=1">Science</Link>
+      </li>
+      <li>
+        <Link to="discovery/nature&card=1">Nature</Link>
+      </li>
     </ul>
   </main>
 );

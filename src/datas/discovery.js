@@ -157,6 +157,176 @@ const data = [
       },
     ]
   },
+  {
+    name: 'science',
+    cards: [
+      { id: 1,
+        pics: [
+          { 
+            name: 'laboratory_background',
+            desc: '',
+            image_url: 'https://cdn1.vectorstock.com/i/1000x1000/94/05/background-of-chemistry-laboratory-vector-7559405.jpg',
+          
+          }, 
+          { 
+            name: 'Professeur Al', 
+            desc: 'Bonjour! je suis le professeur Al. Tu vas me suivre tout au long du parcours et je vais te décrire tout ce qui se trouve avec moi.',
+            image_url: 'https://image.flaticon.com/icons/svg/843/843255.svg',
+          },
+          { 
+            name: 'Microscope', 
+            desc: 'Un microscope est un instrument qui permet d\'observer l\'infiniment petit, tels les microbes, grâce à un système de lentilles optiques. Dans les laboratoires pharmaceutiques et en recherche médicale, les microscopes sont beaucoup utilisés pour séparer des éléments avec précision, par exemple. Il sert aussi à voir ce que l’on ne peut pas voir a l’œil nu (ce qui est microscopique). ',
+            image_url: 'https://image.flaticon.com/icons/svg/1198/1198650.svg',
+          },
+          { 
+            name: 'Tubes et fioles à essai', 
+            desc: 'Ils servent à contenir tout ce qui est liquide dans les laboratoires.',
+            image_url: 'https://image.flaticon.com/icons/svg/1283/1283419.svg',
+          } 
+        ] 
+      },
+
+      { id: 2,
+        pics: [ 
+          { 
+            name: 'microscope_background', 
+            desc: '',
+            image_url: 'https://image.flaticon.com/icons/svg/1754/1754707.svg',
+          }, 
+          { 
+            name: 'Professeur Al', 
+            desc: 'Grâce aux microscopes, on peut voir l\'infiniment petit. C\'est grâce à eux que l\'on peut etudier les bactéries, les virus, les atomes, les cellules d\'un corps et l\'ADN.',
+            image_url: '',
+          },
+          { 
+            name: 'Les Bactéries', 
+            desc: 'Les bactéries (Eubacteria) sont des êtres vivants composés d\'une seule cellule (unicellulaires). Ce sont des micro-organismes (autrefois appelés microbes).Il en existe des bénéfiques pour l\'homme et d\'autres peuvent causer des maladies infectieuses (on dit qu\'elles sont pathogènes)',
+            image_url: 'https://image.flaticon.com/icons/svg/1176/1176353.svg',
+          }, 
+          { 
+            name: 'Les virus', 
+            desc: 'Un virus est un parasite des cellules. Il ne peut pas vivre par lui-même, il a besoin d\'une cellule appelée hôte pour se reproduire. Un virus est environ entre 10 et 1000 fois plus petit qu\'une cellule. Le virus entre dans les cellules et les utilise pour fabriquer ses propres molécules. C\'est comme si un homme entrait dans une usine qui fabrique des voitures et ordonnait aux robots de se mettre à construire des brosses à dent pour son compte : c\'est un détournement des fonctions de l\'usine.',
+            image_url: 'https://image.flaticon.com/icons/svg/1198/1198638.svg',
+          },
+          { 
+            name: 'Les Atomes', 
+            desc: 'Un atome est un minuscule morceau de matière, une sorte de « brique » qui la constitue. Un atome contient un noyau (ensemble de protons et de neutrons), et autour de ce noyau, il y a des électrons. On distingue ces particules du fait qu\elles comportent des "charges" différentes : les neutrons n\'ont aucune charge, les protons ont une charge positive, et les électrons une charge négative. Les différents atomes sont classifiés selon le nombre de protons et de neutrons dans le noyau. La matière (cet ordinateur, le corps humain, la Terre...) est formée d\'atomes ! Quelques atomes reliés dans un ordre précis constituent une molécule. La chimie est la discipline scientifique qui étudie comment les atomes s\'assemblent pour former ces molécules. Plusieurs molécules côte à côte vont donner la matière, et selon qu\'elles sont proches ou éloignées, ce sera un solide, un liquide ou un gaz.',
+            image_url: 'https://image.flaticon.com/icons/svg/1198/1198627.svg',
+          }
+        ] 
+      },
+      { id: 3, 
+        pics: [ 
+          { 
+            name: 'chemestry_background', 
+            desc: '',
+            image_url: 'https://image.flaticon.com/icons/svg/201/201607.svg', 
+          }, 
+          { 
+            name: 'Professeur Al', 
+            desc: 'lorem',
+            image_url: 'https://image.flaticon.com/icons/svg/843/843255.svg', 
+          },
+          { 
+            name: 'Les Médicaments', 
+            desc: 'Un médicament est une substance, qu\'on absorbe pour guérir ou éviter une maladie. Le médicament est composé généralement d\'une molécule active (celle qui guérit) et d\'un excipient. L\'excipient sert à donner une forme, une couleur, un gout particulier, à faciliter la prise du médicament. Il peut servir à améliorer l\'efficacité de la molécule active.',
+            image_url: 'https://image.flaticon.com/icons/svg/1546/1546140.svg', 
+          }, 
+          { 
+            name: 'Le tableau Périodique', 
+            desc: 'Le tableau périodique des éléments regroupe tous les éléments chimiques connus qui constituent l\'Univers : les atomes. Il en manque peut-être dans l\'état actuel des connaissances. Ils sont classés en colonnes et en lignes. Dans une même colonne, se trouvent des atomes qui ont des propriétés similaires. Il existe des phrases pour retenir les premières périodes : Hé HÉ (Hydrogène, HÉlium) LIeBE, le Bateau CARéné, Noé et Olivia Filerons Nord - Est (Lithium, Béryllium, CARbone, azote[N], Oxygène, Fluor, Néon). Napoléon Mangea Allègrement Six Poulets Sans Claquer ARGent (sodium [Na], Magnésium, Aluminium, Silicium, Phosphore, Soufre, Chlore, ARGon).',
+            image_url: 'https://image.flaticon.com/icons/svg/1592/1592975.svg', 
+          },
+          { 
+            name: 'Les vaccins', 
+            desc: 'Un vaccin est un produit médical qu\'on introduit dans le corps pour le protéger à l\'avance d\'une maladie. Il n\'existe pas de vaccin universel. Chaque vaccin correspond à une maladie précise. Il s\'agit en effet d\'une forme atténuée de la bactérie ou du virus responsable de cette maladie. Selon les cas, le vaccin s\'avale (anti-poliomyélite), est inoculé par piqûre (anti-dyphtérique) ou par une petite coupure sur la peau (anti-variolique). Sans rendre malade, le vaccin provoque dans l\'organisme (une réaction) la fabrication d\'anticorps qui aideront par la suite à combattre la maladie. On appelle cette protection l\'immunité.',
+            image_url: 'https://image.flaticon.com/icons/svg/1529/1529532.svg', 
+          }  
+        ] 
+      },
+    ]
+  },
+  {
+    name: 'nature',
+    cards: [
+      { 
+        id: 1, 
+        pics: [ 
+          { 
+            name: 'tropical_landscape', 
+            desc: '',
+            image_url: 'https://i0.wp.com/static.vecteezy.com/system/resources/previews/000/206/763/original/awesome-tropical-landscape-player-vectors.jpg',
+          }, 
+          { name: 'Le soleil', 
+            desc: 'Hello je suis le soleil!',
+            image_url: 'https://image.flaticon.com/icons/svg/1164/1164954.svg',
+          },
+          { 
+            name: 'le colibri', 
+            desc: 'Le colibri est l\'oiseau le plus petit du monde. On le surnomme "oiseau mouche" à cause de sa petite taille. Il vit du nord jusqu’au sud de l\'Amérique.',
+            image_url: 'https://image.flaticon.com/icons/svg/789/789392.svg',
+          }, 
+          { name: 'La Tortue', 
+            desc: 'Il existe plusieurs espèces de tortues. Certaines sont marines ou aquatiques, d\'autres terrestres ou amphibies. On dit que les tortues sont très lentes : en effet, leur carapace et la forme de leurs pattes les ralentissent. Les tortues peuvent pondre une centaine d\'œufs.Les tortues n\'ont pas de dents mais un bec. Elles peuvent mourir étouffées si elles sont retournées sur la carapace, qui leur sert de bouclier protecteur et pour maintenir une partie de leur chaleur interne. Elles peuvent vivre une cinquantaine d\'années. Ce sont des animaux à sang froid qui s\'exposent au soleil pour augmenter leur température interne. Certaines hibernent en hiver.',
+            image_url: 'https://image.flaticon.com/icons/svg/852/852075.svg',
+          },
+          { 
+            name: 'Le Dauphin', 
+            desc: 'Les dauphins sont des mammifères marins et fluviaux. Les dauphins appartiennent à plusieurs espèces, qui font partie de l\'ordre des cétacés et ne doivent pas être confondus avec les poissons. L\'espèce la plus connue de dauphin est le dauphin commun à bec court et le grand dauphin. Ce mammifère se caractérise par sa grande intelligence.Il est capable de se reconnaître dans un miroir comme l\'homme, comme certains singes et éléphants. Il est aussi capable de faire usage d\'outils. Les dauphins ne font dormir qu\'une partie de leur cerveau',
+            image_url: 'https://image.flaticon.com/icons/svg/427/427544.svg',
+          }, 
+          { name: 'Le singe', 
+            desc: 'Les singes sont un groupe de mammifères appartenant à l\'ordre des primates. Comme tous les primates, les singes ont des mains à cinq doigts (et souvent des pieds aussi) avec un pouce opposable, qui leur permet de s\'accrocher aux branches. Ils ont aussi des ongles au lieu des griffes. Contrairement aux autres primates, les singes ont un nez plutôt qu\'une truffe, une mâchoire plus courte et des yeux placés sur le devant de la tête : ils ont donc un visage plutôt qu\'un museau.Il existe 285 espèces de singes vivant dans le monde. ',
+            image_url: 'https://image.flaticon.com/icons/svg/852/852071.svg',
+          },
+          { 
+            name: 'Le peroquet', 
+            desc: 'Les perroquets sont des oiseaux ; il en existe 350 espèces différentes, connues sous des noms variés, tels que ara, perruche, cacatoès... Ce sont des oiseaux souvent très colorés. Ils ont un gros bec crochu, qui leur sert à manger des graines, des fruits, et des noix. Certains perroquets sont également capables d\'imiter la voix humaine, et de répéter des mots, ou des sons. Certains, comme le gris du Gabon, parlent même très bien. Les perroquets ont la langue noire. Ils ont deux pattes qui sont terminées par des griffes. Les perroquets vivent dans les régions tropicales, principalement en Amérique, Afrique et Océanie.',
+            image_url: 'https://image.flaticon.com/icons/svg/688/688300.svg',
+          },
+        ] 
+      },
+      { id: 2, 
+        pics: [ 
+          { 
+            name: 'jungle_landscape', 
+            desc: '',
+            image_url: 'https://storybookstorage.s3.amazonaws.com/items/images/000/705/776/original/20170122-7-1tpunb3.jpg',
+          }, 
+          { 
+            name: 'Le Tigre', 
+            desc: 'C\'est le roi de la jungle! Il est carnivore et mesure de 2 à 3m tandis que sa queue peut mesurer de 60 cm à 1 m. Il mesure entre 80 cm et 1.20 m au garrot. Parmi les félins, le tigre est le plus grand de la planète. Le tigre de Sibérie est le plus grand, le tigre du Bengale est de taille intermédiaire et le tigre de Sumatra est le plus petit. n trouve le tigre en Inde et en Asie du Sud-Est.',
+            image_url: 'https://image.flaticon.com/icons/svg/616/616523.svg', 
+          },
+          { 
+            name: 'Le Toucan', 
+            desc: 'Le toucan est un oiseau d\'Amérique centrale et du Sud, ressemblant au calao. Il est multicolore et il a un grand bec. Il en existe plusieurs espèces, dont le toucan toco.',
+            image_url: 'https://image.flaticon.com/icons/svg/375/375082.svg',
+          }, 
+          { 
+            name: 'La Panthère Noire', 
+            desc: 'La panthère noire est un mammifère carnassier (qui se nourrit de viande crue) d\'Afrique et d\'Asie. Il s\'agit en fait d\'un léopard au pelage sombre (mélanisme). Elle fait partie des félins. La panthère est tout le contraire de son cousin le guépard qui se laisse apprivoiser facilement. Elle préfère être solitaire et ne vit pas en groupe.',
+            image_url: 'https://image.flaticon.com/icons/svg/371/371654.svg', 
+          },
+          { 
+            name: 'Les Libellule', 
+            desc: 'On les trouve fréquemment près des zones d\'eau douce notamment les mares. Les libellules ont un corps allongé, en forme de bâton. Elles ont quatre grandes ailes, membraneuses. Les libellules ne peuvent pas replier complètement les ailes sur leur dos, comme la plupart des autres insectes. Quand elles sont posées, elles gardent les ailes grandes ouvertes, ce qui les rend très reconnaissables et leur permet également de très vite s\'échapper jusqu\'à 90 km/h (c\'est l’insecte le plus rapide). Elles mesurent quelques centimètres de long de 4 à 5 centimètres.',
+            image_url: 'https://image.flaticon.com/icons/svg/235/235423.svg',
+          }, 
+          { 
+            name: 'Le Singe', 
+            desc: 'Hello je suis un singe! En Anglais, on m\'appel aussi Monkey ou Ape',
+            image_url: '', 
+          },
+          { 
+            name: 'Le Papillon', 
+            desc: 'Le papillon est d\'abord une chenille. C\'est une fois que la chenille a bien mangé, qu\'elle s\'entoure d\'un cocon fait de fil de soie, pour devenir un papillon. Avant de devenir un papillon, la chenille peut rester de 15 jours à 2 ans à l\'interieur du cocon',
+            image_url: 'https://image.flaticon.com/icons/svg/235/235423.svg', 
+          },
+        ] 
+      },
+    ]
+  }
 ];
 
 export default data;

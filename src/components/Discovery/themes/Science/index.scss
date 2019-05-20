@@ -1,0 +1,121 @@
+.discovery--science {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+
+    &--pic1,
+  // &--pic2,
+  &--pic5   
+  {
+    position: absolute;
+    border-radius: 5px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    will-change: transform;
+  }
+
+  &--pic1 {
+    //border-radius: 50%;
+    min-width: 300ch;
+    min-height: 100ch;
+    width: 55vw;
+    height: 55vw;
+    max-width: 200ch;
+    max-height: 100ch;
+    background-image: url(https://cdn1.vectorstock.com/i/1000x1000/94/05/background-of-chemistry-laboratory-vector-7559405.jpg);
+  }
+
+  &--pic2 {
+    width: 50ch;
+    height: 50ch;
+  }
+
+  &--pic3 {
+    width: 20ch;
+    height: 20ch;
+  }
+
+  &--pic4 {
+    width: 17ch;
+    height: 17ch;
+  }
+
+  &--pic5 {
+    min-width: 120ch;
+    min-height: 120ch;
+    width: 55vw;
+    height: 55vw;
+    max-width: 120ch;
+    max-height: 120ch;
+    background-image: url(https://image.flaticon.com/icons/svg/1754/1754707.svg);
+  }
+
+  &--pic6 {
+    position: fixed;
+    bottom: 0em;
+    left: 1em;
+    width:45ch;
+    height:45ch;
+   
+  }
+
+  &--pic7 {
+    width: 38ch;
+    height: 38ch;
+  }
+
+  &--pic8 {
+    width: 40ch;
+    height: 40ch;
+  }
+
+  &--pic9 {
+    width: 20ch;
+    height: 20ch;
+  }
+
+
+  &--pic10 {
+    min-width: 120ch;
+    min-height: 120ch;
+    width: 55vw;
+    height: 55vw;
+    max-width: 120ch;
+    max-height: 120ch;
+    background-image: url(https://image.flaticon.com/icons/svg/201/201607.svg);
+  }
+
+  &--pic11 {
+    position: fixed;
+    bottom: 0em;
+    left: 1em;
+    width:45ch;
+    height:45ch;
+  }
+
+  &--pic12 {
+    width: 30ch;
+    height: 30ch;
+  }
+
+  &--pic13 {
+    width: 30ch;
+    height: 30ch;
+  }
+
+  &--pic14 {
+    width: 30ch;
+    height: 30ch;
+  }
+
+  
+}
+
+
+
+
+
