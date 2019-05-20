@@ -16,7 +16,7 @@
           width: 100px;
           height: 100px;
           border-radius: 50%;
-          border: 7px solid #ff2626;
+          border: 8px solid lightgreen;
           background-color: #fff;
           margin: 0 10px;
           display: flex;
@@ -25,8 +25,8 @@
 
           @media screen and (min-width: 769px) {
             font-size: 1.7em;
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
           }
 
           span {
@@ -39,32 +39,60 @@
     }
   }
 
-  &-icon--square {
-    margin-top: 10px;
+  &-icon--discovery {
+   width: 3em;
+   height: 3em;
+
+    @media screen and (min-width: 769px) {
+      width: 4em;
+      height: 4em;
+      margin-top: 10px;
+    }
   }
 
-  &-link--quiz {
+  &-icon--square {
     width: 2em;
-    margin-top: 5px !important;
+    height: 2em;
+    margin-top: 5px;
+
     @media screen and (min-width: 769px) {
-      margin-top: 25px !important;
-      width: 2.5em;
+      margin-top: 20px;
+      width: 3em;
+      height: 3em;
     }
   }
 
   &-icon--puzzle {
-    width: 2em;
     margin-top: 5px;
+    width: 2em;
+    height: 2em;
+
     @media screen and (min-width: 769px) {
-      width: 2.7em;
+      width: 3em;
+      height: 3em;
       margin-top: 12px;
     }
   }
 
-  &-link--puzzle {
-    margin-top: 10px !important;
+  &-link--discovery {
     @media screen and (min-width: 769px) {
-      margin-top: 25px !important;
+      margin-bottom: 28px !important;
+      margin-top: 50px !important;
+    }
+  }
+
+  &-link--quiz {
+    margin-top: 11px;
+    @media screen and (min-width: 769px) {
+      margin-top: 48px !important;
+      width: 2.5em;
+    }
+  }
+
+  &-link--puzzle {
+    margin-top: 11px;
+    @media screen and (min-width: 769px) {
+      margin-top: 50px !important;
     }
   }
 }

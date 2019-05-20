@@ -11,19 +11,19 @@ const GameMenu = ({ category }) => {
         <ul>
           <li>
             <Link to="/discovery">
-              <FaGamepad size="3em" />
-              <span>Discovery</span>
+              <FaGamepad className="gameMenu-icon--discovery" />
+              <span className="gameMenu-link--discovery">Discovery</span>
             </Link>
           </li>
           <li>
             <Link to={`/home-game/${category}/categories`}>
-              <FaCheckSquare size="2em" className="gameMenu-icon--square" />
+              <FaCheckSquare className="gameMenu-icon--square" />
               <span className="gameMenu-link--quiz">Quiz</span>
             </Link>
           </li>
           <li>
             <Link to={`/games/${category}`}>
-              <FaPuzzlePiece size="2em" className="gameMenu-icon--puzzle" />
+              <FaPuzzlePiece className="gameMenu-icon--puzzle" />
               <span className="gameMenu-link--puzzle">Puzzle</span>
             </Link>
           </li>
