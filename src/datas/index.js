@@ -4,7 +4,7 @@ const memory = [
   {
     id: 1,
     title: "Animal",
-    "icon": "",
+    "icon": "memory.svg",
     memory: [
       {
         id: 1,
@@ -71,7 +71,7 @@ const memory = [
   {
     "id": 2,
     "title": "Autres",
-    "icon": "",
+    "icon": "memory.svg",
     memory: [
       {
         id: 1,

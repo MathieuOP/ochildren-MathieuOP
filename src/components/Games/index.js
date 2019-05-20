@@ -29,7 +29,7 @@ class Games extends Component {
           {dataMemory.map(({ id, title, icon }) => (
             <div key={id} className="games-memory">
               <img
-                src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${icon}`}
+                src={`/src/assets/img/${icon}`}
                 alt={title}
               />
               <Link to={`/memory/${id}`}> {title} </Link>
