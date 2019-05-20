@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGamepad, FaPuzzlePiece, FaCheckSquare } from 'react-icons/fa';
+import { FaGamepad, FaEye, FaCheckSquare } from 'react-icons/fa';
 
 import './index.scss';
 
@@ -11,20 +11,20 @@ const GameMenu = ({ category }) => {
         <ul>
           <li>
             <Link to="/discovery">
-              <FaGamepad size="3em" />
-              <span>Discovery</span>
+              <FaEye className="gameMenu-icon--discovery" />
+              <span className="gameMenu-link--discovery">Discovery</span>
             </Link>
           </li>
           <li>
             <Link to={`/home-game/${category}/categories`}>
-              <FaCheckSquare size="2em" className="gameMenu-icon--square" />
+              <FaCheckSquare className="gameMenu-icon--square" />
               <span className="gameMenu-link--quiz">Quiz</span>
             </Link>
           </li>
           <li>
             <Link to={`/games/${category}`}>
-              <FaPuzzlePiece size="2em" className="gameMenu-icon--puzzle" />
-              <span className="gameMenu-link--puzzle">Puzzle</span>
+              <FaGamepad className="gameMenu-icon--jeux" />
+              <span className="gameMenu-link--jeux">Jeux</span>
             </Link>
           </li>
         </ul>

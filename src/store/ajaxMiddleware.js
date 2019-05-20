@@ -22,12 +22,14 @@ import {
 const ajaxMiddleware = store => next => action => {
   switch (action.type) {
     case DATA_HOME_PAGE: // Requete qui récupère les données nécessaire pour la page home
-      return axios.get(`${process.env.API_URL}/api/worlds`).then(response => {
-        next({
-          ...action,
-          data: response.data
+      return axios
+        .get(`${process.env.API_URL}/api/worlds`)
+        .then(response => {
+          next({
+            ...action,
+            data: response.data
+          });
         });
-      });
 
     case DATA_HOME_GAME: // Requete qui récupère les données nécessaire pour la page home
       return axios
@@ -97,7 +99,7 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLE:
-      return axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/puzzles/${action.puzzleId}/`, {
+      return axios.get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {
           
       })
         .then((response) => {
