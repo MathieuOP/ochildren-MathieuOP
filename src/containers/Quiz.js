@@ -31,6 +31,9 @@ const mapStateToProps = state => ({
   myScore: state.myScore,
   answerTrue: state.answerTrue,
   messageScore: messageScore(state),
+  descriptionCurrentQuiz: state.descriptionCurrentQuiz,
+  currentNameQuiz: state.currentNameQuiz,
+  
 });
 
 const mapDispatchToProps = dispatch => ({

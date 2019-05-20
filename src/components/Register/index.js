@@ -1,21 +1,20 @@
 /* eslint-disable default-case */
 /* eslint-disable react/require-render-return */
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import FormUserDetails from './FormUserDetails';
-import FormPersonalDetails from './FormPersonalDetails';
 import Confirm from './Confirm';
-import Success from './Succes';
+import Success from './Success';
+import Error from './Error';
 
-
-
-class UserForm extends Component {
+class Register extends Component {
   state = {
-    step: 1,
-    firstName: '',
-    lastName: '',
-    email: '',
-    identifiant: '',
-    birthday: '',
+    step: 1
+  };
+
+  componentWillUnmount() {
+    this.props.signeUpReset();
   }
 
   // etape suivante
@@ -34,54 +33,31 @@ class UserForm extends Component {
     });
   };
 
-
-  handleChange = input => evt => {
-    this.setState({ [input]: evt.target.value });
-  };
-
   render() {
     const { step } = this.state;
-    const { firstName, lastName, email, identifiant, birthday } = this.state;
-    const values = { firstName, lastName, email, identifiant, birthday };
-
+    const { error } = this.props;
     switch (step) {
       case 1:
-        return (
-          <FormUserDetails
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            values={values}
-            />
-        );
-        case 2:
-        return (
-          <FormPersonalDetails
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            values={values}
-          />
-        );
-      case 3:
+        return <FormUserDetails nextStep={this.nextStep} {...this.props} />;
+      case 2:
         return (
           <Confirm
             nextStep={this.nextStep}
             prevStep={this.prevStep}
-            values={values}
+            {...this.props}
           />
         );
-      case 4:
-        return <Success />;
+      case 3:
+        return !error ? <Success /> : <Error />;
       default:
         return <div />;
     }
   }
 }
 
+Register.propTypes = {
+  error: PropTypes.bool.isRequired,
+  signeUpReset: PropTypes.func.isRequired
+};
 
-
-
-
-
-
-export default UserForm;
+export default Register;

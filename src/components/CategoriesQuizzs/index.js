@@ -18,14 +18,12 @@ class CategoriesQuizzs extends Component {
 
         <div className="wrapper-categories">
           {categoriesQuizzs.map(({ id, name, image }) => {
-            
             return (
-              <Link
-                key={id}
-                className="categories-quiz"
-                to={`/category/${id}`}
-              >
-                <img src={`/src/assets/img/${image}`} alt="icon" />
+              <Link key={id} className="categories-quiz" to={`/category/${id}`}>
+                <img
+                  src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${image}`}
+                  alt="icon"
+                />
                 <span>{name}</span>
               </Link>
             );
@@ -38,7 +36,7 @@ class CategoriesQuizzs extends Component {
 
 CategoriesQuizzs.propTypes = {
   getAllCategoriesQuizzs: PropTypes.func.isRequired,
-  categoriesQuizzs: PropTypes.arrayOf(PropTypes.object).isRequired,
+  categoriesQuizzs: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default CategoriesQuizzs;

@@ -7,8 +7,14 @@
     "@babel/core": "*",
     "@babel/plugin-proposal-class-properties": "*",
     "@babel/plugin-proposal-object-rest-spread": "*",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "*",
     "@babel/preset-react": "*",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/react": "^16.8.17",
+    "@types/source-map": "0.5.2",
+    "@typescript-eslint/eslint-plugin": "^1.7.0",
+    "@typescript-eslint/parser": "^1.7.0",
     "autoprefixer": "*",
     "babel-eslint": "*",
     "babel-loader": "*",
@@ -37,8 +43,11 @@
     "prettier": "*",
     "sass-loader": "*",
     "style-loader": "*",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^4.0.0",
     "uglifyjs-webpack-plugin": "*",
-    "webpack": "*",
+    "webpack": "^4.31.0",
     "webpack-cli": "*",
     "webpack-dev-server": "*"
   },
@@ -57,6 +66,7 @@
     "@babel/polyfill": "*",
     "axios": "*",
     "classnames": "*",
+    "copy-webpack-plugin": "^5.0.3",
     "history": "^4.9.0",
     "http-server": "^0.11.1",
     "prop-types": "*",
@@ -73,7 +83,6 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.86.0",
     "shuffle-array": "^1.0.1",
-    "slugify": "^1.3.4",
     "url-loader": "^1.1.2"
   }
 }

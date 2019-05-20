@@ -10,7 +10,7 @@ class Quizzs extends Component {
     this.props.getQuizByWorldId(this.props.categoryQuizId)
   }
 
-  handleClick = id => () => {
+  handleClick = () => () => {
     const { initialQuiz } = this.props;
     initialQuiz();
   };
@@ -40,7 +40,7 @@ class Quizzs extends Component {
 };
 
 Quizzs.propTypes = {
-  getQuestionsByQuizId: PropTypes.func.isRequired,
+  quizzsByWorldId: PropTypes.arrayOf(PropTypes.object).isRequired,
   initialQuiz: PropTypes.func.isRequired
 };
 export default Quizzs;

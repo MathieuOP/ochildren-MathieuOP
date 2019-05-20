@@ -1,57 +1,117 @@
-import React from 'react'
-import { Button, Form } from 'semantic-ui-react';
+import React from 'react';
+import { Button, Form, Message } from 'semantic-ui-react';
+import { Link, Redirect } from 'react-router-dom';
+
+import VerifyForm from '../../modules/verifyForm';
 
 import './style.scss';
 
+class LoginForm extends VerifyForm {
+  constructor(props) {
+    super(props);
 
+    this.verify.init(['username', 'password']);
 
+    this.verify.setErrorComp(text => (
+      <span style={{ color: 'red' }}>{text}</span>
+    ));
+    this.verify.setSuccessComp(text => (
+      <span style={{ color: 'green' }}>{text}</span>
+    ));
 
+    this.state = {
+      inputsErrors: this.verify.inputs
+    };
+  }
 
-const LoginForm = ({ password, loading, handleLoginChange, onLoginSubmit}) => {
+  componentWillUnmount() {
+    this.props.loginReset();
+  }
 
-  const handleChange = name => evt => {
+  handleChange = name => evt => {
     const { value } = evt.target;
-    handleLoginChange(value, name);
-  }
+    this.props.handleLoginChange(value, name);
+    return this.setState({
+      inputsErrors: this.verify.cond(
+        (() => {
+          if (value.length <= 0) return true;
+          switch (name) {
+            case 'email':
+              return !/^.\S*@\w+\.[\w]+(\w+\.[\w]+)*$/.test(value);
+            default:
+              return false;
+          }
+        })(),
+        name
+      )
+    });
+  };
 
-  const handleSubmit = evt => {
+  handleSubmit = evt => {
     evt.preventDefault();
-    onLoginSubmit();
-  }
+    this.props.onLoginSubmit();
+  };
 
-  return (
-    <Form className='login-form' onSubmit={handleSubmit}>
-      <Form.Field>
-        <label>Identifiant</label>
-        <input
-          placeholder='Identifiant' 
-          type='text'
-          onChange = {handleChange('identifiant')}
-        />
-      </Form.Field>
-      <Form.Field>
-        <label>Password</label>
-        <input 
-          placeholder='Password' 
-          type='password'
-          value={password}
-          onChange={handleChange('password')}
-          loading={loading}
-          disabled={loading}
-        />
-      </Form.Field>        
-      <div className='ui two buttons'>
-        <Button id='connexion'>
-          Connexion
-        </Button>
-        <Button
-          id='inscription'
-        >
-        Inscription
-        </Button>
-      </div>    
-    </Form>
-  )
+  render() {
+    const { password, email, loading, error, loggedIn } = this.props;
+    if (loggedIn) return <Redirect to="/" />;
+    return (
+      <Form className="login-form" onSubmit={this.handleSubmit}>
+        {error && (
+          <Message negative>
+            <Message.Header>La connexion a échoué</Message.Header>
+            <p>Verifiez vos ifentifiants</p>
+          </Message>
+        )}
+        <Form.Field>
+          <label htmlFor="email">
+            Email
+            <input
+              id="email"
+              placeholder="Email"
+              type="text"
+              value={email}
+              onChange={this.handleChange('email')}
+              style={{
+                borderColor: this.verify.verifyOne('email', email, err =>
+                  err ? 'red' : 'green'
+                )
+              }}
+            />
+            {this.verify.verifyOne('email', email, err =>
+              err
+                ? this.verify.errorComp("Cette email n'est pas valide")
+                : this.verify.successComp('Votre email est valide')
+            )}
+          </label>
+        </Form.Field>
+        <Form.Field>
+          <label htmlFor="password">
+            Password
+            <input
+              id="password"
+              placeholder="Password"
+              type="password"
+              value={password}
+              onChange={this.handleChange('password')}
+            />
+          </label>
+        </Form.Field>
+        <div className="ui two buttons">
+          <Button
+            disabled={loading && this.verify.verifyAll()}
+            loading={loading}
+            id="connexion"
+          >
+            Connexion
+          </Button>
+          <Link to="/register" id="inscription" className="ui button">
+            Inscription
+          </Link>
+        </div>
+      </Form>
+    );
+  }
 }
 
-  export default LoginForm;
+export default LoginForm;

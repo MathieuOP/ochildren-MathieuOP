@@ -1,55 +1,50 @@
 .login {
-    width: 380px;
-    margin: 10em auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0px 10px 20px #aaa;
-    padding: 1.5em;
-    border-radius: 6px;
-
+  width: 380px;
+  margin: 10em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0px 0px 20px -6px #000;
+  padding: 1.5em;
+  border-radius: 6px;
 }
 
-.forgotten-form{
-    width: 380px;
-    margin: 10em auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    box-shadow: 0px 10px 20px #aaa;
-    padding: 1.5em;
-    border-radius: 6px;
+.app-link {
+  cursor: pointer;
+  padding-left: 1em;
+}
+
+.forgotten-form {
+  width: 380px;
+  margin: 10em auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0px 0px 20px -6px #000;
+  padding: 1.5em;
+  border-radius: 6px;
 }
 
 .login-form {
-    padding: 1em;
-    width: 20em;
+  padding: 1em;
+  width: 20em;
 }
 
-
-#connexion{
-    background-color: #ff8b73;
-    
-} 
+#connexion {
+  background-color: #ff8b73;
+}
 
 #inscription {
-    background-color: #cc2e43;
-   
+  background-color: #cc2e43;
 }
 
 #forgotten-pw a {
-    margin: 10em auto;
+  margin: 20px 0 auto;
 }
-
-a {
-    padding-left: 1em;
-}
-
-
 
 h1 {
-    font-size: 1.4em;
-    font-weight: bold; 
+  font-size: 1.4em;
+  font-weight: bold;
 }
