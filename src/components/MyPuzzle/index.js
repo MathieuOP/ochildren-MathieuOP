@@ -30,15 +30,19 @@ class MyPuzzle extends Component {
           <div ref={this.puzzle}>
             <MediaQuery query="(max-width: 768px)">
               <Puzzle
-                image={puzzle.image}
+                image={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+                  puzzle.image
+                }`}
                 size={350}
                 onDone={this.puzzleFinished}
               />
             </MediaQuery>
-            
+
             <MediaQuery query="(min-width: 769px)">
               <Puzzle
-                image={puzzle.image}
+                image={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+                  puzzle.image
+                }`}
                 size={550}
                 onDone={this.puzzleFinished}
               />
@@ -47,7 +51,9 @@ class MyPuzzle extends Component {
           <img
             className="puzzle-img"
             ref={this.imgPuzzle}
-            src={puzzle.image}
+            src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+              puzzle.image
+            }`}
             alt=""
           />
         </div>
@@ -57,7 +63,7 @@ class MyPuzzle extends Component {
 }
 
 MyPuzzle.propTypes = {
-  puzzle: PropTypes.object.isRequired,
-}
+  puzzle: PropTypes.object.isRequired
+};
 
 export default MyPuzzle;

@@ -33,10 +33,12 @@ const App = ({ error404 }) => (
 
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route exact path="/games/:worldId" 
+      <Route
+        exact
+        path="/games/:worldId"
         render={({ match }) => {
           const { worldId } = match.params;
-          
+
           return <Games worldId={worldId} />;
         }}
       />
@@ -46,15 +48,6 @@ const App = ({ error404 }) => (
 
       <Route
         exact
-        path="/puzzles/:worldId"
-        render={({ match }) => {
-          const { worldId } = match.params;
-
-          return <Puzzles worldId={worldId} />;
-        }}
-      />
-      <Route
-        exact
         path="/puzzle/:puzzleId"
         render={({ match }) => {
           const { puzzleId } = match.params;
@@ -62,10 +55,12 @@ const App = ({ error404 }) => (
           return <MyPuzzle puzzleId={puzzleId} />;
         }}
       />
-      <Route exact path="/memory/:memoryId" 
+      <Route
+        exact
+        path="/memory/:memoryId"
         render={({ match }) => {
           const { memoryId } = match.params;
-            
+
           return <Memory memoryId={memoryId} />;
         }}
       />
