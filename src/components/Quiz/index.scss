@@ -22,11 +22,15 @@
     &-questions {
         background-color: #FFF;
         max-width: 1000px;
-        margin: 0 auto;
+        margin: 0 50px 50px;
         text-align: center;
         padding: 20px 0;
         border-radius: 15px;
         box-shadow: 0px 7px 17px 0px rgba(0,0,0,0.06);
+
+        @media screen and (min-width: 1100px) {
+            margin: 0 auto;
+        }
 
         button:hover {
             color: #5e457d !important;
@@ -83,8 +87,12 @@
             border-radius: 10px;
             border: 1px solid #777;
             padding: 15px;
-            width: 50%;
+            width: 100%;
             margin: 5px;
+
+            @media screen and (min-width: 619px) {
+                width: 50%;
+            }
         }
     }
 
