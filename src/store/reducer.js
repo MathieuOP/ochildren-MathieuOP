@@ -1,4 +1,5 @@
 import memory from 'src/datas';
+import shuffle from 'shuffle-array';
 
 /**
  * Initial State
@@ -7,7 +8,7 @@ const initialState = {
   dataHomePage: [],
   puzzles: [],
   dataMemory: [
-    ...memory,
+    ...JSON.parse(JSON.stringify(memory)),
   ],
   userForm: {
     loggedIn: false,
@@ -246,22 +247,12 @@ const reducer = (state = initialState, action = {}) => {
         openedCard: state.openedCard.length === 2 ? action.data : [...state.openedCard, action.data],
       }
     case RESET_MEMORY:
+      memory.map((data) => shuffle(data.memory));
       return {
         ...state,
-        dataMemory: memory.map((data) => {
-          const memoryArray = data.memory.map(arrayData => {
-            return {
-              ...arrayData,
-              complete: false,
-              close: true,
-            }
-          })
-        
-          return {
-            ...data,
-            memory: [...memoryArray],
-          }
-        }),
+        dataMemory: [
+          ...JSON.parse(JSON.stringify(memory)),
+        ],
         openedCard: [],
         getCountPaire: 0,
         getCountClick: 0,

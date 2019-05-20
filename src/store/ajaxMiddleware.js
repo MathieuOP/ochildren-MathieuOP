@@ -1,6 +1,5 @@
 import axios from 'axios';
 import shuffle from 'shuffle-array';
-// import createHistory from 'history/createBrowserHistory';
 
 import {
   DATA_HOME_PAGE,
@@ -82,6 +81,7 @@ const ajaxMiddleware = store => next => action => {
         
       })
         .then((response) => {
+          console.log(response.data);
           next({
             ...action,
             data: response.data[0].puzzles,

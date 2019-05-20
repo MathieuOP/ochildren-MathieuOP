@@ -7,7 +7,6 @@ class CardFlip extends Component {
   container = React.createRef();
 
   componentDidMount() {
-    this.props.resetMemory;
     const cards = this.container.current.childNodes;
     cards.forEach((card, index) => {
       card.childNodes[0].addEventListener('click', this.handleClickCard(index, card.name));
@@ -67,7 +66,7 @@ class CardFlip extends Component {
     }
   }
 
-  handleClickCard = (indexCard, name) => (e) => {
+  handleClickCard = (indexCard) => (e) => {
     const {
       incrementeCountClick,
       dataMemory,
@@ -99,23 +98,23 @@ class CardFlip extends Component {
 
     return (
       <Fragment>
-        <div className="memory-infos">
+        <div className={`memory-infos-cat-${dataMemory.world.id}`}>
           <p>Nombre de paire trouvée: { getCountPaire }</p>
           <p>Nombre de tentative: {getTentative}</p>
         </div>
         <div ref={this.container} className="memory-container">
           {
             dataMemory.memory.map((card, index) => (
-              <div key={index} className="memory-wrapper">
+              <div key={index} className={`memory-wrapper-cat-${dataMemory.world.id}`}>
                 <div data-animal={card.name} className={"memory-card" + (!card.close ? ' is-flipped' : '') + (card.complete ? ' matched' : '')}>
                   <div className="memory-card__face memory-card__face--front">
                     <p>
-                      o'children
+                      <span>o'children</span>
                     </p>
                   </div>
                   <div className="memory-card__face memory-card__face--back">
                     <div className="memory-category memory-category--link">
-                      <img src={`/src/assets/img/puzzle_${card.name}.jpg`} alt="card.name" />
+                      <img className={`memory-category-img-${dataMemory.world.id}`} src={`/src/assets/img/${card.image}`} alt="card.name" />
                     </div>
                   </div>
                 </div>
