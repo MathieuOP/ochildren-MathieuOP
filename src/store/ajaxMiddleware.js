@@ -22,22 +22,16 @@ import {
 const ajaxMiddleware = store => next => action => {
   switch (action.type) {
     case DATA_HOME_PAGE: // Requete qui récupère les données nécessaire pour la page home
-      return axios
-        .get('http://92.243.9.67/plateforme-educative-api/public/api/worlds')
-        .then(response => {
-          next({
-            ...action,
-            data: response.data
-          });
+      return axios.get(`${process.env.API_URL}/api/worlds`).then(response => {
+        next({
+          ...action,
+          data: response.data
         });
+      });
 
     case DATA_HOME_GAME: // Requete qui récupère les données nécessaire pour la page home
       return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/worlds/${
-            action.categoryId
-          }/`
-        )
+        .get(`${process.env.API_URL}/api/worlds/${action.categoryId}/`)
         .then(response => {
           next({
             ...action,
@@ -49,9 +43,7 @@ const ajaxMiddleware = store => next => action => {
         });
     case CATEGORIES_QUIZZS: // Requete qui récupère les catégories pour les quizzs
       return axios
-        .get(
-          'http://92.243.9.67/plateforme-educative-api/public/api/categories'
-        )
+        .get(`${process.env.API_URL}/api/categories`)
         .then(response => {
           next({
             ...action,
@@ -61,9 +53,7 @@ const ajaxMiddleware = store => next => action => {
     case QUIZ_BY_WORLD_ID:
       return axios
         .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/categories/${
-            action.worldId
-          }/quizzs`,
+          `${process.env.API_URL}/api/categories/${action.worldId}/quizzs`,
           {}
         )
         .then(response => {
@@ -78,12 +68,7 @@ const ajaxMiddleware = store => next => action => {
     case QUESTION_BY_ID:
       next(action);
       return axios
-        .get(
-          `http://92.243.9.67/plateforme-educative-api/public/api/quizzs/${
-            action.id
-          }`,
-          {}
-        )
+        .get(`${process.env.API_URL}/api/quizzs/${action.id}`, {})
         .then(response => {
           response.data.questions.map(data => shuffle(data.answers));
 
@@ -99,17 +84,16 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLES:
-      return axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/worlds/${action.worldId}/puzzles`, {
+      return axios.get(`${process.env.API_URL}/api/worlds/${action.worldId}/puzzles`, {
         
       })
         .then((response) => {
-          // console.log(response.data);
           next({
             ...action,
-            data: response.data[0].puzzles,
+            data: response.data[0].puzzles
           });
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLE:
@@ -140,10 +124,7 @@ const ajaxMiddleware = store => next => action => {
       };
 
       return axios
-        .post(
-          'http://92.243.9.67/plateforme-educative-api/public/api/login',
-          LoginObject
-        )
+        .post(`${process.env.API_URL}/api/login`, LoginObject)
         .then(({ data }) => store.dispatch(loggedIn(data.token)))
         .catch(() => store.dispatch(loginError()));
 
@@ -168,10 +149,7 @@ const ajaxMiddleware = store => next => action => {
       };
 
       return axios
-        .post(
-          'http://92.243.9.67/plateforme-educative-api/public/api/signup',
-          signUpObject
-        )
+        .post(`${process.env.API_URL}/api/signup`, signUpObject)
         .then(() => store.dispatch(signedUp()))
         .catch(() => store.dispatch(signeUpError()));
 
