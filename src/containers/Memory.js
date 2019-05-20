@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Memory from 'src/components/Memory';
 
 // Action Creators
-import { countPairs, memoryFinished, tentative, incrementeCountClick, resetCountClick, updatedData, updatedOpenedCard, resetMemory } from 'src/store/reducer';
+import { countPairs, memoryFinished, tentative, incrementeCountClick, resetCountClick, updatedData, updatedOpenedCard, resetMemory} from 'src/store/reducer';
 
 const mapStateToProps = (state, ownProps) => ({
   getCountPaire: state.getCountPaire,
