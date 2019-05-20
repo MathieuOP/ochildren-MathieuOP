@@ -10,6 +10,7 @@ import {
   QUESTION_BY_ID,
   receivedDataQuestions,
   getPage404,
+  DATA_FOR_PUZZLES,
   SIGNUP_SUBMIT,
   LOGIN_SUBMIT,
   signedUp,
@@ -95,6 +96,19 @@ const ajaxMiddleware = store => next => action => {
           );
         })
         .catch(error => {
+          if (error.response.status === 404) store.dispatch(getPage404());
+        });
+    case DATA_FOR_PUZZLES:
+      return axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/worlds/${action.worldId}/puzzles`, {
+        
+      })
+        .then((response) => {
+          next({
+            ...action,
+            data: response.data[0].puzzles,
+          });
+        })
+        .catch((error) => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
 

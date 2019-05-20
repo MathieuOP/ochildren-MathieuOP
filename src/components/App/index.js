@@ -16,8 +16,9 @@ import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
 import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
-import Puzzles from '../../containers/Puzzles';
+import Games from '../../containers/Games';
 import MyPuzzle from '../../containers/MyPuzzle';
+import Memory from '../../containers/Memory';
 import Page404 from '../Page404';
 
 // Styles et assets
@@ -32,19 +33,19 @@ const App = ({ error404 }) => (
 
     <Switch>
       <Route exact path="/" component={Home} />
+      <Route
+        exact
+        path="/games/:worldId"
+        render={({ match }) => {
+          const { worldId } = match.params;
+
+          return <Games worldId={worldId} />;
+        }}
+      />
 
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
 
-      <Route
-        exact
-        path="/puzzles/:worldId"
-        render={({ match }) => {
-          const { worldId } = match.params;
-
-          return <Puzzles worldId={worldId} />;
-        }}
-      />
       <Route
         exact
         path="/puzzle/:puzzleId"
@@ -52,6 +53,15 @@ const App = ({ error404 }) => (
           const { puzzleId } = match.params;
 
           return <MyPuzzle puzzleId={puzzleId} />;
+        }}
+      />
+      <Route
+        exact
+        path="/memory/:memoryId"
+        render={({ match }) => {
+          const { memoryId } = match.params;
+
+          return <Memory memoryId={memoryId} />;
         }}
       />
       <Route // is ok

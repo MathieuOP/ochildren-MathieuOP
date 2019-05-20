@@ -22,7 +22,7 @@ const GameMenu = ({ category }) => {
             </Link>
           </li>
           <li>
-            <Link to={`/puzzles/${category}`}>
+            <Link to={`/games/${category}`}>
               <FaPuzzlePiece size="2em" className="gameMenu-icon--puzzle" />
               <span className="gameMenu-link--puzzle">Puzzle</span>
             </Link>
