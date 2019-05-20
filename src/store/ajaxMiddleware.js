@@ -15,7 +15,8 @@ import {
   signedUp,
   signeUpError,
   loggedIn,
-  loginError
+  loginError,
+  DATA_FOR_PUZZLE
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -83,10 +84,10 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLES:
-      return axios
-        .get(`${process.env.API_URL}/api/worlds/${action.worldId}/puzzles`, {})
-        .then(response => {
-          console.log(response.data);
+      return axios.get(`${process.env.API_URL}/api/worlds/${action.worldId}/puzzles`, {
+        
+      })
+        .then((response) => {
           next({
             ...action,
             data: response.data[0].puzzles
@@ -95,7 +96,20 @@ const ajaxMiddleware = store => next => action => {
         .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
-
+    case DATA_FOR_PUZZLE:
+      return axios.get(`http://92.243.9.67/plateforme-educative-api/public/api/puzzles/${action.puzzleId}/`, {
+          
+      })
+        .then((response) => {
+          // console.log(response.data);
+          next({
+            ...action,
+            data: response.data,
+          });
+        })
+        .catch((error) => {
+          if (error.response.status === 404) store.dispatch(getPage404());
+        });
     case LOGIN_SUBMIT:
       next(action);
 

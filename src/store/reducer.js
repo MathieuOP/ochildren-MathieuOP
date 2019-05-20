@@ -7,6 +7,7 @@ import shuffle from 'shuffle-array';
 const initialState = {
   dataHomePage: [],
   puzzles: [],
+  puzzle: {},
   dataMemory: [
     ...JSON.parse(JSON.stringify(memory)),
   ],
@@ -91,7 +92,7 @@ const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
-export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
+
 //memory
 const COUNT_PAIRS = 'COUNT_PAIRS';
 const FINISHED = 'FINISHED';
@@ -102,6 +103,9 @@ const UPDATED_DATA = 'UPDATED_DATA';
 const UPDATED_OPENED_CARD = 'UPDATED_OPENED_CARD';
 const RESET_MEMORY = 'RESET_MEMORY';
 
+//Puzzle
+export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
+export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
 /**
  * Traitements
  */
@@ -312,6 +316,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         puzzles: [...action.data]
       };
+    case DATA_FOR_PUZZLE:
+      console.log(action.data);
+      return {
+        ...state,
+        puzzle: {...action.data}
+      }
     case COUNT_PAIRS:
       return {
         ...state,
@@ -542,6 +552,12 @@ export const updatedOpenedCard = data => ({
 export const resetMemory = () => ({
   type: RESET_MEMORY
 });
+
+export const dataForPuzzle = (puzzleId) => ({
+  type: DATA_FOR_PUZZLE,
+  puzzleId,
+})
+
 /**
  * Selectors
  */

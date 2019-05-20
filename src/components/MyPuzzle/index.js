@@ -11,6 +11,11 @@ class MyPuzzle extends Component {
 
   textWin = React.createRef();
 
+  componentDidMount() {
+    const { dataForPuzzle, puzzleId } = this.props;
+    dataForPuzzle(puzzleId);
+  }
+
   puzzleFinished = () => {
     this.imgPuzzle.current.className = 'puzzle-img puzzle-img--show';
     this.puzzle.current.className = 'puzzle--hide';
@@ -21,6 +26,7 @@ class MyPuzzle extends Component {
 
   render() {
     const { puzzle } = this.props;
+    console.log(puzzle.id);
     return (
       <Fragment>
         <div className="puzzle">
@@ -63,7 +69,9 @@ class MyPuzzle extends Component {
 }
 
 MyPuzzle.propTypes = {
-  puzzle: PropTypes.object.isRequired
+  puzzle: PropTypes.object.isRequired,
+  dataForPuzzle: PropTypes.func.isRequired,
+  puzzleId: PropTypes.string.isRequired,
 };
 
 export default MyPuzzle;

@@ -26,19 +26,23 @@
         border: 8px solid lightgreen;
         background-color: #fff;
         margin: 20px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
 
         img {
-            margin-top: 15px;
-            width: 100px;
+            margin-top: 5px;
+            max-width: 90px;
         }
 
         a {
-            font-size: 2em;
+            font-size: 1.9em;
             font-weight: bold;
             display: flex;
             justify-content: center;
             color: #000;
-            margin-top: 20px;
+            margin-bottom: 5px;
 
             &:hover {
                 color: lightgreen;

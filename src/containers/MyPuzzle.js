@@ -8,12 +8,17 @@ import { connect } from 'react-redux';
 import MyPuzzle from 'src/components/MyPuzzle';
 
 // Action Creators
+import { dataForPuzzle } from 'src/store/reducer';
 
 const mapStateToProps = (state, ownProps) => ({
-  puzzle: state.puzzles.find(puzzle => puzzle.id == ownProps.puzzleId),
+  puzzle: state.puzzle,
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  dataForPuzzle: (puzzleId) => {
+    dispatch(dataForPuzzle(puzzleId));
+  }
+});
 
 export default connect(
   mapStateToProps,
