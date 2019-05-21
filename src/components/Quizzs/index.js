@@ -64,6 +64,8 @@ class Quizzs extends Component {
 
 Quizzs.propTypes = {
   quizzsByWorldId: PropTypes.arrayOf(PropTypes.object).isRequired,
-  initialQuiz: PropTypes.func.isRequired
+  initialQuiz: PropTypes.func.isRequired,
+  getQuizByWorldId: PropTypes.func.isRequired,
+  categoryQuizId: PropTypes.string.isRequired,
 };
 export default Quizzs;

@@ -1,9 +1,8 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import './index.scss';
 
 class CardFlip extends Component {
-  openedCard = [];
-
   container = React.createRef();
 
   componentDidMount() {
@@ -57,7 +56,7 @@ class CardFlip extends Component {
   }
 
   gameFinished = () => {
-    const { memoryFinished, dataMemory, getCountPaire, openedCard } = this.props;
+    const { memoryFinished, dataMemory, getCountPaire } = this.props;
 
     if (getCountPaire == dataMemory.memory.length / 2) {
       setTimeout(() => {
@@ -132,6 +131,21 @@ class CardFlip extends Component {
       </Fragment>
     );
   }
+}
+
+CardFlip.propTypes = {
+  dataMemory: PropTypes.object.isRequired,
+  updatedData: PropTypes.func.isRequired,
+  resetCountClick: PropTypes.func.isRequired,
+  tentative: PropTypes.func.isRequired,
+  countPairs: PropTypes.func.isRequired,
+  updatedOpenedCard: PropTypes.func.isRequired,
+  getCountPaire: PropTypes.number.isRequired,
+  getTentative: PropTypes.number.isRequired,
+  finished: PropTypes.bool.isRequired,
+  openedCard: PropTypes.array.isRequired,
+  incrementeCountClick: PropTypes.func.isRequired,
+  memoryFinished: PropTypes.func.isRequired,
 }
 
 export default CardFlip;

@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './index.scss';
 
 const Score = ({ score, messageScore, currentNameQuiz }) => {
-  console.log(messageScore);
+
   return (
     <div className="score">
       <h1>
@@ -23,5 +24,11 @@ const Score = ({ score, messageScore, currentNameQuiz }) => {
     </div>
   );
 };
+
+Score.propTypes = {
+  score: PropTypes.number.isRequired,
+  messageScore: PropTypes.string.isRequired,
+  currentNameQuiz: PropTypes.string.isRequired,
+}
 
 export default Score;
