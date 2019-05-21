@@ -170,7 +170,7 @@ const data = [
           }, 
           { 
             name: 'Professeur Al', 
-            desc: 'Bonjour! je suis le professeur Al. Tu vas me suivre tout au long du parcours et je vais te décrire tout ce qui se trouve avec moi.',
+            desc: 'Bonjour! Je suis le professeur Al. Tu vas me suivre tout au long du parcours et je vais te décrire tout ce qui se trouve avec moi.',
             image_url: 'https://image.flaticon.com/icons/svg/843/843255.svg',
           },
           { 
@@ -196,7 +196,7 @@ const data = [
           { 
             name: 'Professeur Al', 
             desc: 'Grâce aux microscopes, on peut voir l\'infiniment petit. C\'est grâce à eux que l\'on peut etudier les bactéries, les virus, les atomes, les cellules d\'un corps et l\'ADN.',
-            image_url: '',
+            image_url: 'https://image.flaticon.com/icons/svg/843/843255.svg',
           },
           { 
             name: 'Les Bactéries', 
@@ -224,7 +224,7 @@ const data = [
           }, 
           { 
             name: 'Professeur Al', 
-            desc: 'lorem',
+            desc: 'Grâce à la découverte des molecules et des atomes, la chimie, et son évolution, nous a aidé a fabriquer de nombreux vaccins et médicaments. De nos jours, on utilise la chimie au quotidien! C\'est à dire dans chaque produit que l\'on consomme, la chimie joue un rôle cruciale. ',
             image_url: 'https://image.flaticon.com/icons/svg/843/843255.svg', 
           },
           { 

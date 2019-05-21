@@ -9,22 +9,23 @@ const calc = (x, y) => [
   (x - window.innerWidth) / 3,
   (y - window.innerHeight) / 3
 ];
-const trans0 = (x, y) => `translate3d(${x / 12}px,${y / 12}px,0)`;
+//const trans0 = (x, y) => `translate3d(${x / 12}px,${y / 12}px,0)`;
 const trans1 = (x, y) => `translate3d(${x / 7 + -20}px,${y / 7 - -200}px,0)`;
 const trans2 = (x, y) => `translate3d(${x / 7 - -195}px,${y / 7 - -140}px,0)`;
 const trans3 = (x, y) => `translate3d(${x / 7 + -140}px,${y / 7 - -160}px,0)`;
 
 
-const Card1 = () => {
+const Card1 = ({selectId, cardId}) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 10, tension: 30, friction: 500 }
+    config: { mass: 10, tension: 550, friction: 140}
   }));
 
   const pStyle = {
     fontSize: '1.2em'
   };
 
+  const data = selectId({ name: 'science', id: cardId})
 
   return (
     <div
@@ -40,12 +41,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
-          header="Professeur Al"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--science--pic2"
-              src="https://image.flaticon.com/icons/svg/843/843255.svg"
+              src={data.pics[1].image_url}
             />
           }
           style={pStyle}
@@ -57,12 +58,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Microscope"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--science--pic3"
-              src="https://image.flaticon.com/icons/svg/1198/1198650.svg"
+              src={data.pics[2].image_url}
             />
           }
           style={pStyle}
@@ -73,12 +74,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="Tubes et fioles à essai"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--science--pic4"
-              src="https://image.flaticon.com/icons/svg/1283/1283419.svg"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}

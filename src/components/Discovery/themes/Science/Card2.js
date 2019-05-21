@@ -16,16 +16,17 @@ const trans3 = (x, y) => `translate3d(${x / 7 - 780}px,${y / 7 + -80}px,0)`;
 const trans4 = (x, y) => `translate3d(${x / 7 - 300}px,${y / 7 + -390}px,0)`;
 
 
-const Card2 = () => {
+const Card2 = ({selectId, cardId}) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 10, tension: 100, friction: 500 }
+    config: { mass: 10, tension: 550, friction: 140 }
   }));
 
   const pStyle = {
     fontSize: '1.2em'
   };
 
+  const data = selectId({ name: 'science', id: cardId});
 
   return (
     <div
@@ -41,12 +42,12 @@ const Card2 = () => {
        // style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
-          header="Professeur Al"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--science--pic6"
-              src="https://image.flaticon.com/icons/svg/843/843255.svg"
+              src={data.pics[1].image_url}
             />
           }
           style={pStyle}
@@ -58,12 +59,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Les Bactéries"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--science--pic7"
-              src="https://image.flaticon.com/icons/svg/1176/1176353.svg"
+              src={data.pics[2].image_url}
             />
           }
           style={pStyle}
@@ -74,12 +75,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="Les virus"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--science--pic8"
-              src="https://image.flaticon.com/icons/svg/1198/1198638.svg"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}
@@ -91,12 +92,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="Les Atomes"
-          content="hello"
+          header={data.pics[4].name}
+          content={data.pics[4].desc}
           trigger={
             <Image
               className="discovery--science--pic9"
-              src="https://image.flaticon.com/icons/svg/1198/1198627.svg"
+              src={data.pics[4].image_url}
             />
           }
           style={pStyle}
