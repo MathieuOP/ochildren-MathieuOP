@@ -18,6 +18,7 @@ import {
   loggedIn,
   loginError,
   DATA_FOR_PUZZLE,
+  receivedDataQuizzes,
   receivedDataPuzzle,
   GET_USER_INFOS
 } from './reducer';
@@ -54,16 +55,14 @@ const ajaxMiddleware = store => next => action => {
           });
         });
     case QUIZ_BY_WORLD_ID:
+      next(action)
       return axios
         .get(
           `${process.env.API_URL}/api/categories/${action.worldId}/quizzs`,
           {}
         )
         .then(response => {
-          next({
-            ...action,
-            data: response.data
-          });
+          store.dispatch(receivedDataQuizzes(response.data, response.data[0].name))
         })
         .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());

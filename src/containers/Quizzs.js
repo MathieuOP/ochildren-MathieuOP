@@ -12,6 +12,8 @@ import { getQuestionsByQuizId, initialQuiz, getQuizByWorldId } from 'src/store/r
 
 const mapStateToProps = (state) => ({
   quizzsByWorldId: state.quizzsByWorldId,
+  nameCategoryQuiz: state.nameCategoryQuiz,
+  loaded: state.loaded,
 });
 
 const mapDispatchToProps = dispatch => ({

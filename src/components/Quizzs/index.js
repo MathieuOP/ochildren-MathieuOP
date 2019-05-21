@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaRegHeart } from 'react-icons/fa';
@@ -16,24 +16,29 @@ class Quizzs extends Component {
   };
 
   render() {
-    const { quizzsByWorldId } = this.props;
+    const { quizzsByWorldId, nameCategoryQuiz, loaded } = this.props;
     return (
       <div className="quizzs">
-
-        <div className="wrapper-quizzs">
-          {quizzsByWorldId.map(quiz => (
-            <div className="quizzs-quiz" key={quiz.quizzs[0].id}>
-              <Link
-                onClick={this.handleClick(quiz.quizzs[0].id)}
-                to={`/quiz/${quiz.quizzs[0].id}`}
-              >
-                {quiz.quizzs[0].title}
-              </Link>
-              <FaRegHeart color="#000" className="quizzs-fav" />
-            </div>
-          ))}
-        </div>
-        
+        {
+          loaded && (
+            <Fragment>
+              <h1>{ nameCategoryQuiz } </h1>
+              <div className="wrapper-quizzs">
+                {quizzsByWorldId.map(quiz => (
+                  <div className="quizzs-quiz" key={quiz.quizzs[0].id}>
+                    <Link
+                      onClick={this.handleClick(quiz.quizzs[0].id)}
+                      to={`/quiz/${quiz.quizzs[0].id}`}
+                    >
+                      {quiz.quizzs[0].title}
+                    </Link>
+                    <FaRegHeart color="#000" className="quizzs-fav" />
+                  </div>
+                ))}
+              </div>
+            </Fragment>
+          )
+        }
       </div>
     )
   }
