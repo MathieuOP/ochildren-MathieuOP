@@ -28,7 +28,7 @@ import './app.scss';
 /**
  * Code
  */
-const App = ({ error404 }) => (
+const App = ({ error404, dataMemory }) => (
   <div id="app">
     <Header />
 
@@ -63,7 +63,11 @@ const App = ({ error404 }) => (
         path="/memory/:memoryId"
         render={({ match }) => {
           const { memoryId } = match.params;
+          const searchMemory = dataMemory.find(memory => memory.id == memoryId);
 
+          if (searchMemory === undefined) {
+            return <Redirect to="/not-found" />;
+          }
           return <Memory memoryId={memoryId} />;
         }}
       />
