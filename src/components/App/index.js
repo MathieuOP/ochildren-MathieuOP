@@ -8,7 +8,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
  * Local import
  */
 // Composants
-import Header from '../Header';
+import Header from '../../containers/Header';
 import Home from '../../containers/Home';
 import Login from '../Login';
 import Register from '../../containers/Register';
@@ -20,6 +20,7 @@ import Games from '../../containers/Games';
 import MyPuzzle from '../../containers/MyPuzzle';
 import Memory from '../../containers/Memory';
 import Page404 from '../Page404';
+import Profile from '../../containers/Profile';
 
 // Styles et assets
 import './app.scss';
@@ -45,6 +46,8 @@ const App = ({ error404 }) => (
 
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+
+      <Route path="/profile" component={Profile} />
 
       <Route
         exact
