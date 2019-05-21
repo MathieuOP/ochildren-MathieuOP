@@ -8,9 +8,7 @@ const initialState = {
   dataHomePage: [],
   puzzles: [],
   puzzle: {},
-  dataMemory: [
-    ...JSON.parse(JSON.stringify(memory)),
-  ],
+  dataMemory: [...JSON.parse(JSON.stringify(memory))],
   loginForm: {
     email: '',
     password: '',
@@ -29,7 +27,8 @@ const initialState = {
     signedUp: false,
     error: false
   },
-  usersToken: '',
+  loggedIn: false,
+  loggedUserInfos: {},
   indexQuiz: 0,
   dataHomeGame: {},
   categoriesQuizzs: [],
@@ -95,7 +94,7 @@ export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
 export const RECEIVED_DATA_QUIZZES = 'RECEIVED_DATA_QUIZZES';
 
-//memory
+// memory
 const COUNT_PAIRS = 'COUNT_PAIRS';
 const FINISHED = 'FINISHED';
 const TENTATIVE = 'TENTATIVE';
@@ -105,10 +104,13 @@ const UPDATED_DATA = 'UPDATED_DATA';
 const UPDATED_OPENED_CARD = 'UPDATED_OPENED_CARD';
 const RESET_MEMORY = 'RESET_MEMORY';
 
-//Puzzle
+// Puzzle
 export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
 export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
+const RECEIVED_DATA_PUZZLE = 'RECEIVED_DATA_PUZZLE';
 
+// User
+export const GET_USER_INFOS = 'GET_USER_INFOS';
 /**
  * Traitements
  */
@@ -152,7 +154,8 @@ const reducer = (state = initialState, action = {}) => {
           loading: false,
           loggedIn: true
         },
-        usersToken: action.token
+        loggedIn: true,
+        loggedUserInfos: action.data
       };
 
     case LOGIN_ERROR:
@@ -324,13 +327,18 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_FOR_PUZZLES:
       return {
         ...state,
-        puzzles: [...action.data]
+        puzzles: action.data,
       };
-    case DATA_FOR_PUZZLE:
-      console.log(action.data);
+    case RECEIVED_DATA_PUZZLE:
       return {
         ...state,
+        loaded: true,
         puzzle: {...action.data}
+      }
+    case DATA_FOR_PUZZLE:
+      return {
+        ...state,
+        loaded: false,
       }
     case COUNT_PAIRS:
       return {
@@ -372,12 +380,10 @@ const reducer = (state = initialState, action = {}) => {
             : [...state.openedCard, action.data]
       };
     case RESET_MEMORY:
-      memory.map((data) => shuffle(data.memory));
+      memory.map(data => shuffle(data.memory));
       return {
         ...state,
-        dataMemory: [
-          ...JSON.parse(JSON.stringify(memory)),
-        ],
+        dataMemory: [...JSON.parse(JSON.stringify(memory))],
         openedCard: [],
         getCountPaire: 0,
         getCountClick: 0,
@@ -408,9 +414,9 @@ export const loginSubmit = () => ({
   type: LOGIN_SUBMIT
 });
 
-export const loggedIn = token => ({
+export const loggedIn = data => ({
   type: LOGGED_IN,
-  token
+  data
 });
 
 export const loginError = () => ({
@@ -563,9 +569,20 @@ export const resetMemory = () => ({
   type: RESET_MEMORY
 });
 
-export const dataForPuzzle = (puzzleId) => ({
+export const dataForPuzzle = puzzleId => ({
   type: DATA_FOR_PUZZLE,
-  puzzleId,
+  puzzleId
+});
+
+// User
+export const getUserInfos = data => ({
+  type: GET_USER_INFOS,
+  data
+});
+
+export const receivedDataPuzzle = (data) => ({
+  type: RECEIVED_DATA_PUZZLE,
+  data,
 })
 
 export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
