@@ -25,7 +25,7 @@ class MyPuzzle extends Component {
   };
 
   render() {
-    const { puzzle } = this.props;
+    const { puzzle, loaded } = this.props;
 
     return (
       <Fragment>
@@ -33,27 +33,33 @@ class MyPuzzle extends Component {
           <p ref={this.textWin} className="puzzle-win-text">
             BRAVO !
           </p>
-          <div ref={this.puzzle}>
-            <MediaQuery query="(max-width: 768px)">
-              <Puzzle
-                image={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
-                  puzzle.image
-                }`}
-                size={350}
-                onDone={this.puzzleFinished}
-              />
-            </MediaQuery>
-
-            <MediaQuery query="(min-width: 769px)">
-              <Puzzle
-                image={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
-                  puzzle.image
-                }`}
-                size={550}
-                onDone={this.puzzleFinished}
-              />
-            </MediaQuery>
-          </div>
+          {
+            loaded && (
+              <Fragment>
+                <div ref={this.puzzle}>
+                  <MediaQuery query="(max-width: 768px)">
+                    <Puzzle
+                      image={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+                        puzzle.image
+                      }`}
+                      size={350}
+                      onDone={this.puzzleFinished}
+                    />
+                  </MediaQuery>
+      
+                  <MediaQuery query="(min-width: 769px)">
+                    <Puzzle
+                      image={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+                        puzzle.image
+                      }`}
+                      size={550}
+                      onDone={this.puzzleFinished}
+                    />
+                  </MediaQuery>
+                </div>
+              </Fragment>
+            )
+          }
           <img
             className="puzzle-img"
             ref={this.imgPuzzle}

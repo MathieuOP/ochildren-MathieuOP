@@ -8,14 +8,22 @@ import './index.scss';
 
 class Quiz extends Component {
   quizQuestion = React.createRef();
-  
+
   componentDidMount() {
     const { getQuestionsByQuizId, quizId } = this.props;
     getQuestionsByQuizId(quizId);
   }
 
   handleClickAnswer = e => {
-    const { questionsOfQuiz, getMessage, answerIsTrue, disabledButton, indexQuiz, updateScore, userChosenAnswer } = this.props
+    const {
+      questionsOfQuiz,
+      getMessage,
+      answerIsTrue,
+      disabledButton,
+      indexQuiz,
+      updateScore,
+      userChosenAnswer
+    } = this.props;
     const userAnswer = e.currentTarget;
     const goodAnswer = () => questionsOfQuiz[indexQuiz].right_answer.content;
 
@@ -53,10 +61,10 @@ class Quiz extends Component {
     // delete class
     this.quizQuestion.current.classList.remove('quiz-answer--bad');
     this.quizQuestion.current.classList.remove('quiz-answer--good');
-  }
+  };
 
   render() {
-    const { 
+    const {
       loaded,
       myScore,
       descriptionCurrentQuiz,
@@ -68,11 +76,11 @@ class Quiz extends Component {
       disabledButton,
       getMyScore,
       score,
-      messageScore 
+      messageScore
     } = this.props;
     return loaded && !myScore ? (
       <div ref={this.quiz} className="quiz">
-        <h1>{ descriptionCurrentQuiz }</h1>
+        <h1>{descriptionCurrentQuiz}</h1>
         <div ref={this.quizQuestion} className="quiz-questions">
           <p className="quiz-question">{questionsOfQuiz[indexQuiz].content}</p>
           <div className="quiz-responses">
@@ -95,11 +103,11 @@ class Quiz extends Component {
               {message}
             </p>
           )}
-  
+
           <p className="quiz-nbQuestions">
             {indexQuiz + 1} / {questionsOfQuiz.length}
           </p>
-  
+
           {indexQuiz < questionsOfQuiz.length - 1 ? (
             <Button
               disabled={disabledButton}
@@ -120,10 +128,16 @@ class Quiz extends Component {
         </div>
       </div>
     ) : (
-      myScore && <Score score={score} messageScore={messageScore} currentNameQuiz={currentNameQuiz}/>
+      myScore && (
+        <Score
+          score={score}
+          messageScore={messageScore}
+          currentNameQuiz={currentNameQuiz}
+        />
+      )
     );
   }
-};
+}
 
 Quiz.propTypes = {
   handleClickButtonNext: PropTypes.func.isRequired,

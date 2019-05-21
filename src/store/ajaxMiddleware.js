@@ -18,6 +18,8 @@ import {
   loggedIn,
   loginError,
   DATA_FOR_PUZZLE,
+  receivedDataQuizzes,
+  receivedDataPuzzle,
   GET_USER_INFOS
 } from './reducer';
 
@@ -53,16 +55,16 @@ const ajaxMiddleware = store => next => action => {
           });
         });
     case QUIZ_BY_WORLD_ID:
+      next(action);
       return axios
         .get(
           `${process.env.API_URL}/api/categories/${action.worldId}/quizzs`,
           {}
         )
         .then(response => {
-          next({
-            ...action,
-            data: response.data
-          });
+          store.dispatch(
+            receivedDataQuizzes(response.data, response.data[0].name)
+          );
         })
         .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
@@ -71,14 +73,14 @@ const ajaxMiddleware = store => next => action => {
       next(action);
       return axios
         .get(`${process.env.API_URL}/api/quizzs/${action.id}`, {})
-        .then(response => {
-          response.data.questions.map(data => shuffle(data.answers));
+        .then(({ data }) => {
+          data.questions.map(question => shuffle(question.answers));
 
           store.dispatch(
             receivedDataQuestions(
-              shuffle(response.data.questions),
-              response.data.description,
-              response.data.title
+              shuffle(data.questions),
+              data.description,
+              data.title
             )
           );
         })
@@ -98,14 +100,11 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLE:
+      next(action);
       return axios
         .get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {})
         .then(response => {
-          // console.log(response.data);
-          next({
-            ...action,
-            data: response.data
-          });
+          store.dispatch(receivedDataPuzzle(response.data));
         })
         .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
