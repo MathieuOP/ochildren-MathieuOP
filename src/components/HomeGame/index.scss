@@ -7,9 +7,15 @@
         align-items: flex-start;
 
         h1 {
-            font-size: 4em;
+            font-size: 2em;
             font-weight: bold;
-            margin-top: 0;
+            margin: 0;
+
+            @media screen and (min-width: 769px) {
+                font-size: 3.5em;
+                font-weight: bold;
+                margin-top: 0;    
+            }
         }
         
         img {
