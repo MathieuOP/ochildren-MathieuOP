@@ -17,9 +17,7 @@ class Home extends Component {
   state = {
     open1: false,
     open2: false,
-    open3: false,
-    
-    
+    open3: false,  
   };
 
   show1 = dimmer1 => () => this.setState({ dimmer1, open1: true });
@@ -43,7 +41,7 @@ class Home extends Component {
 
     
     return (
-      <main id="discovery">
+      <main className="discovery">
         <h1 className="discovery--title">Bienvenu sur le dicovery</h1>
         <p className="discovery--description">
           Le discovery est un livre interactif qui vous apprendra tout sur les

@@ -30,7 +30,7 @@ const Card1 = ({ selectId, cardId }) => {
 
   const data = selectId({ name: 'nature', id: cardId});
 
-  console.log(data.pics[0].image_url)
+  // console.log(data.pics[0].image_url)
 
   return (
     <div
@@ -45,12 +45,12 @@ const Card1 = ({ selectId, cardId }) => {
         style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
-          header="Le soleil"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--nature--pic2"
-              src="https://image.flaticon.com/icons/svg/1164/1164954.svg"
+              src={data.pics[1].image_url}
               // exemple
               // src={data.pics[0].image_url}
             />
@@ -64,12 +64,12 @@ const Card1 = ({ selectId, cardId }) => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Le colibri"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--nature--pic3"
-              src="https://image.flaticon.com/icons/svg/789/789392.svg"
+              src={data.pics[2].image_url}
             />
           }
           style={pStyle}
@@ -80,12 +80,12 @@ const Card1 = ({ selectId, cardId }) => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="La Tortue"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--nature--pic4"
-              src="https://image.flaticon.com/icons/svg/852/852075.svg"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}
@@ -96,12 +96,12 @@ const Card1 = ({ selectId, cardId }) => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="Le Dauphin"
-          content="hello"
+          header={data.pics[4].name}
+          content={data.pics[4].desc}
           trigger={
             <Image
               className="discovery--nature--pic5"
-              src="https://image.flaticon.com/icons/svg/427/427544.svg"
+              src={data.pics[4].image_url}
             />
           }
           style={pStyle}
@@ -112,12 +112,12 @@ const Card1 = ({ selectId, cardId }) => {
         style={{ transform: p.xy.interpolate(trans5) }}
       >
         <Popup
-          header="Le singe"
-          content="hello"
+          header={data.pics[5].name}
+          content={data.pics[5].desc}
           trigger={
             <Image
               className="discovery--nature--pic6"
-              src="https://image.flaticon.com/icons/svg/852/852071.svg"
+              src={data.pics[5].image_url}
             />
           }
           style={pStyle}
@@ -128,12 +128,12 @@ const Card1 = ({ selectId, cardId }) => {
         style={{ transform: p.xy.interpolate(trans6) }}
       >
         <Popup
-          header="Le peroquet"
-          content="hello"
+          header={data.pics[6].name}
+          content={data.pics[6].desc}
           trigger={
             <Image
               className="discovery--nature--pic7"
-              src="https://image.flaticon.com/icons/svg/688/688300.svg"
+              src={data.pics[6].image_url}
             />
           }
           style={pStyle}

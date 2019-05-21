@@ -311,12 +311,12 @@ const data = [
           { 
             name: 'Les Libellule', 
             desc: 'On les trouve fréquemment près des zones d\'eau douce notamment les mares. Les libellules ont un corps allongé, en forme de bâton. Elles ont quatre grandes ailes, membraneuses. Les libellules ne peuvent pas replier complètement les ailes sur leur dos, comme la plupart des autres insectes. Quand elles sont posées, elles gardent les ailes grandes ouvertes, ce qui les rend très reconnaissables et leur permet également de très vite s\'échapper jusqu\'à 90 km/h (c\'est l’insecte le plus rapide). Elles mesurent quelques centimètres de long de 4 à 5 centimètres.',
-            image_url: 'https://image.flaticon.com/icons/svg/235/235423.svg',
+            image_url: 'https://image.flaticon.com/icons/svg/184/184979.svg',
           }, 
           { 
             name: 'Le Singe', 
             desc: 'Hello je suis un singe! En Anglais, on m\'appel aussi Monkey ou Ape',
-            image_url: '', 
+            image_url: 'https://image.flaticon.com/icons/svg/852/852071.svg', 
           },
           { 
             name: 'Le Papillon', 

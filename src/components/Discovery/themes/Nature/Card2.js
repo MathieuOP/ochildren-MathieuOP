@@ -18,7 +18,7 @@ const trans6 = (x, y) => `translate3d(${x / 8 - 920}px,${y / 8 - 260}px,0)`;
 
 
 
-const Card1 = () => {
+const Card2 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 2, tension: 40, friction: 940 }
@@ -27,7 +27,7 @@ const Card1 = () => {
   const pStyle = {
     fontSize: '1.2em'
   };
-
+  const data = selectId({ name: 'nature', id: cardId});
 
   return (
     <div
@@ -42,12 +42,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
-          header="Le Tigre"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--nature--pic9"
-              src="https://image.flaticon.com/icons/svg/616/616523.svg"
+              src={data.pics[1].image_url}
             />
           }
           style={pStyle}
@@ -59,12 +59,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Le Toucan"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--nature--pic10"
-              src="https://image.flaticon.com/icons/svg/375/375082.svg"
+              src={data.pics[2].image_url}
             />
           }
           style={pStyle}
@@ -75,12 +75,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="La Panthère Noire"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--nature--pic11"
-              src="https://image.flaticon.com/icons/svg/371/371654.svg"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}
@@ -91,12 +91,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="La Libellule"
-          content="hello"
+          header={data.pics[4].name}
+          content={data.pics[4].desc}
           trigger={
             <Image
               className="discovery--nature--pic12"
-              src="https://image.flaticon.com/icons/svg/184/184979.svg"
+              src={data.pics[4].image_url}
             />
           }
           style={pStyle}
@@ -107,12 +107,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans5) }}
       >
         <Popup
-          header="Le singe"
-          content="hello"
+          header={data.pics[5].name}
+          content={data.pics[5].desc}
           trigger={
             <Image
               className="discovery--nature--pic13"
-              src="https://image.flaticon.com/icons/svg/852/852071.svg"
+              src={data.pics[5].image_url}
             />
           }
           style={pStyle}
@@ -123,12 +123,12 @@ const Card1 = () => {
         style={{ transform: p.xy.interpolate(trans6) }}
       >
         <Popup
-          header="Le Papillon"
-          content="hello"
+          header={data.pics[6].name}
+          content={data.pics[6].desc}
           trigger={
             <Image
               className="discovery--nature--pic14"
-              src="https://image.flaticon.com/icons/svg/235/235423.svg"
+              src={data.pics[6].image_url}
             />
           }
           style={pStyle}
@@ -145,4 +145,4 @@ const Card1 = () => {
 
 
 
-export default Card1;
+export default Card2;
