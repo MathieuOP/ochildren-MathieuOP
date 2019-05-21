@@ -105,10 +105,10 @@ const RESET_MEMORY = 'RESET_MEMORY';
 // Puzzle
 export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
 export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
+const RECEIVED_DATA_PUZZLE = 'RECEIVED_DATA_PUZZLE';
 
 // User
 export const GET_USER_INFOS = 'GET_USER_INFOS';
-
 /**
  * Traitements
  */
@@ -318,13 +318,19 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_FOR_PUZZLES:
       return {
         ...state,
-        puzzles: [...action.data]
+        puzzles: action.data,
       };
+    case RECEIVED_DATA_PUZZLE:
+      return {
+        ...state,
+        loaded: true,
+        puzzle: {...action.data}
+      }
     case DATA_FOR_PUZZLE:
       return {
         ...state,
-        puzzle: { ...action.data }
-      };
+        loaded: false,
+      }
     case COUNT_PAIRS:
       return {
         ...state,
@@ -564,6 +570,11 @@ export const getUserInfos = data => ({
   type: GET_USER_INFOS,
   data
 });
+
+export const receivedDataPuzzle = (data) => ({
+  type: RECEIVED_DATA_PUZZLE,
+  data,
+})
 
 /**
  * Selectors
