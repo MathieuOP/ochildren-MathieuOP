@@ -3,6 +3,8 @@ import { bubble as Menu } from 'react-burger-menu';
 import { NavLink } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
 import { FaSignInAlt, FaHome } from 'react-icons/fa';
+import PropTypes from 'prop-types';
+
 // fichier scss
 import './index.scss';
 
@@ -71,5 +73,9 @@ const Header = ({ loggedIn }) => (
     </MediaQuery>
   </header>
 );
+
+Header.propTypes = {
+  loggedIn: PropTypes.bool.isRequired
+};
 
 export default Header;

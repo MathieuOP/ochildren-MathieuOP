@@ -50,7 +50,8 @@ const initialState = {
   finished: false,
   openedCard: [],
   descriptionCurrentQuiz: '',
-  currentNameQuiz: ''
+  currentNameQuiz: '',
+  publicUserInfos: {}
 };
 
 /**
@@ -351,7 +352,6 @@ const reducer = (state = initialState, action = {}) => {
         getCountClick: 0
       };
     case UPDATED_DATA:
-      // console.log(action.data);
       return {
         ...state,
         dataMemory: action.data
@@ -375,6 +375,13 @@ const reducer = (state = initialState, action = {}) => {
         getTentative: 0,
         finished: false
       };
+
+    case GET_USER_INFOS:
+      return {
+        ...state,
+        publicUserInfos: action.data
+      };
+
     default:
       return state;
   }
