@@ -16,7 +16,8 @@ import {
   signeUpError,
   loggedIn,
   loginError,
-  DATA_FOR_PUZZLE
+  DATA_FOR_PUZZLE,
+  receivedDataPuzzle,
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -99,15 +100,12 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLE:
+        next(action);
       return axios.get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {
           
       })
         .then((response) => {
-          // console.log(response.data);
-          next({
-            ...action,
-            data: response.data,
-          });
+          store.dispatch(receivedDataPuzzle(response.data));
         })
         .catch((error) => {
           if (error.response.status === 404) store.dispatch(getPage404());
