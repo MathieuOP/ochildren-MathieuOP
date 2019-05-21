@@ -1,5 +1,6 @@
 import axios from 'axios';
 import shuffle from 'shuffle-array';
+import jwt from 'jsonwebtoken';
 
 import {
   CATEGORIES_QUIZZS,
@@ -18,19 +19,18 @@ import {
   loginError,
   DATA_FOR_PUZZLE,
   receivedDataPuzzle,
+  GET_USER_INFOS
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
   switch (action.type) {
     case DATA_HOME_PAGE: // Requete qui récupère les données nécessaire pour la page home
-      return axios
-        .get(`${process.env.API_URL}/api/worlds`)
-        .then(response => {
-          next({
-            ...action,
-            data: response.data
-          });
+      return axios.get(`${process.env.API_URL}/api/worlds`).then(response => {
+        next({
+          ...action,
+          data: response.data
         });
+      });
 
     case DATA_HOME_GAME: // Requete qui récupère les données nécessaire pour la page home
       return axios
@@ -87,10 +87,9 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLES:
-      return axios.get(`${process.env.API_URL}/api/worlds/${action.worldId}/puzzles`, {
-        
-      })
-        .then((response) => {
+      return axios
+        .get(`${process.env.API_URL}/api/worlds/${action.worldId}/puzzles`, {})
+        .then(response => {
           next({
             ...action,
             data: response.data[0].puzzles
@@ -100,14 +99,14 @@ const ajaxMiddleware = store => next => action => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case DATA_FOR_PUZZLE:
-        next(action);
+      next(action);
       return axios.get(`${process.env.API_URL}/api/puzzles/${action.puzzleId}/`, {
           
       })
         .then((response) => {
           store.dispatch(receivedDataPuzzle(response.data));
         })
-        .catch((error) => {
+        .catch(error => {
           if (error.response.status === 404) store.dispatch(getPage404());
         });
     case LOGIN_SUBMIT:
@@ -125,7 +124,10 @@ const ajaxMiddleware = store => next => action => {
 
       return axios
         .post(`${process.env.API_URL}/api/login`, LoginObject)
-        .then(({ data }) => store.dispatch(loggedIn(data.token)))
+        .then(({ data }) => {
+          const { userId } = jwt.decode(data.token);
+          store.dispatch(loggedIn({ token: data.token, userId }));
+        })
         .catch(() => store.dispatch(loginError()));
 
     case SIGNUP_SUBMIT:
@@ -152,6 +154,21 @@ const ajaxMiddleware = store => next => action => {
         .post(`${process.env.API_URL}/api/signup`, signUpObject)
         .then(() => store.dispatch(signedUp()))
         .catch(() => store.dispatch(signeUpError()));
+
+    case GET_USER_INFOS:
+      if (!store.getState().loggedIn) return store.dispatch(getPage404());
+      return axios
+        .get(
+          `${process.env.API_URL}/api/users/${
+            store.getState().loggedUserInfos.userId
+          }`,
+          {
+            headers: {
+              Authorization: `bearer ${store.getState().loggedUserInfos.token}`
+            }
+          }
+        )
+        .then(console.log);
 
     default:
       return next(action);
