@@ -8,27 +8,31 @@ import { connect } from 'react-redux';
 import Quizzs from 'src/components/Quizzs';
 
 // Action Creators
-import { getQuestionsByQuizId, initialQuiz, getQuizByWorldId } from 'src/store/reducer';
+import {
+  getQuestionsByQuizId,
+  initialQuiz,
+  getQuizByWorldId
+} from 'src/store/reducer';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   quizzsByWorldId: state.quizzsByWorldId,
   nameCategoryQuiz: state.nameCategoryQuiz,
-  loaded: state.loaded,
+  loaded: state.quizzesLoaded
 });
 
 const mapDispatchToProps = dispatch => ({
-  getQuestionsByQuizId: (id) => {
+  getQuestionsByQuizId: id => {
     dispatch(getQuestionsByQuizId(id));
   },
   initialQuiz: () => {
     dispatch(initialQuiz());
   },
-  getQuizByWorldId: (worldId) => {
+  getQuizByWorldId: worldId => {
     dispatch(getQuizByWorldId(worldId));
   }
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(Quizzs);

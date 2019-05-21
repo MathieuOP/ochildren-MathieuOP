@@ -52,6 +52,8 @@ const initialState = {
   descriptionCurrentQuiz: '',
   currentNameQuiz: '',
   nameCategoryQuiz: '',
+  quizzesLoaded: false,
+  questionLoaded: false
 };
 
 /**
@@ -260,25 +262,25 @@ const reducer = (state = initialState, action = {}) => {
     case QUIZ_BY_WORLD_ID:
       return {
         ...state,
-        loaded: false,
-      }
+        quizzesLoaded: false
+      };
     case RECEIVED_DATA_QUIZZES:
       return {
         ...state,
         quizzsByWorldId: action.dataQuiz,
         nameCategoryQuiz: action.nameCatQuiz,
         error404: false,
-        loaded: true,
+        quizzesLoaded: true
       };
     case QUESTION_BY_ID:
       return {
         ...state,
-        loaded: false
+        questionLoaded: false
       };
     case RECEIVED_DATA_QUESTIONS:
       return {
         ...state,
-        loaded: true,
+        questionLoaded: true,
         questionsOfQuiz: [...action.dataQuestions],
         descriptionCurrentQuiz: action.dataDescription,
         currentNameQuiz: action.dataName,
@@ -327,19 +329,19 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_FOR_PUZZLES:
       return {
         ...state,
-        puzzles: action.data,
+        puzzles: action.data
       };
     case RECEIVED_DATA_PUZZLE:
       return {
         ...state,
         loaded: true,
-        puzzle: {...action.data}
-      }
+        puzzle: { ...action.data }
+      };
     case DATA_FOR_PUZZLE:
       return {
         ...state,
-        loaded: false,
-      }
+        loaded: false
+      };
     case COUNT_PAIRS:
       return {
         ...state,
@@ -580,16 +582,16 @@ export const getUserInfos = data => ({
   data
 });
 
-export const receivedDataPuzzle = (data) => ({
+export const receivedDataPuzzle = data => ({
   type: RECEIVED_DATA_PUZZLE,
-  data,
-})
+  data
+});
 
 export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
   type: RECEIVED_DATA_QUIZZES,
   dataQuiz,
-  nameCatQuiz,
-})
+  nameCatQuiz
+});
 
 /**
  * Selectors

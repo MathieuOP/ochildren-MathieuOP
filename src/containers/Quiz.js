@@ -23,7 +23,7 @@ import {
 const mapStateToProps = state => ({
   questionsOfQuiz: state.questionsOfQuiz,
   responses: state.responses,
-  loaded: state.loaded,
+  loaded: state.questionLoaded,
   indexQuiz: state.indexQuiz,
   disabledButton: state.disabledButton,
   message: state.message,
@@ -32,8 +32,7 @@ const mapStateToProps = state => ({
   answerTrue: state.answerTrue,
   messageScore: messageScore(state),
   descriptionCurrentQuiz: state.descriptionCurrentQuiz,
-  currentNameQuiz: state.currentNameQuiz,
-  
+  currentNameQuiz: state.currentNameQuiz
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -55,9 +54,9 @@ const mapDispatchToProps = dispatch => ({
   answerIsTrue: () => {
     dispatch(answerIsTrue());
   },
-  getQuestionsByQuizId: (id) => {
+  getQuestionsByQuizId: id => {
     dispatch(getQuestionsByQuizId(id));
-  },
+  }
 });
 
 export default connect(
