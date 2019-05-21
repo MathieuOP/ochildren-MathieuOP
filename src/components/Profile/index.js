@@ -15,21 +15,6 @@ const Profile = ({ handleGetUserInfos, loggedIn, userInfos }) => {
   if (!loggedIn) return <Page404 />;
 
   return (
-    // <div className="profile">
-    //   <img
-    //     src="https://avatars0.githubusercontent.com/u/35486736?s=460&v=4"
-    //     className="profile--image"
-    //     alt="Avatar"
-    //   />
-    //   <ul className="profile--list">
-    //     <li className="profile--list--elem">Anatole Lucet</li>
-    //     <li className="profile--list--elem">Crayzzit</li>
-    //     <li className="profile--list--elem">lucet.anatole@gmail.com</li>
-    //     <li className="profile--list--elem">
-    //       <Button>Modifier mon mot de passe</Button>
-    //     </li>
-    //   </ul>
-    // </div>
     <div className="profile">
       <img src={userInfos.image} className="profile--image" alt="Avatar" />
       <ul className="profile--list">
