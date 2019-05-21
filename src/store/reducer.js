@@ -113,6 +113,9 @@ const RECEIVED_DATA_PUZZLE = 'RECEIVED_DATA_PUZZLE';
 
 // User
 export const GET_USER_INFOS = 'GET_USER_INFOS';
+
+// Favoris
+export const TOGGLE_FAVORIS = 'TOGGLE_FAVORIS';
 /**
  * Traitements
  */
@@ -581,6 +584,15 @@ export const getUserInfos = data => ({
   type: GET_USER_INFOS,
   data
 });
+
+export const toggleFavoris = (quizId) => ({
+  type: TOGGLE_FAVORIS,
+  quizId,
+})
+
+export const addOrDeleteFav = () => ({
+  type: ADD_OR_DELETE_FAV,
+})
 
 export const receivedDataPuzzle = data => ({
   type: RECEIVED_DATA_PUZZLE,
