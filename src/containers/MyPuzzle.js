@@ -10,8 +10,9 @@ import MyPuzzle from 'src/components/MyPuzzle';
 // Action Creators
 import { dataForPuzzle } from 'src/store/reducer';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   puzzle: state.puzzle,
+  loaded: state.loaded,
 });
 
 const mapDispatchToProps = dispatch => ({

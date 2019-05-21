@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaRegHeart } from 'react-icons/fa';
@@ -11,7 +11,6 @@ class Quizzs extends Component {
 
     if (loggedIn) handleGetUserInfos();
     getQuizByWorldId(categoryQuizId)
-    
   }
 
   handleClick = () => () => {
@@ -45,13 +44,12 @@ class Quizzs extends Component {
               </Link>
               <FaRegHeart onClick={this.handleClickFav(quiz.quizzs[0].id)} color="#000" className="quizzs-fav" />
             </div>
-          ))}
-        </div>
-        
+          </Fragment>
+        )}
       </div>
-    )
+    );
   }
-};
+}
 
 Quizzs.propTypes = {
   quizzsByWorldId: PropTypes.arrayOf(PropTypes.object).isRequired,
