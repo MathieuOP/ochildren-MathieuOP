@@ -1,6 +1,6 @@
 import React from 'react';
-
-import { Image, Popup } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Image, Popup, Button } from 'semantic-ui-react';
 import { useSpring, animated } from 'react-spring';
 
 
@@ -39,7 +39,7 @@ const Card2 = ({selectId, cardId}) => {
       />
       <animated.div
         className="discovery--science--pic6"
-       // style={{ transform: p.xy.interpolate(trans1) }}
+        // style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
           header={data.pics[1].name}
@@ -106,13 +106,17 @@ const Card2 = ({selectId, cardId}) => {
       </animated.div>
       
 
-        
     </div>
     
     
   );
 };
 
+
+Card2.propTypes = {
+  selectId: PropTypes.number.isRequired,
+  cardId: PropTypes.number.isRequired
+};
 
 
 export default Card2;

@@ -83,7 +83,7 @@
     height: 45vw;
     max-width: 200ch;
     max-height: 200ch;
-    background-image: url(https://telesel.ch/wp/wp-content/uploads/2017/08/a7c4b20e9bf9c64ce9b455a5f2e371a9-space-stars-background.jpg);
+    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/GfRLKaE/videoblocks-shiny-stars-star-field-background_rxvys_4vf_thumbnail-full01.png);
   }
 
   &--pic6 {
@@ -167,13 +167,13 @@
   &--pic19 {
     width: 28ch;
     height: 28ch;
-    opacity: 0.97;
+    opacity: 0.985;
   }
 
   &--pic20 {
     width: 6ch;
     height: 6ch;
-    opacity: 0.9;
+    opacity: 0.93;
   }
 
   &--pic21 {
@@ -204,6 +204,11 @@
     opacity: 0.97;
     background-image: url(https://image.flaticon.com/icons/svg/433/433924.svg);
     background-repeat: no-repeat;
+  }
+  Button{
+    z-index: 1;
+    position: fixed;
+    //margin-left: 55em;
   }
 }
 

@@ -137,7 +137,11 @@ const Card1 = ({ selectId, cardId }) => {
           }
           style={pStyle}
         />
-      </animated.div>    
+      </animated.div>  
+      {/*<Button  className="back-button" icon="left chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} > 
+        <Link to={`$/home-game/1/discovery/space&card=${cardId + 1}`} />
+      
+      <Button className="forward-button" icon="right chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} /> */}
     </div>
     
     
@@ -145,8 +149,8 @@ const Card1 = ({ selectId, cardId }) => {
 };
 
 Card1.propTypes = {
-  title: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired
+  selectId: PropTypes.func.isRequired,
+  cardId: PropTypes.number.isRequired
 };
 
 export default Card1;

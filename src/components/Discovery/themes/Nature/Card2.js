@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Image, Popup } from 'semantic-ui-react';
 import { useSpring, animated } from 'react-spring';
 
@@ -9,7 +9,8 @@ const calc = (x, y) => [
   (x - window.innerWidth) / 4,
   (y - window.innerHeight) / 4
 ];
-const trans1 = (x, y) => `translate3d(${x / 3 + 850}px,${y / 3 - -285}px,0)`;
+const trans0 = (x, y) => `translate3d(${x / 12}px,${y / 12}px,0)`;
+const trans1 = (x, y) => `translate3d(${x / 3 + 850}px,${y / 3 - -315}px,0)`;
 const trans2 = (x, y) => `translate3d(${x / 7 - 350}px,${y / 7 - -140}px,0)`;
 const trans3 = (x, y) => `translate3d(${x / 4 + -140}px,${y / 4 - -380}px,0)`;
 const trans4 = (x, y) => `translate3d(${x / 7 + 780}px,${y / 7 - 100}px,0)`;
@@ -21,7 +22,7 @@ const trans6 = (x, y) => `translate3d(${x / 8 - 920}px,${y / 8 - 260}px,0)`;
 const Card2 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 2, tension: 40, friction: 940 }
+    config: { mass: 10, tension: 400, friction: 140 }
   }));
 
   const pStyle = {
@@ -36,6 +37,7 @@ const Card2 = ({ selectId, cardId }) => {
     >
       <animated.div
         className="discovery--nature--pic8"
+        style={{ transform: p.xy.interpolate(trans0) }}
       />
       <animated.div
         className="discovery--nature--pic9"
@@ -143,6 +145,9 @@ const Card2 = ({ selectId, cardId }) => {
   );
 };
 
-
+Card2.propTypes = {
+  selectId: PropTypes.number.isRequired,
+  cardId: PropTypes.number.isRequired
+};
 
 export default Card2;

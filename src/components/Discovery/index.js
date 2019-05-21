@@ -44,8 +44,7 @@ class Home extends Component {
       <main className="discovery">
         <h1 className="discovery--title">Bienvenu sur le dicovery</h1>
         <p className="discovery--description">
-          Le discovery est un livre interactif qui vous apprendra tout sur les
-          themes si dessous
+        Discovery est un livre interactif. Avec lui, tu decouvriras different thèmes!
         </p>
         <ul className="discovery--theme-list">
           <li className="discovery--theme-list--elem">
@@ -54,7 +53,7 @@ class Home extends Component {
               dimmer={dimmer1} 
               open={open1} 
               onClose={this.close1}
-              trigger={<Image src='https://image.flaticon.com/icons/svg/639/639373.svg' size='tiny'  onClick={this.show1('blurring')} />}
+              trigger={<Image src='https://image.flaticon.com/icons/svg/1055/1055646.svg' size='tiny'  onClick={this.show1('blurring')} />}
               
             >
               <Modal.Header>Space Discovery </Modal.Header>
@@ -62,10 +61,12 @@ class Home extends Component {
                 <Image
                   wrapped
                   size="medium" 
-                  src="https://image.flaticon.com/icons/svg/1055/1055646.svg" />
+                  src="https://image.flaticon.com/icons/svg/1485/1485197.svg" />
                 <Modal.Description>
                   <Header>Space Discovery</Header>
-                  <p>Discovery est un livre interactif. Avec lui, tu decouvriras different thèmes...</p>
+                  <p>Embarquement immédiat pour un visite de notre système solaire à bord de notre fusée! </p>
+                  <br/>
+                  <p>Avec le space Discovery, tu vas decouvrir l'origine de la Terre, de quoi est composé l'espace ainsi que les planètes les plus proche de nous.</p>
                 </Modal.Description>
               </Modal.Content>
               <Modal.Actions>
@@ -92,7 +93,7 @@ class Home extends Component {
               dimmer={dimmer2} 
               open={open2} 
               onClose={this.close2}
-              trigger={<Image src='https://image.flaticon.com/icons/svg/167/167732.svg' size='tiny'  onClick={this.show2('blurring')} />}
+              trigger={<Image src='https://image.flaticon.com/icons/svg/501/501398.svg' size='tiny'  onClick={this.show2('blurring')} />}
               
             >
               <Modal.Header>Science Discovery</Modal.Header>
@@ -103,7 +104,9 @@ class Home extends Component {
                   src="https://image.flaticon.com/icons/svg/1028/1028474.svg" />
                 <Modal.Description>
                   <Header>Science Discovery</Header>
-                  <p>Discovery est un livre interactif. Avec lui, tu decouvriras different thèmes...</p>
+                  <p>Si tu veux découvrir de quoi se compose un laboratoire, voir des bactèries en grand et comprendre comment sont fait nos médicament?</p>
+                  <br/>
+                  <p>C'est par ici!!</p>
                 </Modal.Description>
               </Modal.Content>
               <Modal.Actions>
@@ -131,7 +134,7 @@ class Home extends Component {
               dimmer={dimmer3} 
               open={open3} 
               onClose={this.close3}
-              trigger={<Image src='https://image.flaticon.com/icons/svg/141/141767.svg' size='tiny'  onClick={this.show3('blurring')} />}
+              trigger={<Image src='https://image.flaticon.com/icons/svg/1747/1747184.svg' size='tiny'  onClick={this.show3('blurring')} />}
               
             >
               <Modal.Header>Nature Discovery</Modal.Header>
@@ -142,7 +145,12 @@ class Home extends Component {
                   src="https://image.flaticon.com/icons/svg/713/713999.svg" />
                 <Modal.Description>
                   <Header>Nature Discovery</Header>
-                  <p>Discovery est un livre interactif. Avec lui, tu decouvriras different thèmes...</p>
+                  <p>Et oui! C'est bien beau de voyager dans l'espace, de voir l'infiniment petit, mais il faut aussi avoir les pieds sur terre.</p>
+                  <p>Tellement de beaux paysages et d'espèce composent notre planète.</p>
+                  <p>Que serait l'homme sans les animaux? Et que serait les animaux sans la nature?</p>
+                  <p></p>
+                  <br/>
+                  <p>Viens vite voyager avec nous!!</p>
                 </Modal.Description>
               </Modal.Content>
               <Modal.Actions>

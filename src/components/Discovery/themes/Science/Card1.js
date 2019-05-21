@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import { Image, Popup } from 'semantic-ui-react';
 import { useSpring, animated } from 'react-spring';
 
@@ -95,6 +95,9 @@ const Card1 = ({selectId, cardId}) => {
   );
 };
 
-
+Card1.propTypes = {
+  selectId: PropTypes.number.isRequired,
+  cardId: PropTypes.number.isRequired
+};
 
 export default Card1;
