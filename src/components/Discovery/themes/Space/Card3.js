@@ -15,7 +15,7 @@ const trans5 = (x, y) => `translate3d(${x / 3.5}px,${y / 3.5 - -200}px,0)`;
 const trans6 = (x, y) => `translate3d(${x / 3 + 530}px,${y / 3 - -20}px,0)`;
 
 
-const Card3 = () => {
+const Card3 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 5, tension: 500, friction: 180 }
@@ -24,6 +24,8 @@ const Card3 = () => {
   const pStyle = {
     fontSize: '1.2em'
   };
+
+  const data = selectId({ name: 'space', id: cardId});
 
   return (
     <div
@@ -40,12 +42,12 @@ const Card3 = () => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Saturne"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--space--pic13"
-              src="https://image.flaticon.com/icons/svg/1751/1751904.svg"
+              src={data.pics[1].image_url}
             />
           }
           // position='top left'
@@ -58,12 +60,12 @@ const Card3 = () => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="Jupiter"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--space--pic14"
-              src="https://image.flaticon.com/icons/svg/124/124558.svg"
+              src={data.pics[2].image_url}
             />
           }
           // position='top left'
@@ -76,12 +78,12 @@ const Card3 = () => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="Mars"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--space--pic15"
-              src="https://image.flaticon.com/icons/svg/124/124582.svg"
+              src={data.pics[3].image_url}
             />
           }
           // position='top left'
@@ -98,12 +100,12 @@ const Card3 = () => {
         style={{ transform: p.xy.interpolate(trans6) }}
       >
         <Popup
-          header="Les Asteroide"
-          content="hello"
+          header={data.pics[5].name}
+          content={data.pics[5].desc}
           trigger={
             <Image
               className="discovery--space--pic17"
-              src="https://image.flaticon.com/icons/svg/433/433924.svg"
+              src={data.pics[5].image_url}
             />
           }
           // position='top left'

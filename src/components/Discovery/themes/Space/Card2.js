@@ -18,7 +18,7 @@ const trans7 = (x, y) => `translate3d(${x / 9 - 610}px,${y / 4 - -200}px,0)`;
 const trans8 = (x, y) => `translate3d(${x / 6 - 250}px,${y / 3.5 - -200}px,0)`;
 
 
-const Card2 = () => {
+const Card2 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 5, tension: 500, friction: 180 }
@@ -27,6 +27,9 @@ const Card2 = () => {
   const pStyle = {
     fontSize: '1.2em'
   };
+
+  const data = selectId({ name: 'space', id: cardId});
+
   return(
     <div
       className="discovery--space"
@@ -41,12 +44,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Le Soleil"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--space--pic6"
-              src="https://www.flaticon.com/premium-icon/icons/svg/1146/1146310.svg"
+              src={data.pics[1].image_url}
             />
           }
           // position='top left'
@@ -58,12 +61,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="Mercure"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--space--pic7"
-              src="https://image.flaticon.com/icons/svg/1086/1086084.svg"
+              src={data.pics[2].image_url}
             />
           }
           // position='top left'
@@ -75,12 +78,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="Venus"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--space--pic8"
-              src="https://image.flaticon.com/icons/svg/1266/1266586.svg"
+              src={data.pics[3].image_url}
             />
           }
           // position='top left'
@@ -92,12 +95,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans5) }}
       >
         <Popup
-          header="La Terre"
-          content="hello"
+          header={data.pics[4].name}
+          content={data.pics[4].desc}
           trigger={
             <Image
               className="discovery--space--pic9"
-              src="https://image.flaticon.com/icons/svg/616/616450.svg"
+              src={data.pics[4].image_url}
             />
           }
           // position='top left'
@@ -109,12 +112,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans6) }}
       >
         <Popup
-          header="La Lune"
-          content="hello"
+          header={data.pics[5].name}
+          content={data.pics[5].desc}
           trigger={
             <Image
               className="discovery--space--pic10"
-              src="https://image.flaticon.com/icons/svg/1197/1197992.svg"
+              src={data.pics[5].image_url}
             />
           }
           // position='top left'
@@ -126,12 +129,12 @@ const Card2 = () => {
         style={{ transform: p.xy.interpolate(trans7) }}
       >
         <Popup
-          header="Le Satellite"
-          content="hello"
+          header={data.pics[6].name}
+          content={data.pics[6].desc}
           trigger={
             <Image
               className="discovery--space--pic11"
-              src="https://image.flaticon.com/icons/svg/254/254009.svg"
+              src={data.pics[6].image_url}
             />
           }
           // position='top left'

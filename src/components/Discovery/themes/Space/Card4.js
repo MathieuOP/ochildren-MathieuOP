@@ -17,7 +17,7 @@ const trans7 = (x, y) => `translate3d(${x / 9 - 750}px,${y / 9 - 320}px,0)`;
 const trans8 = (x, y) => `translate3d(${x / 3 + 30}px,${y / 3 - -220}px,0)`;
 
 
-const Card4 = () => {
+const Card4 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 5, tension: 500, friction: 180 }
@@ -26,6 +26,8 @@ const Card4 = () => {
   const pStyle = {
     fontSize: '1.2em'
   };
+
+  const data = selectId({ name: 'space', id: cardId});
 
   return (
     <div
@@ -42,12 +44,12 @@ const Card4 = () => {
         style={{ transform: p.xy.interpolate(trans2) }}
       >
         <Popup
-          header="Uranus"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--space--pic18"
-              src="https://image.flaticon.com/icons/svg/124/124560.svg"
+              src={data.pics[1].image_url}
             />
           }
           // position='top left'
@@ -60,12 +62,12 @@ const Card4 = () => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="Neptune"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--space--pic19"
-              src="https://image.flaticon.com/icons/svg/1086/1086088.svg"
+              src={data.pics[2].image_url}
             />
           }
           // position='top left'
@@ -78,12 +80,12 @@ const Card4 = () => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="Pluton"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--space--pic20"
-              src="https://image.flaticon.com/icons/svg/1751/1751884.svg"
+              src={data.pics[3].image_url}
             />
           }
           // position='top left'

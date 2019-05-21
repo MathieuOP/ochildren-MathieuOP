@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Image, Popup, Link, Button } from 'semantic-ui-react';
 import { useSpring, animated } from 'react-spring';
 
-import { data } from 'src/datas/discovery';
+
 
 const calc = (x, y) => [
   (x - window.innerWidth) / 5,
@@ -17,16 +17,17 @@ const trans4 = (x, y) => `translate3d(${x / 8 + -150}px,${y / 8 - -100}px,0)`;
 const trans5 = (x, y) => `translate3d(${x / 8 + -170}px,${y / 8 - -90}px,0)`;
 const trans6 = (x, y) => `translate3d(${x / 8 + -190}px,${y / 8 - -110}px,0)`;
 
-const Card1 = ({ title, description }) => {
+const Card1 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 5, tension: 100, friction: 200 }
+    config: { mass: 5, tension: 550, friction: 140 }
   }));
 
   const pStyle = {
     fontSize: '1.2em'
   };
 
+  const data = selectId({ name: 'space', id: cardId});
   
 
   return (
@@ -43,12 +44,12 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans1) }}
       >
         <Popup
-          header="Observatoir"
-          content="hello"
+          header={data.pics[1].name}
+          content={data.pics[1].desc}
           trigger={
             <Image
               className="discovery--space--pic2"
-              src="https://image.flaticon.com/icons/svg/231/231142.svg"
+              src={data.pics[1].image_url}
             />
           }
           style={pStyle}
@@ -61,7 +62,7 @@ const Card1 = ({ title, description }) => {
       >
         <Popup
           header="Soleil"
-          content="hello"
+          content="Hello"
           trigger={
             <Image
               className="discovery--space--pic3"
@@ -76,12 +77,12 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans3) }}
       >
         <Popup
-          header="Fusée"
-          content="hello"
+          header={data.pics[2].name}
+          content={data.pics[2].desc}
           trigger={
             <Image
               className="discovery--space--pic4"
-              src="https://image.flaticon.com/icons/svg/639/639373.svg"
+              src={data.pics[2].image_url}
             />
           }
           style={pStyle}
@@ -94,12 +95,12 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans4) }}
       >
         <Popup
-          header="Radiotelescope"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
               className="discovery--space--pic4-1"
-              src="https://image.flaticon.com/icons/svg/1137/1137463.svg"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}
@@ -110,12 +111,12 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans5) }}
       >
         <Popup
-          header="Radiotelescope"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
-              className="discovery--space--pic4-2"
-              src="https://image.flaticon.com/icons/svg/1137/1137463.svg"
+              className="discovery--space--pic4-1"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}
@@ -126,12 +127,12 @@ const Card1 = ({ title, description }) => {
         style={{ transform: p.xy.interpolate(trans6) }}
       >
         <Popup
-          header="Radiotelescope"
-          content="hello"
+          header={data.pics[3].name}
+          content={data.pics[3].desc}
           trigger={
             <Image
-              className="discovery--space--pic4-3"
-              src="https://image.flaticon.com/icons/svg/1137/1137463.svg"
+              className="discovery--space--pic4-1"
+              src={data.pics[3].image_url}
             />
           }
           style={pStyle}
