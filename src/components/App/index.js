@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 /**
@@ -28,7 +29,7 @@ import './app.scss';
 /**
  * Code
  */
-const App = ({ error404 }) => (
+const App = ({ error404, dataMemory }) => (
   <div id="app">
     <Header />
 
@@ -63,7 +64,11 @@ const App = ({ error404 }) => (
         path="/memory/:memoryId"
         render={({ match }) => {
           const { memoryId } = match.params;
+          const searchMemory = dataMemory.find(memory => memory.id == memoryId);
 
+          if (searchMemory === undefined) {
+            return <Redirect to="/not-found" />;
+          }
           return <Memory memoryId={memoryId} />;
         }}
       />
@@ -112,6 +117,10 @@ const App = ({ error404 }) => (
     </Switch>
   </div>
 );
+
+App.propTypes = {
+  error404: PropTypes.bool.isRequired,
+}
 
 /**
  * Export

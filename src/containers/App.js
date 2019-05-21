@@ -11,6 +11,7 @@ import App from 'src/components/App';
 
 const mapStateToProps = state => ({
   error404: state.error404,
+  dataMemory: state.dataMemory,
 });
 
 const mapDispatchToProps = {};

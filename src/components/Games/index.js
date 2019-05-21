@@ -44,7 +44,9 @@ class Games extends Component {
 Games.propTypes = {
   puzzles: PropTypes.arrayOf(PropTypes.object).isRequired,
   dataForPuzzles: PropTypes.func.isRequired,
-  worldId: PropTypes.string.isRequired
+  worldId: PropTypes.string.isRequired,
+  resetMemory: PropTypes.func.isRequired,
+  dataMemory: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 export default Games;

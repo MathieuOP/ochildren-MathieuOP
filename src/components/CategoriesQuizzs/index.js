@@ -6,7 +6,8 @@ import './index.scss';
 
 class CategoriesQuizzs extends Component {
   componentDidMount() {
-    this.props.getAllCategoriesQuizzs(); // Lancement de l'action pour récupérer toutes les catégories de quiz
+    const { getAllCategoriesQuizzs } = this.props;
+    getAllCategoriesQuizzs(); // Lancement de l'action pour récupérer toutes les catégories de quiz
   }
 
   render() {

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { bubble as Menu } from 'react-burger-menu';
 import { NavLink } from 'react-router-dom';
 import MediaQuery from 'react-responsive';
@@ -77,5 +78,6 @@ const Header = ({ loggedIn }) => (
 Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired
 };
+
 
 export default Header;

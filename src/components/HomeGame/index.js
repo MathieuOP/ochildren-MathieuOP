@@ -5,7 +5,8 @@ import './index.scss';
 
 class HomeGame extends Component {
   componentDidMount() {
-    this.props.dataForHomeGame(this.props.category);
+    const { dataForHomeGame, category } = this.props;
+    dataForHomeGame(category);
   }
 
   render() {
