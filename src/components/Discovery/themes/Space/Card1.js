@@ -138,10 +138,17 @@ const Card1 = ({ selectId, cardId }) => {
           style={pStyle}
         />
       </animated.div>  
-      {/*<Button  className="back-button" icon="left chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} > 
-        <Link to={`$/home-game/1/discovery/space&card=${cardId + 1}`} />
+
       
-      <Button className="forward-button" icon="right chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} /> */}
+      <Button  className="back-button" icon="left chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} >
+        <Link to={`/home-game/1/discovery/space&card=${cardId - 1}`} />
+      </Button>
+      <Button className="forward-button" icon="right chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} >
+        <Link to={`/home-game/1/discovery/space&card=${cardId + 1}`} />
+      </Button> 
+
+
+
     </div>
     
     

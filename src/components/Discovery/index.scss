@@ -13,23 +13,24 @@
     padding-top: 40px;
   }
 
-  &-theme-list {
+  ul {
     display: flex;
+    justify-content: center;
   }
 
-  &-theme-list--elem {
-    
+  li {
       font-size: 1.2em;
       color: #000;
       font-weight: bold;
-      width: 100px;
-      height: 100px;
+      width: 190px;
+      height: 190px;
       border-radius: 50%;
-      border: 7px solid #ff2626;
+      border: 7px solid #fff;
       background-color: #fff;
       margin: 0 10px;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
   }
 }

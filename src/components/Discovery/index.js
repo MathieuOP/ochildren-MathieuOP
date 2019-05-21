@@ -53,7 +53,7 @@ class Home extends Component {
               dimmer={dimmer1} 
               open={open1} 
               onClose={this.close1}
-              trigger={<Image src='https://image.flaticon.com/icons/svg/1055/1055646.svg' size='tiny'  onClick={this.show1('blurring')} />}
+              trigger={<Image src='https://image.flaticon.com/icons/svg/1055/1055646.svg' size='small'  onClick={this.show1('blurring')} />}
               
             >
               <Modal.Header>Space Discovery </Modal.Header>
@@ -93,7 +93,7 @@ class Home extends Component {
               dimmer={dimmer2} 
               open={open2} 
               onClose={this.close2}
-              trigger={<Image src='https://image.flaticon.com/icons/svg/501/501398.svg' size='tiny'  onClick={this.show2('blurring')} />}
+              trigger={<Image src='https://image.flaticon.com/icons/svg/501/501398.svg' size='small'  onClick={this.show2('blurring')} />}
               
             >
               <Modal.Header>Science Discovery</Modal.Header>
@@ -134,7 +134,7 @@ class Home extends Component {
               dimmer={dimmer3} 
               open={open3} 
               onClose={this.close3}
-              trigger={<Image src='https://image.flaticon.com/icons/svg/1747/1747184.svg' size='tiny'  onClick={this.show3('blurring')} />}
+              trigger={<Image src='https://image.flaticon.com/icons/svg/1747/1747184.svg' size='small'  onClick={this.show3('blurring')} />}
               
             >
               <Modal.Header>Nature Discovery</Modal.Header>
