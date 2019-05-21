@@ -7,11 +7,18 @@ import { connect } from 'react-redux';
  */
 import Header from 'src/components/Header';
 
+import { logOut } from 'src/store/reducer';
+
 const mapStateToProps = state => ({
   loggedIn: state.loggedIn
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  handleLogOut: e => {
+    e.preventDefault();
+    dispatch(logOut());
+  }
+});
 
 export default connect(
   mapStateToProps,

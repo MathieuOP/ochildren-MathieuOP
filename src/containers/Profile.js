@@ -11,7 +11,8 @@ import { getUserInfos } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
   userData: state.userLoggedData,
-  error404: state.error404
+  loggedIn: state.loggedIn,
+  userInfos: state.publicUserInfos
 });
 
 const mapDispatchToProps = dispatch => ({

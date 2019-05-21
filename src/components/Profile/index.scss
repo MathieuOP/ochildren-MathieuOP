@@ -1,0 +1,33 @@
+.profile {
+  margin: auto;
+  margin-top: 10vh;
+  border-radius: 4px;
+  width: fit-content;
+  padding: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+
+  &--image {
+    max-width: 200px;
+    width: 40%;
+    background-color: #ccc;
+  }
+
+  &--list {
+    margin-left: 5%;
+
+    &--elem {
+      padding: 10px;
+
+      &:not(:last-child) {
+        border-bottom: #ccc solid 1px;
+      }
+
+      &:last-child {
+        margin-top: 5px;
+      }
+    }
+  }
+}

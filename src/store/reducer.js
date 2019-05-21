@@ -51,6 +51,7 @@ const initialState = {
   openedCard: [],
   descriptionCurrentQuiz: '',
   currentNameQuiz: '',
+  publicUserInfos: {},
   nameCategoryQuiz: '',
   quizzesLoaded: false,
   questionLoaded: false
@@ -78,6 +79,9 @@ export const SIGNUP_SUBMIT = 'SIGNUP_SUBMIT';
 const SIGNEDUP = 'SIGNEDUP';
 const SIGNUP_ERROR = 'SIGNUP_ERROR';
 const SIGNUP_RESET = 'SIGNUP_RESET';
+
+// logOut
+const LOGOUT = 'LOGOUT';
 
 // quiz
 const INCREMENT_INDEX_QUIZ = 'INCREMENT_INDEX_QUIZ';
@@ -371,7 +375,6 @@ const reducer = (state = initialState, action = {}) => {
         getCountClick: 0
       };
     case UPDATED_DATA:
-      // console.log(action.data);
       return {
         ...state,
         dataMemory: action.data
@@ -395,6 +398,22 @@ const reducer = (state = initialState, action = {}) => {
         getTentative: 0,
         finished: false
       };
+
+    case GET_USER_INFOS:
+      return {
+        ...state,
+        publicUserInfos: action.data
+      };
+
+    case LOGOUT:
+      console.log('logout');
+      return {
+        ...state,
+        publicUserInfos: initialState.publicUserInfos,
+        loggedUserInfos: initialState.loggedUserInfos,
+        loggedIn: false
+      };
+
     default:
       return state;
   }
@@ -585,14 +604,10 @@ export const getUserInfos = data => ({
   data
 });
 
-export const toggleFavoris = (quizId) => ({
+export const toggleFavoris = quizId => ({
   type: TOGGLE_FAVORIS,
-  quizId,
-})
-
-export const addOrDeleteFav = () => ({
-  type: ADD_OR_DELETE_FAV,
-})
+  quizId
+});
 
 export const receivedDataPuzzle = data => ({
   type: RECEIVED_DATA_PUZZLE,
@@ -603,6 +618,10 @@ export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
   type: RECEIVED_DATA_QUIZZES,
   dataQuiz,
   nameCatQuiz
+});
+
+export const logOut = () => ({
+  type: LOGOUT
 });
 
 /**

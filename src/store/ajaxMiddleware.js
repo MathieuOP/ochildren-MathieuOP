@@ -156,7 +156,7 @@ const ajaxMiddleware = store => next => action => {
         .catch(() => store.dispatch(signeUpError()));
 
     case GET_USER_INFOS:
-      if (!store.getState().loggedIn) return store.dispatch(getPage404());
+      if (!store.getState().loggedIn) return next({ type: '' });
       return axios
         .get(
           `${process.env.API_URL}/api/users/${
@@ -168,7 +168,7 @@ const ajaxMiddleware = store => next => action => {
             }
           }
         )
-        .then(console.log);
+        .then(({ data }) => next({ ...action, data }));
 
     default:
       return next(action);
