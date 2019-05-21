@@ -70,7 +70,7 @@ const memory = [
   },
   {
     "id": 2,
-    "title": "Autres",
+    "title": "O'clock",
     "icon": "memory.svg",
     memory: [
       {

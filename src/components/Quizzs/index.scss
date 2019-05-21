@@ -20,10 +20,6 @@
             margin: 150px 0;
         }
 
-        a {
-            margin-top: 50px;
-        }
-
         .quizzs-fav {
             font-size: 40px;
             position: absolute;
@@ -40,13 +36,24 @@
         border: 8px solid lightgreen;
         background-color: #fff;
         margin: 0 50px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
         position: relative;
 
+        img {
+            width: 100px;
+            margin-top: 15px;
+        }
+
         a {
-            font-size: 2em;
+            font-size: 1.8em;
             font-weight: bold;
             display: flex;
             justify-content: center;
+            margin-bottom: 25px;
+            color: #000;
         }
     }
 }
