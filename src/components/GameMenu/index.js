@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaGamepad, FaEye, FaCheckSquare } from 'react-icons/fa';
 
@@ -32,5 +33,9 @@ const GameMenu = ({ category }) => {
     </div>
   );
 };
+
+GameMenu.propTypes = {
+  category: PropTypes.string.isRequired,
+}
 
 export default GameMenu;

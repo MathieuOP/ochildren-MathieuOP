@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { Button } from 'semantic-ui-react';
 
 import Score from '../Score';
 
@@ -10,7 +10,8 @@ class Quiz extends Component {
   quizQuestion = React.createRef();
   
   componentDidMount() {
-    this.props.getQuestionsByQuizId(this.props.quizId);
+    const { getQuestionsByQuizId, quizId } = this.props;
+    getQuestionsByQuizId(quizId);
   }
 
   handleClickAnswer = e => {
@@ -142,6 +143,8 @@ Quiz.propTypes = {
   messageScore: PropTypes.string.isRequired,
   descriptionCurrentQuiz: PropTypes.string.isRequired,
   currentNameQuiz: PropTypes.string.isRequired,
+  getQuestionsByQuizId: PropTypes.func.isRequired,
+  quizId: PropTypes.string.isRequired,
 };
 
 export default Quiz;

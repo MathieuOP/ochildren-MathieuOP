@@ -26,7 +26,7 @@ class MyPuzzle extends Component {
 
   render() {
     const { puzzle } = this.props;
-    console.log(puzzle.id);
+
     return (
       <Fragment>
         <div className="puzzle">

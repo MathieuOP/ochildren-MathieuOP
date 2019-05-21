@@ -8,7 +8,8 @@ import 'semantic-ui-css/semantic.min.css';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.dataForHomePage();
+    const { dataForHomePage } = this.props;
+    dataForHomePage();
   }
 
   handleClickCard = e => {
@@ -27,27 +28,6 @@ class Home extends Component {
             typeSpeed={50}
           />
         </h1>
-
-        {
-          // <Grid className="home centered">
-          //   <Grid.Row>
-          //     <Grid.Column mobile={12} tablet={12} computer={8}>
-          //       <div className="home-content">
-          //         <p>
-          //           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          //           Vivamus interdum id erat a laoreet. Mauris nec est at quam
-          //           faucibus pretium. Suspendisse rutrum, elit at porta sodales,
-          //           quam risus molestie libero, ultricies ornare tortor nulla ut
-          //           leo. Fusce commodo ipsum nec augue sagittis condimentum. Ut
-          //           vel magna ut erat placerat semper non eu ipsum. Pellentesque
-          //           lobortis mauris nec erat scelerisque, sed lobortis diam
-          //           vulputate. Vestibulum commodo auctor velit.
-          //         </p>
-          //       </div>
-          //     </Grid.Column>
-          //   </Grid.Row>
-          // </Grid>
-        }
 
         <div className="container">
           {dataHomePage.map(({ id, name, image }) => (

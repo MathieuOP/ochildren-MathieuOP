@@ -2,6 +2,7 @@
  * Import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
 /**
@@ -112,6 +113,10 @@ const App = ({ error404 }) => (
     </Switch>
   </div>
 );
+
+App.propTypes = {
+  error404: PropTypes.bool.isRequired,
+}
 
 /**
  * Export

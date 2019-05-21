@@ -7,7 +7,8 @@ import './index.scss';
 
 class Quizzs extends Component {
   componentDidMount() {
-    this.props.getQuizByWorldId(this.props.categoryQuizId)
+    const { getQuizByWorldId, categoryQuizId } = this.props;
+    getQuizByWorldId(categoryQuizId)
   }
 
   handleClick = () => () => {
@@ -41,6 +42,8 @@ class Quizzs extends Component {
 
 Quizzs.propTypes = {
   quizzsByWorldId: PropTypes.arrayOf(PropTypes.object).isRequired,
-  initialQuiz: PropTypes.func.isRequired
+  initialQuiz: PropTypes.func.isRequired,
+  getQuizByWorldId: PropTypes.func.isRequired,
+  categoryQuizId: PropTypes.string.isRequired,
 };
 export default Quizzs;
