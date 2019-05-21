@@ -7,10 +7,15 @@ import './index.scss';
 
 class Quizzs extends Component {
   componentDidMount() {
-    const { getQuizByWorldId, categoryQuizId, handleGetUserInfos, loggedIn } = this.props;
+    const {
+      getQuizByWorldId,
+      categoryQuizId,
+      handleGetUserInfos,
+      loggedIn
+    } = this.props;
 
     if (loggedIn) handleGetUserInfos();
-    getQuizByWorldId(categoryQuizId)
+    getQuizByWorldId(categoryQuizId);
   }
 
   handleClick = () => () => {
@@ -22,7 +27,7 @@ class Quizzs extends Component {
     console.log('send');
     const { toggleFavoris } = this.props;
     toggleFavoris(quizId);
-  }
+  };
 
   render() {
     const { quizzsByWorldId } = this.props;
@@ -33,7 +38,9 @@ class Quizzs extends Component {
           {quizzsByWorldId.map(quiz => (
             <div className="quizzs-quiz" key={quiz.quizzs[0].id}>
               <img
-                src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${quiz.quizzs[0].image}`}
+                src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+                  quiz.quizzs[0].image
+                }`}
                 alt="icon"
               />
               <Link
@@ -42,10 +49,14 @@ class Quizzs extends Component {
               >
                 {quiz.quizzs[0].title}
               </Link>
-              <FaRegHeart onClick={this.handleClickFav(quiz.quizzs[0].id)} color="#000" className="quizzs-fav" />
+              <FaRegHeart
+                onClick={this.handleClickFav(quiz.quizzs[0].id)}
+                color="#000"
+                className="quizzs-fav"
+              />
             </div>
-          </Fragment>
-        )}
+          ))}
+        </div>
       </div>
     );
   }
