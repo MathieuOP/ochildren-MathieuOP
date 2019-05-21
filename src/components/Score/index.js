@@ -11,7 +11,7 @@ const Score = ({ score, messageScore, currentNameQuiz }) => {
       <div className="score-title">
         <h2> {score}/10</h2>
         <img
-          src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${messageScore}.svg`}
+          src={`/src/assets/img/${messageScore}.svg`}
           alt=""
         />
       </div>

@@ -1,23 +1,37 @@
 .score {
     background-color: #FFF;
     max-width: 850px;
-    padding: 50px;
+    padding: 20px 5px;
     border-radius: 15px;
-    margin: 150px auto;
+    margin: 150px 50px;
+
+    @media screen and (min-width: 1100px) {
+        margin: 150px auto;
+    }
 
     h1 {
-        font-size: 3em;
+        font-size: 2em;
         text-align: center;
         margin-bottom: 50px;
 
         span {
             text-decoration: underline;
         }
+
+        @media screen and (min-width: 769px) {
+            font-size: 3em;
+        }
     }
 
     h2  {
-        font-size: 3em;
+        font-size: 1.8em;
         text-align: center;
+        margin-bottom: 0px;
+        margin-right: 15px;
+
+        @media screen and (min-width: 769px) {
+            font-size: 3em;
+        }
     }
 
     .score-title {
@@ -27,17 +41,20 @@
     }
 
     img {
-        width: 70px;
-    }
+        width: 40px;
 
-    h2 {
-        margin-bottom: 0px;
-        margin-right: 15px;
+        @media screen and (min-width: 769px) {
+            width: 70px;
+        }
     }
 
     &-message {
         margin: 50px 20px;
-        font-size: 2em;
+        font-size: 1.5em;
         text-align: center;
+
+        @media screen and (min-width: 769px) {
+            font-size: 2em;
+        }
     }
 }
