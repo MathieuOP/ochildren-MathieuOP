@@ -51,7 +51,8 @@ const initialState = {
   finished: false,
   openedCard: [],
   descriptionCurrentQuiz: '',
-  currentNameQuiz: ''
+  currentNameQuiz: '',
+  nameCategoryQuiz: '',
 };
 
 /**
@@ -92,6 +93,7 @@ const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
+export const RECEIVED_DATA_QUIZZES = 'RECEIVED_DATA_QUIZZES';
 
 //memory
 const COUNT_PAIRS = 'COUNT_PAIRS';
@@ -106,6 +108,7 @@ const RESET_MEMORY = 'RESET_MEMORY';
 //Puzzle
 export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
 export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
+
 /**
  * Traitements
  */
@@ -254,8 +257,15 @@ const reducer = (state = initialState, action = {}) => {
     case QUIZ_BY_WORLD_ID:
       return {
         ...state,
-        quizzsByWorldId: action.data,
-        error404: false
+        loaded: false,
+      }
+    case RECEIVED_DATA_QUIZZES:
+      return {
+        ...state,
+        quizzsByWorldId: action.dataQuiz,
+        nameCategoryQuiz: action.nameCatQuiz,
+        error404: false,
+        loaded: true,
       };
     case QUESTION_BY_ID:
       return {
@@ -556,6 +566,12 @@ export const resetMemory = () => ({
 export const dataForPuzzle = (puzzleId) => ({
   type: DATA_FOR_PUZZLE,
   puzzleId,
+})
+
+export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
+  type: RECEIVED_DATA_QUIZZES,
+  dataQuiz,
+  nameCatQuiz,
 })
 
 /**
