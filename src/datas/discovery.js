@@ -332,7 +332,4 @@ const data = [
 export default data;
 
 
-export const selectId = (id) => {
-  const uniqueId = data.find(ids => ids.id === id);
-  return uniqueId;
-}
+export const selectId = ({ name, id }) => data.find(elem => elem.name === name).cards.find(eId => eId.id === id);

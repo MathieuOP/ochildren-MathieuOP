@@ -18,7 +18,7 @@ const trans6 = (x, y) => `translate3d(${x / 7 + 390}px,${y / 7 - 160}px,0)`;
 
 
 
-const Card1 = () => {
+const Card1 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 4, tension: 65, friction: 340 }
@@ -28,6 +28,9 @@ const Card1 = () => {
     fontSize: '1.2em'
   };
 
+  const data = selectId({ name: 'nature', id: cardId});
+
+  console.log(data.pics[0].image_url)
 
   return (
     <div
@@ -48,6 +51,8 @@ const Card1 = () => {
             <Image
               className="discovery--nature--pic2"
               src="https://image.flaticon.com/icons/svg/1164/1164954.svg"
+              // exemple
+              // src={data.pics[0].image_url}
             />
           }
           style={pStyle}

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 
 import PropTypes from 'prop-types';
 
-import { data } from 'src/datas/discovery';
+import { selectId } from 'src/datas/discovery';
 
 import './index.scss';
 
@@ -13,9 +13,9 @@ const Nature = ({ cardId }) => {
     }))
   );
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div style={{ height: '100vh', width: '100vw', backgroundColor: '#fff', textAlign: 'center' }}>Loading...</div>}>
       <section className="discovery">
-        <Card {...data} />
+        <Card selectId={selectId} cardId={cardId} />
       </section>
     </Suspense>
   );

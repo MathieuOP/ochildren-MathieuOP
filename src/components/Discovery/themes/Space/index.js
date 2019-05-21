@@ -13,7 +13,7 @@ const Space = ({ cardId }) => {
     }))
   );
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div style={{ height: '100vh', width: '100vw', backgroundColor: '#fff', textAlign: 'center' }}>Loading...</div>}>
       <section className="discovery">
         <Card {...data} />
       </section>
