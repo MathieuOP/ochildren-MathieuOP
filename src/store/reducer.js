@@ -1,35 +1,60 @@
-import { datas } from 'src/datas';
+import memory from 'src/datas';
+import shuffle from 'shuffle-array';
+
 /**
  * Initial State
  */
 const initialState = {
-  datas,
   dataHomePage: [],
-  userForm: {
-    loggedIn: false,
+  puzzles: [],
+  puzzle: {},
+  dataMemory: [...JSON.parse(JSON.stringify(memory))],
+  loginForm: {
+    email: '',
+    password: '',
     loading: false,
-    step: 1,
+    loggedIn: false,
+    error: false
+  },
+  registerForm: {
     firstName: '',
     lastName: '',
     email: '',
+    username: '',
     password: '',
-    identifiant: '',
-    birthday: ''
+    confirmPassword: '',
+    loading: false,
+    signedUp: false,
+    error: false
   },
+  loggedIn: false,
+  loggedUserInfos: {},
   indexQuiz: 0,
-  dataHomeGame: [],
+  dataHomeGame: {},
   categoriesQuizzs: [],
   currentSlugCatAge: '',
   currrentSlugCatQuizzs: '',
-  quizzsByCategoryId: [],
+  quizzsByWorldId: [],
   idCatAge: '',
   questionsOfQuiz: [],
-  loading: false,
+  loaded: false,
   disabledButton: true,
   message: '',
   score: 0,
   myScore: false,
-  answerTrue: false
+  answerTrue: false,
+  error404: false,
+  getCountPaire: 0,
+  getCountClick: 0,
+  getTentative: 0,
+  finished: false,
+  openedCard: [],
+  descriptionCurrentQuiz: '',
+  currentNameQuiz: '',
+  publicUserInfos: {},
+  nameCategoryQuiz: '',
+  quizzesLoaded: false,
+  questionLoaded: false
 };
 
 /**
@@ -38,17 +63,31 @@ const initialState = {
 export const DATA_HOME_PAGE = 'DATA_HOME_PAGE';
 export const DATA_HOME_GAME = 'DATA_HOME_GAME';
 
-// form
-export const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
-export const ON_LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
+// login
+const HANDLE_LOGIN_CHANGE = 'HANDLE_LOGIN_CHANGE';
+export const LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
+const LOGIN_RESET = 'LOGIN_RESET';
+const LOGIN_ERROR = 'LOGIN_ERROR';
+const LOGGED_IN = 'LOGGED_IN';
+
+// forgotten
 export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
+
+// signup
+const REGISTER_INPUT_CHANGE = 'REGISTER_INPUT_CHANGE';
+export const SIGNUP_SUBMIT = 'SIGNUP_SUBMIT';
+const SIGNEDUP = 'SIGNEDUP';
+const SIGNUP_ERROR = 'SIGNUP_ERROR';
+const SIGNUP_RESET = 'SIGNUP_RESET';
+
+// logOut
+const LOGOUT = 'LOGOUT';
 
 // quiz
 const INCREMENT_INDEX_QUIZ = 'INCREMENT_INDEX_QUIZ';
 export const CATEGORIES_QUIZZS = 'CATEGORIES_QUIZZS';
 const CURRENT_SLUG_CAT_AGE = 'CURRENT_SLUG_CAT_AGE';
 const CURRENT_SLUG_CAT_QUIZZS = 'CURRENT_SLUG_CAT_QUIZZS';
-export const QUIZZS_BY_ID = 'QUIZZS_BY_ID';
 export const QUESTION_BY_ID = 'QUESTION_BY_ID';
 const RECEIVED_DATA_QUESTIONS = 'RECEIVED_DATA_QUESTIONS';
 const CHOSEN_ANSWER = 'CHOSEN_ANSWER';
@@ -57,7 +96,30 @@ const GET_MESSAGE = 'GET_MESSAGE';
 const MY_SCORE = 'MY_SCORE';
 const INITIAL_QUIZ = 'INITIAL_QUIZ';
 const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
+export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
+export const ERROR_404 = 'ERROR_404';
+export const RECEIVED_DATA_QUIZZES = 'RECEIVED_DATA_QUIZZES';
 
+// memory
+const COUNT_PAIRS = 'COUNT_PAIRS';
+const FINISHED = 'FINISHED';
+const TENTATIVE = 'TENTATIVE';
+const INCREMENTE_COUNT_CLICK = 'INCREMENTE_COUNT_CLICK';
+const RESET_COUNT_CLICK = 'RESET_COUNT_CLICK';
+const UPDATED_DATA = 'UPDATED_DATA';
+const UPDATED_OPENED_CARD = 'UPDATED_OPENED_CARD';
+const RESET_MEMORY = 'RESET_MEMORY';
+
+// Puzzle
+export const DATA_FOR_PUZZLE = 'DATA_FOR_PUZZLE';
+export const DATA_FOR_PUZZLES = 'DATA_FOR_PUZZLES';
+const RECEIVED_DATA_PUZZLE = 'RECEIVED_DATA_PUZZLE';
+
+// User
+export const GET_USER_INFOS = 'GET_USER_INFOS';
+
+// Favoris
+export const TOGGLE_FAVORIS = 'TOGGLE_FAVORIS';
 /**
  * Traitements
  */
@@ -70,25 +132,109 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_PAGE:
       return {
         ...state,
-        dataHomePage: [...action.data]
+        dataHomePage: [...action.data],
+        error404: false
       };
     // form
     case HANDLE_LOGIN_CHANGE:
       return {
         ...state,
-        userForm: {
-          ...state.userForm,
-          [action.name]: action.text
+        loginForm: {
+          ...state.loginForm,
+          [action.name]: action.text,
+          error: false
         }
       };
-    case ON_LOGIN_SUBMIT:
+
+    case LOGIN_SUBMIT:
       return {
         ...state,
-        userForm: {
-          ...state.userForm,
+        loginForm: {
+          ...state.loginForm,
           loading: true
         }
       };
+
+    case LOGGED_IN:
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
+          loading: false,
+          loggedIn: true
+        },
+        loggedIn: true,
+        loggedUserInfos: action.data
+      };
+
+    case LOGIN_ERROR:
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
+          error: true,
+          loading: false
+        }
+      };
+
+    case LOGIN_RESET:
+      return {
+        ...state,
+        loginForm: {
+          ...initialState.loginForm
+        }
+      };
+
+    case REGISTER_INPUT_CHANGE:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          [action.name]: action.text
+        }
+      };
+
+    case SIGNUP_SUBMIT:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          loading: true
+        }
+      };
+
+    case SIGNEDUP:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          loading: false,
+          signedUp: true
+        }
+      };
+
+    case SIGNUP_ERROR:
+      return {
+        ...state,
+        registerForm: {
+          ...state.registerForm,
+          error: true
+        }
+      };
+
+    case SIGNUP_RESET:
+      return {
+        ...state,
+        registerForm: {
+          ...initialState.registerForm
+        }
+      };
+
+    case FORGOTTEN_SUBMIT:
+      return {
+        ...state
+      };
+
     case INCREMENT_INDEX_QUIZ:
       return {
         ...state,
@@ -100,12 +246,14 @@ const reducer = (state = initialState, action = {}) => {
     case DATA_HOME_GAME:
       return {
         ...state,
-        dataHomeGame: [...action.data]
+        dataHomeGame: { ...action.data },
+        error404: false
       };
     case CATEGORIES_QUIZZS:
       return {
         ...state,
-        categoriesQuizzs: [...action.data]
+        categoriesQuizzs: [...action.data],
+        error404: false
       };
     case CURRENT_SLUG_CAT_AGE:
       return {
@@ -118,21 +266,32 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         currrentSlugCatQuizzs: action.slug
       };
-    case QUIZZS_BY_ID:
+    case QUIZ_BY_WORLD_ID:
       return {
         ...state,
-        quizzsByCategoryId: action.data
+        quizzesLoaded: false
+      };
+    case RECEIVED_DATA_QUIZZES:
+      return {
+        ...state,
+        quizzsByWorldId: action.dataQuiz,
+        nameCategoryQuiz: action.nameCatQuiz,
+        error404: false,
+        quizzesLoaded: true
       };
     case QUESTION_BY_ID:
       return {
         ...state,
-        loading: true
+        questionLoaded: false
       };
     case RECEIVED_DATA_QUESTIONS:
       return {
         ...state,
-        loading: false,
-        questionsOfQuiz: action.data
+        questionLoaded: true,
+        questionsOfQuiz: [...action.dataQuestions],
+        descriptionCurrentQuiz: action.dataDescription,
+        currentNameQuiz: action.dataName,
+        error404: false
       };
     case CHOSEN_ANSWER:
       return {
@@ -169,6 +328,92 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         answerTrue: true
       };
+    case ERROR_404:
+      return {
+        ...state,
+        error404: true
+      };
+    case DATA_FOR_PUZZLES:
+      return {
+        ...state,
+        puzzles: action.data
+      };
+    case RECEIVED_DATA_PUZZLE:
+      return {
+        ...state,
+        loaded: true,
+        puzzle: { ...action.data }
+      };
+    case DATA_FOR_PUZZLE:
+      return {
+        ...state,
+        loaded: false
+      };
+    case COUNT_PAIRS:
+      return {
+        ...state,
+        getCountPaire: (state.getCountPaire += 1)
+      };
+    case TENTATIVE:
+      return {
+        ...state,
+        getTentative: (state.getTentative += 1)
+      };
+    case FINISHED:
+      return {
+        ...state,
+        finished: true
+      };
+    case INCREMENTE_COUNT_CLICK:
+      return {
+        ...state,
+        getCountClick: (state.getCountClick += 1)
+      };
+    case RESET_COUNT_CLICK:
+      return {
+        ...state,
+        getCountClick: 0
+      };
+    case UPDATED_DATA:
+      return {
+        ...state,
+        dataMemory: action.data
+      };
+    case UPDATED_OPENED_CARD:
+      return {
+        ...state,
+        openedCard:
+          state.openedCard.length === 2
+            ? action.data
+            : [...state.openedCard, action.data]
+      };
+    case RESET_MEMORY:
+      memory.map(data => shuffle(data.memory));
+      return {
+        ...state,
+        dataMemory: [...JSON.parse(JSON.stringify(memory))],
+        openedCard: [],
+        getCountPaire: 0,
+        getCountClick: 0,
+        getTentative: 0,
+        finished: false
+      };
+
+    case GET_USER_INFOS:
+      return {
+        ...state,
+        publicUserInfos: action.data
+      };
+
+    case LOGOUT:
+      console.log('logout');
+      return {
+        ...state,
+        publicUserInfos: initialState.publicUserInfos,
+        loggedUserInfos: initialState.loggedUserInfos,
+        loggedIn: false
+      };
+
     default:
       return state;
   }
@@ -183,8 +428,27 @@ export const handleLoginChange = (text, name) => ({
   name
 });
 
-export const onLoginSubmit = () => ({
-  type: ON_LOGIN_SUBMIT
+export const registerInputChange = (text, name) => ({
+  type: REGISTER_INPUT_CHANGE,
+  text,
+  name
+});
+
+export const loginSubmit = () => ({
+  type: LOGIN_SUBMIT
+});
+
+export const loggedIn = data => ({
+  type: LOGGED_IN,
+  data
+});
+
+export const loginError = () => ({
+  type: LOGIN_ERROR
+});
+
+export const loginReset = () => ({
+  type: LOGIN_RESET
 });
 
 export const forgottenSubmit = () => ({
@@ -200,18 +464,34 @@ export const currentSlugCatQuizzs = slug => ({
   slug
 });
 
-export const getQuizzsById = id => ({
-  type: QUIZZS_BY_ID,
-  id
-});
-
 export const dataForHomePage = () => ({
   type: DATA_HOME_PAGE
+});
+
+export const signupSubmit = () => ({
+  type: SIGNUP_SUBMIT
+});
+
+export const signedUp = () => ({
+  type: SIGNEDUP
+});
+
+export const signeUpError = () => ({
+  type: SIGNUP_ERROR
+});
+
+export const signeUpReset = () => ({
+  type: SIGNUP_RESET
 });
 
 export const dataForHomeGame = categoryId => ({
   type: DATA_HOME_GAME,
   categoryId
+});
+
+export const getQuizByWorldId = worldId => ({
+  type: QUIZ_BY_WORLD_ID,
+  worldId
 });
 
 export const getQuestionsByQuizId = id => ({
@@ -253,15 +533,95 @@ export const initialQuiz = () => ({
   type: INITIAL_QUIZ
 });
 
-export const receivedDataQuestions = data => ({
+export const receivedDataQuestions = (
+  dataQuestions,
+  dataDescription,
+  dataName
+) => ({
   type: RECEIVED_DATA_QUESTIONS,
-  data
+  dataQuestions,
+  dataDescription,
+  dataName
 });
 
 export const infosCatAge = (category, id) => ({
   type: CURRENT_SLUG_CAT_AGE,
   category,
   id
+});
+
+export const getPage404 = () => ({
+  type: ERROR_404
+});
+
+export const dataForPuzzles = worldId => ({
+  type: DATA_FOR_PUZZLES,
+  worldId
+});
+
+export const countPairs = () => ({
+  type: COUNT_PAIRS
+});
+
+export const memoryFinished = () => ({
+  type: FINISHED
+});
+
+export const tentative = () => ({
+  type: TENTATIVE
+});
+
+export const incrementeCountClick = () => ({
+  type: INCREMENTE_COUNT_CLICK
+});
+
+export const resetCountClick = () => ({
+  type: RESET_COUNT_CLICK
+});
+
+export const updatedData = data => ({
+  type: UPDATED_DATA,
+  data
+});
+
+export const updatedOpenedCard = data => ({
+  type: UPDATED_OPENED_CARD,
+  data
+});
+
+export const resetMemory = () => ({
+  type: RESET_MEMORY
+});
+
+export const dataForPuzzle = puzzleId => ({
+  type: DATA_FOR_PUZZLE,
+  puzzleId
+});
+
+// User
+export const getUserInfos = data => ({
+  type: GET_USER_INFOS,
+  data
+});
+
+export const toggleFavoris = quizId => ({
+  type: TOGGLE_FAVORIS,
+  quizId
+});
+
+export const receivedDataPuzzle = data => ({
+  type: RECEIVED_DATA_PUZZLE,
+  data
+});
+
+export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
+  type: RECEIVED_DATA_QUIZZES,
+  dataQuiz,
+  nameCatQuiz
+});
+
+export const logOut = () => ({
+  type: LOGOUT
 });
 
 /**

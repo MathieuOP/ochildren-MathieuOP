@@ -6,11 +6,16 @@
         justify-content: center;
         align-items: flex-start;
 
-        h2 {
-            font-size: 4em;
+        h1 {
+            font-size: 2em;
             font-weight: bold;
-            font-family: 'Black And White Picture', sans-serif;
-            margin-top: 0;
+            margin: 0;
+
+            @media screen and (min-width: 769px) {
+                font-size: 3.5em;
+                font-weight: bold;
+                margin-top: 0;    
+            }
         }
         
         img {

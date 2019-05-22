@@ -1,15 +1,20 @@
-/* eslint-disable react/prefer-stateless-function */
-import React, { Component } from 'react'
-import { Button, List} from 'semantic-ui-react';
+import React, { Component } from 'react';
+import { Button, List } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 import './style.scss';
 
-
 class Confirm extends Component {
+  componentDidUpdate() {
+    const { signedUp, nextStep, error } = this.props;
+    if (signedUp || error) nextStep();
+  }
 
   continue = evt => {
     evt.preventDefault();
-    this.props.nextStep();
+    const { signupSubmit, loading } = this.props;
+    if (loading) return;
+    signupSubmit();
   };
 
   back = evt => {
@@ -19,49 +24,64 @@ class Confirm extends Component {
 
   render() {
     const {
-      values: { firstName, lastName, email, identifiant, birthday }
+      emailValue,
+      firstNameValue,
+      lastNameValue,
+      usernameValue,
+      loading
     } = this.props;
     return (
-      <div className='confirmation'>
-      <List>
-      <List.Item>
-            <List.Header>First Name</List.Header>
-            {firstName}
+      <div className="confirmation">
+        <List>
+          <List.Item>
+            <List.Header>Identifiant</List.Header>
+            {usernameValue}
           </List.Item>
           <List.Item>
-            <List.Header>Last Name</List.Header>
-            {lastName}
+            <List.Header>Prénom</List.Header>
+            {firstNameValue}
+          </List.Item>
+          <List.Item>
+            <List.Header>Nom</List.Header>
+            {lastNameValue}
           </List.Item>
           <List.Item>
             <List.Header>Email</List.Header>
-            {email}
+            {emailValue}
           </List.Item>
-          <List.Item >
-            <List.Header>Identifiant</List.Header>
-            {identifiant}
-          </List.Item>
-          <List.Item>
-            <List.Header>Birthday</List.Header>
-            {birthday}
-          </List.Item>  
-      </List>
-      <Button
-        id='continue-button'
-        primary={true}
-        onClick={this.continue}
-      >
-        Continuer
-      </Button>
-      <Button
-        id='back-button'
-        primary={false}
-        onClick={this.back}
-      >
-        Précedent
-      </Button>
+        </List>
+        <Button
+          id="continue-button"
+          primary
+          loading={loading}
+          onClick={this.continue}
+        >
+          Continuer
+        </Button>
+        <Button
+          id="back-button"
+          primary={false}
+          disabled={loading}
+          onClick={this.back}
+        >
+          Précedent
+        </Button>
       </div>
     );
   }
 }
+
+Confirm.propTypes = {
+  signedUp: PropTypes.bool.isRequired,
+  error: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
+  nextStep: PropTypes.func.isRequired,
+  prevStep: PropTypes.func.isRequired,
+  signupSubmit: PropTypes.func.isRequired,
+  emailValue: PropTypes.string.isRequired,
+  firstNameValue: PropTypes.string.isRequired,
+  lastNameValue: PropTypes.string.isRequired,
+  usernameValue: PropTypes.string.isRequired
+};
 
 export default Confirm;

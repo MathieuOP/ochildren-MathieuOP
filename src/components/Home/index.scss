@@ -4,24 +4,34 @@
   }
 
   &-title {
-    span {
-      font-weight: bold;
-      font-size: 1.5em;
-      margin: 3em 0 0.7em !important;
-      display: flex;
-      justify-content: center;
+    margin-top: 2em !important;
+    text-align: center;
+    font-family: 'Love Ya Like A Sister', sans-serif;
 
-      @media screen and (min-width: 769px) {
-        margin: 1.3em 0 0.7em !important;
-        font-size: 2.5em;
-      }
+    @media screen and (min-width: 769px) {
+      margin-top: 1.5em !important;
+      font-size: 1.5em;
     }
   }
 
-  // p {
-  //     margin: 2em auto;
-  //     font-size: 1.2em;
-  // }
+  p {
+    margin: 2em auto;
+    font-size: 1.2em;
+  }
+  span {
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 50px;
+    margin: 2em 0 0.7em !important;
+    display: flex;
+    justify-content: center;
+
+    @media screen and (min-width: 769px) {
+      margin: 1.3em 0 0.7em !important;
+      font-size: 1.8em;
+      line-height: 0px;
+    }
+  }
 
   &-category {
     display: flex;
@@ -98,11 +108,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 250px;
+  margin-top: 50px;
 
   @media screen and (min-width: 769px) {
     flex-direction: row;
     justify-content: center;
+    margin-top: 250px;
   }
 }
 

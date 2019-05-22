@@ -15,6 +15,6 @@ RUN yarn --slient
 
 COPY . .
 
-RUN chmod +x .docker/start-client.sh
+RUN chmod +x .docker/start-client.sh ./run.sh
 
 CMD .docker/start-client.sh ${ENV}

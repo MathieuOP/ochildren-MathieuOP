@@ -1,3 +1,3 @@
 #!/bin/sh
 
-if [ "$1" = "prod" ] ; then yarn build:prod ; else yarn start ; fi
+if [ "$1" = "prod" ] ; then npm i -g http-server && sh run.sh ; else yarn start ; fi

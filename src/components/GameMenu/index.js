@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FaGamepad, FaPuzzlePiece, FaCheckSquare } from 'react-icons/fa';
+import { FaGamepad, FaEye, FaCheckSquare } from 'react-icons/fa';
 
 import './index.scss';
 
@@ -10,21 +11,21 @@ const GameMenu = ({ category }) => {
       <nav className="gameMenu-nav">
         <ul>
           <li>
-            <Link to={`${category}/discovery`}>
-              <FaGamepad size="3em" />
-              <span>Discovery</span>
+            <Link to="/discovery">
+              <FaEye className="gameMenu-icon--discovery" />
+              <span className="gameMenu-link--discovery">Discovery</span>
             </Link>
           </li>
           <li>
             <Link to={`/home-game/${category}/categories`}>
-              <FaCheckSquare size="2em" className="gameMenu-icon--square" />
+              <FaCheckSquare className="gameMenu-icon--square" />
               <span className="gameMenu-link--quiz">Quiz</span>
             </Link>
           </li>
           <li>
-            <Link to={`${category}/puzzle`}>
-              <FaPuzzlePiece size="2em" className="gameMenu-icon--puzzle" />
-              <span className="gameMenu-link--puzzle">Puzzle</span>
+            <Link to={`/games/${category}`}>
+              <FaGamepad className="gameMenu-icon--jeux" />
+              <span className="gameMenu-link--jeux">Jeux</span>
             </Link>
           </li>
         </ul>
@@ -32,5 +33,9 @@ const GameMenu = ({ category }) => {
     </div>
   );
 };
+
+GameMenu.propTypes = {
+  category: PropTypes.string.isRequired,
+}
 
 export default GameMenu;
