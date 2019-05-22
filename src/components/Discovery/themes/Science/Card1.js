@@ -3,29 +3,26 @@ import PropTypes from 'prop-types';
 import { Image, Popup } from 'semantic-ui-react';
 import { useSpring, animated } from 'react-spring';
 
-
-
 const calc = (x, y) => [
   (x - window.innerWidth) / 3,
   (y - window.innerHeight) / 3
 ];
-//const trans0 = (x, y) => `translate3d(${x / 12}px,${y / 12}px,0)`;
+const trans0 = (x, y) => `translate3d(${x / 12}px,${y / 12}px,0)`;
 const trans1 = (x, y) => `translate3d(${x / 7 + -20}px,${y / 7 - -200}px,0)`;
 const trans2 = (x, y) => `translate3d(${x / 7 - -195}px,${y / 7 - -140}px,0)`;
 const trans3 = (x, y) => `translate3d(${x / 7 + -140}px,${y / 7 - -160}px,0)`;
 
-
-const Card1 = ({selectId, cardId}) => {
+const Card1 = ({ selectId, cardId }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
-    config: { mass: 10, tension: 550, friction: 140}
+    config: { mass: 10, tension: 550, friction: 140 }
   }));
 
   const pStyle = {
     fontSize: '1.2em'
   };
 
-  const data = selectId({ name: 'science', id: cardId})
+  const data = selectId({ name: 'science', id: cardId });
 
   return (
     <div
@@ -34,8 +31,10 @@ const Card1 = ({selectId, cardId}) => {
     >
       <animated.div
         className="discovery--science--pic1"
-        //style={{ transform: p.xy.interpolate(trans0) }}
-      />
+        style={{ transform: p.xy.interpolate(trans0) }}
+      >
+        <Image src="../../../../assets/img/background-laboratory.jpg" />
+      </animated.div>
       <animated.div
         className="discovery--science--pic2"
         style={{ transform: p.xy.interpolate(trans1) }}
@@ -84,14 +83,8 @@ const Card1 = ({selectId, cardId}) => {
           }
           style={pStyle}
         />
-        
       </animated.div>
-      
-
-        
     </div>
-    
-    
   );
 };
 

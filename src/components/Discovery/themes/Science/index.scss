@@ -1,15 +1,14 @@
 .discovery--science {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
 
-    &--pic1,
+  &--pic1,
   // &--pic2,
-  &--pic5   
-  {
+  &--pic5 {
     position: absolute;
     border-radius: 5px;
     background-size: cover;
@@ -26,7 +25,7 @@
     height: 55vw;
     max-width: 200ch;
     max-height: 100ch;
-    background-image: url(https://cdn1.vectorstock.com/i/1000x1000/94/05/background-of-chemistry-laboratory-vector-7559405.jpg);
+    // background-image: url('../../../../assets/img/background-laboratory.jpg');
   }
 
   &--pic2 {
@@ -58,9 +57,8 @@
     position: fixed;
     bottom: 0em;
     left: 1em;
-    width:45ch;
-    height:45ch;
-   
+    width: 45ch;
+    height: 45ch;
   }
 
   &--pic7 {
@@ -78,7 +76,6 @@
     height: 20ch;
   }
 
-
   &--pic10 {
     min-width: 120ch;
     min-height: 120ch;
@@ -93,8 +90,8 @@
     position: fixed;
     bottom: 0em;
     left: 1em;
-    width:45ch;
-    height:45ch;
+    width: 45ch;
+    height: 45ch;
   }
 
   &--pic12 {
@@ -111,11 +108,4 @@
     width: 30ch;
     height: 30ch;
   }
-
- 
 }
-
-
-
-
-

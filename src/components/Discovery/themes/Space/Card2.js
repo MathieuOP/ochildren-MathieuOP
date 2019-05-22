@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Popup } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+import { Image, Popup, Button } from 'semantic-ui-react';
 import { useSpring, animated } from 'react-spring';
 import './index.scss';
-
 
 const calc = (x, y) => [
   (x - window.innerWidth) / 3,
@@ -18,8 +18,7 @@ const trans6 = (x, y) => `translate3d(${x / 6 - 170}px,${y / 4 - -80}px,0)`;
 const trans7 = (x, y) => `translate3d(${x / 9 - 610}px,${y / 4 - -200}px,0)`;
 const trans8 = (x, y) => `translate3d(${x / 6 - 250}px,${y / 3.5 - -200}px,0)`;
 
-
-const Card2 = ({ selectId, cardId }) => {
+const Card2 = ({ selectId, cardId, themeName }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 5, tension: 500, friction: 180 }
@@ -29,9 +28,9 @@ const Card2 = ({ selectId, cardId }) => {
     fontSize: '1.2em'
   };
 
-  const data = selectId({ name: 'space', id: cardId});
+  const data = selectId({ name: 'space', id: cardId });
 
-  return(
+  return (
     <div
       className="discovery--space"
       onMouseMove={({ clientX: x, clientY: y }) => set({ xy: calc(x, y) })}
@@ -146,9 +145,25 @@ const Card2 = ({ selectId, cardId }) => {
         className="discovery--space--pic12"
         style={{ transform: p.xy.interpolate(trans8) }}
       />
+      <Link to={`/discovery/${themeName}&card=${cardId - 1}`}>
+        <Button
+          className="back-button"
+          icon="left chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Retour
+        </Button>
+      </Link>
+      <Link to={`/discovery/${themeName}&card=${cardId + 1}`}>
+        <Button
+          className="forward-button"
+          icon="right chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Continer
+        </Button>
+      </Link>
     </div>
-
-
   );
 };
 

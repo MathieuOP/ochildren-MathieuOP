@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Popup, Link, Button } from 'semantic-ui-react';
+import { Image, Popup, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
-
-
 
 const calc = (x, y) => [
   (x - window.innerWidth) / 5,
@@ -17,7 +16,7 @@ const trans4 = (x, y) => `translate3d(${x / 8 + -150}px,${y / 8 - -100}px,0)`;
 const trans5 = (x, y) => `translate3d(${x / 8 + -170}px,${y / 8 - -90}px,0)`;
 const trans6 = (x, y) => `translate3d(${x / 8 + -190}px,${y / 8 - -110}px,0)`;
 
-const Card1 = ({ selectId, cardId }) => {
+const Card1 = ({ selectId, cardId, themeName }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 5, tension: 550, friction: 140 }
@@ -27,8 +26,7 @@ const Card1 = ({ selectId, cardId }) => {
     fontSize: '1.2em'
   };
 
-  const data = selectId({ name: 'space', id: cardId});
-  
+  const data = selectId({ name: 'space', id: cardId });
 
   return (
     <div
@@ -87,7 +85,6 @@ const Card1 = ({ selectId, cardId }) => {
           }
           style={pStyle}
         />
-        
       </animated.div>
 
       <animated.div
@@ -137,21 +134,27 @@ const Card1 = ({ selectId, cardId }) => {
           }
           style={pStyle}
         />
-      </animated.div>  
+      </animated.div>
 
-      
-      <Button  className="back-button" icon="left chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} >
-        <Link to={`/home-game/1/discovery/space&card=${cardId - 1}`} />
-      </Button>
-      <Button className="forward-button" icon="right chevron" style={{ color: '#0b0900', backgroundColor: '#ffdd57' }} >
-        <Link to={`/home-game/1/discovery/space&card=${cardId + 1}`} />
-      </Button> 
-
-
-
+      <Link to="/discovery">
+        <Button
+          className="back-button"
+          icon="left chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Retour
+        </Button>
+      </Link>
+      <Link to={`/discovery/${themeName}&card=${cardId + 1}`}>
+        <Button
+          className="forward-button"
+          icon="right chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Continer
+        </Button>
+      </Link>
     </div>
-    
-    
   );
 };
 

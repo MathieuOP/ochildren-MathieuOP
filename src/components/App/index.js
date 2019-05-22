@@ -29,9 +29,7 @@ const App = () => (
     <Route
       path="*"
       render={({ location }) =>
-        /^(?!.*(\/home-game\/\d+\/discovery\/)).*$/.test(location.pathname) && (
-          <Header />
-        )
+        /^(?!.*(\/discovery\/)).*$/.test(location.pathname) && <Header />
       }
     />
     <Switch>
@@ -42,7 +40,7 @@ const App = () => (
         component={CategoriesQuizzs}
       />
       <Route
-        path="/home-game/:category/discovery"
+        path="/discovery"
         render={({ match }) => <Discovery url={match.url} />}
       />
 
