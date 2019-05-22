@@ -1,6 +1,8 @@
 body {
   background-image: url('/src/assets/img/fond.jpg');
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom center;
   background-attachment: fixed;
+  filter: grayscale(5%);
 }
