@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, Popup } from 'semantic-ui-react';
+import { Image, Popup, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 
 const calc = (x, y) => [
@@ -12,7 +13,7 @@ const trans1 = (x, y) => `translate3d(${x / 7 + -20}px,${y / 7 - -200}px,0)`;
 const trans2 = (x, y) => `translate3d(${x / 7 - -195}px,${y / 7 - -140}px,0)`;
 const trans3 = (x, y) => `translate3d(${x / 7 + -140}px,${y / 7 - -160}px,0)`;
 
-const Card1 = ({ selectId, cardId }) => {
+const Card1 = ({ selectId, cardId, themeName }) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 10, tension: 550, friction: 140 }
@@ -32,9 +33,8 @@ const Card1 = ({ selectId, cardId }) => {
       <animated.div
         className="discovery--science--pic1"
         style={{ transform: p.xy.interpolate(trans0) }}
-      >
-        <Image src="../../../../assets/img/background-laboratory.jpg" />
-      </animated.div>
+      />
+        
       <animated.div
         className="discovery--science--pic2"
         style={{ transform: p.xy.interpolate(trans1) }}
@@ -84,6 +84,24 @@ const Card1 = ({ selectId, cardId }) => {
           style={pStyle}
         />
       </animated.div>
+      <Link to="/discovery">
+        <Button
+          className="back-button"
+          icon="left chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Retour
+        </Button>
+      </Link>
+      <Link to={`/discovery/${themeName}&card=${cardId + 1}`}>
+        <Button
+          className="forward-button"
+          icon="right chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Continer
+        </Button>
+      </Link>
     </div>
   );
 };

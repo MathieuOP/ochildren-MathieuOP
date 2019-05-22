@@ -6,7 +6,7 @@ import { selectId } from 'src/datas/discovery';
 
 import './index.scss';
 
-const Science = ({ cardId }) => {
+const Science = ({ cardId, themeName  }) => {
   const Card = lazy(() =>
     import(`./Card${cardId}`).catch(() => ({
       default: () => <h1>Not found</h1>
@@ -15,7 +15,7 @@ const Science = ({ cardId }) => {
   return (
     <Suspense fallback={<div style={{ height: '100vh', width: '100vw', backgroundColor: '#fff', textAlign: 'center' }}>Loading...</div>}>
       <section className="discovery">
-        <Card selectId={selectId} cardId={cardId} />
+        <Card selectId={selectId}  themeName={themeName} cardId={cardId} />
       </section>
     </Suspense>
   );
