@@ -1,4 +1,4 @@
-# plateforme-educative
+# O'Children
 
 ---
 
@@ -17,6 +17,12 @@ with npm :
 ```
 npm i
 ```
+
+!! Important !! You need to install this extension or it will not work :
+
+[For chrome / Chromium based](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=fr)
+
+[For firefox](https://addons.mozilla.org/fr/firefox/addon/reduxdevtools/)
 
 ## Installation for prod
 
@@ -37,17 +43,13 @@ sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 ```
 
-#### Build the app
-
-```
-docker-compose build
-```
-
 ---
 
 ## Usage
 
 #### Dev
+
+Will run webpack dev serveur on the port 3000 :
 
 With yarn :
 
@@ -61,14 +63,21 @@ With npm :
 npm run start
 ```
 
-Will run webpack client on the port 3000 and the api on the port 4000
-
-#### Prod
-
+You can also do it with docker :
 ```
 docker-compose up
 ```
 
-Can be used with the --build flag to rebuild the app
+#### Prod
 
-Will expose the builded version on the port 80. can
+Will expose the builded version on the port 80 :
+```
+yarn prod
+```
+
+If you don't want to do it with docker you can do :
+```
+bash run.sh
+```
+
+
