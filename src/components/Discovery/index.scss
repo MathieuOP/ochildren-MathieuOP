@@ -1,0 +1,65 @@
+.discovery {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  & > * {
+    padding-top: 40px;
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+  }
+
+  li {
+    font-size: 1.2em;
+    color: #000;
+    font-weight: bold;
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    border: 7px solid #fff;
+    background-color: #fff;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--title,
+  &--description {
+    text-align: center;
+  }
+
+  &--title {
+    font-size: 2em;
+  }
+
+  &--description {
+    font-size: 1.5em;
+  }
+
+  &--theme-list--elem {
+    cursor: pointer;
+  }
+}
+
+.forward-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+.back-button {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}

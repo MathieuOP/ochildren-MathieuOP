@@ -15,6 +15,7 @@ import Login from '../Login';
 import Register from '../../containers/Register';
 import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';
+import Discovery from '../Discovery';
 import Quizzs from '../../containers/Quizzs';
 import Quiz from '../../containers/Quiz';
 import Games from '../../containers/Games';
@@ -31,8 +32,12 @@ import './app.scss';
  */
 const App = ({ error404, dataMemory }) => (
   <div id="app">
-    <Header />
-
+    <Route
+      path="*"
+      render={({ location }) =>
+        /^(?!.*(\/discovery\/)).*$/.test(location.pathname) && <Header />
+      }
+    />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route
@@ -77,6 +82,12 @@ const App = ({ error404, dataMemory }) => (
         path="/home-game/:categories/categories"
         component={CategoriesQuizzs}
       />
+          
+      <Route
+        path="/discovery"
+        render={({ match }) => <Discovery url={match.url} />}
+      />
+
       <Route
         exact
         path="/quiz/:quizId"

@@ -168,4 +168,3 @@ const memory = [
 memory.map((data) => shuffle(data.memory));
 
 export default memory;
-
