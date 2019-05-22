@@ -6,14 +6,38 @@
   flex-direction: column;
   align-items: center;
 
+  @media screen and (min-width: 769px) {
+    margin-top: 50px;
+  }
+
+  h1 {
+    font-size: 3em;
+    color: orange;
+    text-shadow: 2px 2px #000;
+    margin-bottom: 50px;
+  }
+
   &-win-text {
     position: absolute;
-    font-size: 7em;
+    font-size: 4em;
     color: green;
     opacity: 0;
     z-index: 1;
     top: -80px;
+
+    &-display {
+      transition: 1.5s;
+      top: 250px;
+      opacity: 1;
+
+      @media screen and (min-width: 769px) {
+        top: 320px;
+        font-size: 7em;
+      }
+    }
   }
+
+
 
   &--hide {
     display: none;
@@ -31,7 +55,7 @@
 
     &--show {
       display: block;
-      opacity: .7;
+      opacity: 1;
     }
 
     img {
