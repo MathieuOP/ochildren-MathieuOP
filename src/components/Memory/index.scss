@@ -138,6 +138,8 @@
 .memory-win {
   text-align: center;
   font-size: 1.5em;
+  color: orange;
+  text-shadow: 2px 2px #000;
 
   @media screen and (min-width: 769px) {
     font-size: 3em;
@@ -173,6 +175,8 @@
     padding: 0 15px;
     margin-bottom: 0;
     font-weight: bold;
+    color: orange;
+    text-shadow: 2px 2px #000;
   }
 }
 
@@ -205,6 +209,8 @@
     padding: 0 15px;
     margin-bottom: 0;
     font-weight: bold;
+    color: orange;
+    text-shadow: 2px 2px #000;
   }
 }
   

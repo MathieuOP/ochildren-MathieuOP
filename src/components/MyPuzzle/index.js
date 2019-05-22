@@ -19,9 +19,7 @@ class MyPuzzle extends Component {
   puzzleFinished = () => {
     this.imgPuzzle.current.className = 'puzzle-img puzzle-img--show';
     this.puzzle.current.className = 'puzzle--hide';
-    this.textWin.current.style.transition = '1.5s';
-    this.textWin.current.style.opacity = '1';
-    this.textWin.current.style.top = '200.500px';
+    this.textWin.current.classList.add('puzzle-win-text-display');
   };
 
   render() {
@@ -36,6 +34,7 @@ class MyPuzzle extends Component {
           {
             loaded && (
               <Fragment>
+                <h1> {puzzle.title }</h1>
                 <div ref={this.puzzle}>
                   <MediaQuery query="(max-width: 768px)">
                     <Puzzle
@@ -78,6 +77,7 @@ MyPuzzle.propTypes = {
   puzzle: PropTypes.object.isRequired,
   dataForPuzzle: PropTypes.func.isRequired,
   puzzleId: PropTypes.string.isRequired,
+  loaded: PropTypes.bool.isRequired,
 };
 
 export default MyPuzzle;
