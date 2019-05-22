@@ -3,7 +3,8 @@ version: '3.5'
 services:
   app-prod:
     container_name: app-prod
-    build: .
+    build:
+      context: .
       args:
         - ENV=prod
     ports:
