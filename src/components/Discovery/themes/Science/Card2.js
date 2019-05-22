@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, Popup, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { useSpring, animated } from 'react-spring';
 
 
@@ -16,7 +17,7 @@ const trans3 = (x, y) => `translate3d(${x / 7 - 780}px,${y / 7 + -80}px,0)`;
 const trans4 = (x, y) => `translate3d(${x / 7 - 300}px,${y / 7 + -390}px,0)`;
 
 
-const Card2 = ({selectId, cardId}) => {
+const Card2 = ({selectId, cardId, themeName}) => {
   const [p, set] = useSpring(() => ({
     xy: [0, 0],
     config: { mass: 10, tension: 550, friction: 140 }
@@ -104,7 +105,24 @@ const Card2 = ({selectId, cardId}) => {
         />
         
       </animated.div>
-      
+      <Link to="/discovery">
+        <Button
+          className="back-button"
+          icon="left chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Retour
+        </Button>
+      </Link>
+      <Link to={`/discovery/${themeName}&card=${cardId + 1}`}>
+        <Button
+          className="forward-button"
+          icon="right chevron"
+          style={{ color: '#0b0900', backgroundColor: '#ffdd57' }}
+        >
+          Continer
+        </Button>
+      </Link>
 
     </div>
     
