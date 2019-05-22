@@ -3,9 +3,7 @@ version: '3.5'
 services:
   client:
     container_name: client
-    build:
-      context: .
-      dockerfile: Dockerfile-client
+    build: .
     ports:
       - '3000:3000'
     volumes:

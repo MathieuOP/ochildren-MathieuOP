@@ -3,10 +3,8 @@ version: '3.5'
 services:
   app-prod:
     container_name: app-prod
-    build:
-      context: .
-      dockerfile: Dockerfile-client
+    build: .
       args:
         - ENV=prod
     ports:
-      - '80:5000'
+      - '5000:5000'

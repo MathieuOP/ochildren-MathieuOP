@@ -64,20 +64,21 @@ npm run start
 ```
 
 You can also do it with docker :
+
 ```
 docker-compose up
 ```
 
 #### Prod
 
-Will expose the builded version on the port 80 :
+Will expose the builded version on the port 5000 :
+
 ```
 yarn prod
 ```
 
 If you don't want to do it with docker you can do :
+
 ```
 bash run.sh
 ```
-
-
