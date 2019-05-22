@@ -1,8 +1,12 @@
 body {
-  background-image: url('/src/assets/img/fond.jpg');
+  background-image: url('/src/assets/img/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom center;
   background-attachment: fixed;
   filter: grayscale(5%);
+}
+
+#app {
+  min-height: 100vh;
 }
