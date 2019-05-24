@@ -20,7 +20,8 @@ import {
   DATA_FOR_PUZZLE,
   receivedDataQuizzes,
   receivedDataPuzzle,
-  GET_USER_INFOS
+  GET_USER_INFOS,
+  TOGGLE_FAVORIS
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -169,7 +170,19 @@ const ajaxMiddleware = store => next => action => {
           }
         )
         .then(({ data }) => next({ ...action, data }));
-
+    case TOGGLE_FAVORIS:
+      return axios
+        .get(`${process.env.API_URL}/api/users/${store.getState().loggedUserInfos.userId}/bookmarks/quizzs/${action.quizId}/toggle`, {
+          headers: {
+            Authorization : `bearer ${store.getState().loggedUserInfos.token}`
+          }
+        })
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          if (error.response.status === 404) store.dispatch(getPage404());
+        });
     default:
       return next(action);
   }

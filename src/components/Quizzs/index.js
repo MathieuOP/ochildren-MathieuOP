@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaRegHeart } from 'react-icons/fa';
@@ -31,7 +31,7 @@ class Quizzs extends Component {
 
   render() {
     const { quizzsByWorldId } = this.props;
-    console.log(quizzsByWorldId);
+
     return (
       <div className="quizzs">
         <div className="wrapper-quizzs">
@@ -62,10 +62,19 @@ class Quizzs extends Component {
   }
 }
 
+Quizzs.defaultProps = {
+  handleGetUserInfos: () => {},
+  loggedIn: false,
+}
+
 Quizzs.propTypes = {
   quizzsByWorldId: PropTypes.arrayOf(PropTypes.object).isRequired,
   initialQuiz: PropTypes.func.isRequired,
   getQuizByWorldId: PropTypes.func.isRequired,
   categoryQuizId: PropTypes.string.isRequired,
+  handleGetUserInfos: PropTypes.func,
+  loggedIn: PropTypes.bool,
+  toggleFavoris: PropTypes.func.isRequired,
 };
+
 export default Quizzs;
