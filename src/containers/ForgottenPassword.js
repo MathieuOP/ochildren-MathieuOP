@@ -11,11 +11,11 @@ import ForgottenPassword from 'src/components/Login/ForgottenPassword';
 // Action Creators
 import { handleLoginChange, forgottenSubmit } from 'src/store/reducer';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   email: state.loginForm.email
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   handleChange: (text, name) => dispatch(handleLoginChange(text, name)),
   handleForgottenSubmit: () => dispatch(forgottenSubmit())
 });

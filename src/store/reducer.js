@@ -516,9 +516,9 @@ export const getMessage = message => ({
   message
 });
 
-export const messageScore = state => {
+export const messageScore = (state, ownProps) => {
   const { score } = state;
-  return score < 5 ? 'bad' : 'good';
+  return score < ownProps / 2 ? 'bad' : 'good';
 };
 
 export const answerIsTrue = () => ({
@@ -614,10 +614,9 @@ export const receivedDataPuzzle = data => ({
   data
 });
 
-export const receivedDataQuizzes = (dataQuiz, nameCatQuiz) => ({
+export const receivedDataQuizzes = (dataQuiz) => ({
   type: RECEIVED_DATA_QUIZZES,
   dataQuiz,
-  nameCatQuiz
 });
 
 export const logOut = () => ({

@@ -20,7 +20,7 @@ import {
   getQuestionsByQuizId
 } from 'src/store/reducer';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
   questionsOfQuiz: state.questionsOfQuiz,
   responses: state.responses,
   loaded: state.questionLoaded,
@@ -30,7 +30,7 @@ const mapStateToProps = state => ({
   score: state.score,
   myScore: state.myScore,
   answerTrue: state.answerTrue,
-  messageScore: messageScore(state),
+  messageScore: messageScore(state, ownProps.arrayQuizzes.length),
   descriptionCurrentQuiz: state.descriptionCurrentQuiz,
   currentNameQuiz: state.currentNameQuiz
 });

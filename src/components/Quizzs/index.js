@@ -9,13 +9,13 @@ class Quizzs extends Component {
   componentDidMount() {
     const {
       getQuizByWorldId,
-      categoryQuizId,
+      worldId,
       handleGetUserInfos,
       loggedIn
     } = this.props;
 
     if (loggedIn) handleGetUserInfos();
-    getQuizByWorldId(categoryQuizId);
+    getQuizByWorldId(worldId);
   }
 
   handleClick = () => () => {
@@ -30,27 +30,28 @@ class Quizzs extends Component {
   };
 
   render() {
-    const { quizzsByWorldId } = this.props;
-
+    const { quizzsByWorldId, worldId } = this.props;
+    console.log(worldId)
     return (
       <div className="quizzs">
+        <h1>Nos quiz</h1>
         <div className="wrapper-quizzs">
-          {quizzsByWorldId.map(quiz => (
-            <div className="quizzs-quiz" key={quiz.quizzs[0].id}>
+          {quizzsByWorldId.map(({ image, id, title }) => (
+            <div className="quizzs-quiz" key={id}>
               <img
                 src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
-                  quiz.quizzs[0].image
+                  image
                 }`}
                 alt="icon"
               />
               <Link
-                onClick={this.handleClick(quiz.quizzs[0].id)}
-                to={`/quiz/${quiz.quizzs[0].id}`}
+                onClick={this.handleClick(id)}
+                to={`/quiz/${id}`}
               >
-                {quiz.quizzs[0].title}
+                {title}
               </Link>
               <FaRegHeart
-                onClick={this.handleClickFav(quiz.quizzs[0].id)}
+                onClick={this.handleClickFav(id)}
                 color="#000"
                 className="quizzs-fav"
               />
@@ -71,7 +72,7 @@ Quizzs.propTypes = {
   quizzsByWorldId: PropTypes.arrayOf(PropTypes.object).isRequired,
   initialQuiz: PropTypes.func.isRequired,
   getQuizByWorldId: PropTypes.func.isRequired,
-  categoryQuizId: PropTypes.string.isRequired,
+  worldId: PropTypes.string.isRequired,
   handleGetUserInfos: PropTypes.func,
   loggedIn: PropTypes.bool,
   toggleFavoris: PropTypes.func.isRequired,

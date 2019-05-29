@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './index.scss';
 
-const Score = ({ score, messageScore, currentNameQuiz }) => {
+const Score = ({ score, messageScore, currentNameQuiz, arrayQuizzes }) => {
 
   return (
     <div className="score">
@@ -10,7 +10,7 @@ const Score = ({ score, messageScore, currentNameQuiz }) => {
         Ton score pour le quiz: <span>{currentNameQuiz}</span>
       </h1>
       <div className="score-title">
-        <h2> {score}/10</h2>
+        <h2> {score}/{arrayQuizzes.length}</h2>
         <img
           src={`/src/assets/img/${messageScore}.svg`}
           alt=""
@@ -29,6 +29,7 @@ Score.propTypes = {
   score: PropTypes.number.isRequired,
   messageScore: PropTypes.string.isRequired,
   currentNameQuiz: PropTypes.string.isRequired,
+  arrayQuizzes: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default Score;

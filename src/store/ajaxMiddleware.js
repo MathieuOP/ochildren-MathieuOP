@@ -21,7 +21,8 @@ import {
   receivedDataQuizzes,
   receivedDataPuzzle,
   GET_USER_INFOS,
-  TOGGLE_FAVORIS
+  TOGGLE_FAVORIS,
+  FORGOTTEN_SUBMIT
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -59,12 +60,15 @@ const ajaxMiddleware = store => next => action => {
       next(action);
       return axios
         .get(
-          `${process.env.API_URL}/api/categories/${action.worldId}/quizzs`,
+          `${process.env.API_URL}/api/worlds/${action.worldId}/quizzs`,
           {}
         )
         .then(response => {
+          const arrayData = [];
+          response.data.forEach(data => arrayData.push(...data.quizzs));
+          
           store.dispatch(
-            receivedDataQuizzes(response.data, response.data[0].name)
+            receivedDataQuizzes(arrayData)
           );
         })
         .catch(error => {
@@ -155,7 +159,22 @@ const ajaxMiddleware = store => next => action => {
         .post(`${process.env.API_URL}/api/signup`, signUpObject)
         .then(() => store.dispatch(signedUp()))
         .catch(() => store.dispatch(signeUpError()));
-
+    case FORGOTTEN_SUBMIT:
+      next(action);
+      return axios
+        .post(`${process.env.API_URL}/api/password/forgotten`, {
+          headers: {
+            Authorization : `bearer ${store.getState().loggedUserInfos.token}`
+          }
+        })
+        .then(response => {
+          console.log("middleware");
+          console.log(response.data);
+        })
+        .catch(error => {
+          /* if (error.response.status === 404) store.dispatch(getPage404()); */
+          console.log(error);
+        });
     case GET_USER_INFOS:
       if (!store.getState().loggedIn) return next({ type: '' });
       return axios

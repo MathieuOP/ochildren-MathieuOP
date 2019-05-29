@@ -30,7 +30,7 @@ import './app.scss';
 /**
  * Code
  */
-const App = ({ error404, dataMemory }) => (
+const App = ({ error404, dataMemory, arrayQuizzes }) => (
   <div id="app">
     <Route
       path="*"
@@ -95,19 +95,19 @@ const App = ({ error404, dataMemory }) => (
           const { quizId } = match.params;
 
           if (!error404) {
-            return <Quiz quizId={quizId} />;
+            return <Quiz quizId={quizId} arrayQuizzes={arrayQuizzes}/>;
           }
           return <Redirect to="/not-found" />;
         }}
       />
       <Route
         exact
-        path="/category/:categoryQuizId"
+        path="/quizzes/:worldId"
         render={({ match }) => {
-          const { categoryQuizId } = match.params;
+          const { worldId } = match.params;
 
           if (!error404) {
-            return <Quizzs categoryQuizId={categoryQuizId} />;
+            return <Quizzs worldId={worldId} />;
           }
           return <Redirect to="/not-found" />;
         }}
@@ -131,6 +131,8 @@ const App = ({ error404, dataMemory }) => (
 
 App.propTypes = {
   error404: PropTypes.bool.isRequired,
+  dataMemory: PropTypes.arrayOf(PropTypes.object).isRequired,
+  arrayQuizzes: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 /**

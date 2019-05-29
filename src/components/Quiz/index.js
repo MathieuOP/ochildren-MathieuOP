@@ -131,6 +131,7 @@ class Quiz extends Component {
       myScore && (
         <Score
           score={score}
+          arrayQuizzes={questionsOfQuiz}
           messageScore={messageScore}
           currentNameQuiz={currentNameQuiz}
         />
