@@ -6,6 +6,8 @@ import shuffle from 'shuffle-array';
  */
 const initialState = {
   dataHomePage: [],
+  viewLogin: 'login',
+  loading: false,
   puzzles: [],
   puzzle: {},
   dataMemory: [...JSON.parse(JSON.stringify(memory))],
@@ -14,6 +16,7 @@ const initialState = {
     password: '',
     loading: false,
     loggedIn: false,
+    resetPassword: false,
     error: false
   },
   registerForm: {
@@ -69,6 +72,8 @@ export const LOGIN_SUBMIT = 'ON_LOGIN_SUBMIT';
 const LOGIN_RESET = 'LOGIN_RESET';
 const LOGIN_ERROR = 'LOGIN_ERROR';
 const LOGGED_IN = 'LOGGED_IN';
+const CHANGE_VIEW_LOGIN = 'CHANGE_VIEW_LOGIN';
+export const RECEIVED_NEW_PASSWORD = 'RECEIVED_NEW_PASSWORD';
 
 // forgotten
 export const FORGOTTEN_SUBMIT = 'FORGOTTEN_SUBMIT';
@@ -232,8 +237,19 @@ const reducer = (state = initialState, action = {}) => {
 
     case FORGOTTEN_SUBMIT:
       return {
-        ...state
+        ...state,
+        loading: true,
       };
+    case RECEIVED_NEW_PASSWORD:
+      return {
+        ...state,
+        loginForm: {
+          ...state.loginForm,
+          resetPassword: true,
+        },
+        loading: false,
+        viewLogin: 'login',
+      }
 
     case INCREMENT_INDEX_QUIZ:
       return {
@@ -406,14 +422,17 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case LOGOUT:
-      console.log('logout');
       return {
         ...state,
         publicUserInfos: initialState.publicUserInfos,
         loggedUserInfos: initialState.loggedUserInfos,
         loggedIn: false
       };
-
+    case CHANGE_VIEW_LOGIN:
+      return {
+        ...state,
+        viewLogin: action.currentView,
+      }
     default:
       return state;
   }
@@ -622,6 +641,15 @@ export const receivedDataQuizzes = (dataQuiz) => ({
 export const logOut = () => ({
   type: LOGOUT
 });
+
+export const changeViewLogin = currentView => ({
+  type: CHANGE_VIEW_LOGIN,
+  currentView,
+});
+
+export const receivedNewPassword = () => ({
+  type: RECEIVED_NEW_PASSWORD,
+})
 
 /**
  * Selectors

@@ -7,16 +7,18 @@ import { connect } from 'react-redux';
  */
 import Profile from 'src/components/Profile';
 
-import { getUserInfos } from 'src/store/reducer';
+import { getUserInfos, changeViewProfile } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
   userData: state.userLoggedData,
   loggedIn: state.loggedIn,
-  userInfos: state.publicUserInfos
+  userInfos: state.publicUserInfos,
+  viewProfile: state.viewProfile, 
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleGetUserInfos: () => dispatch(getUserInfos())
+  handleGetUserInfos: () => dispatch(getUserInfos()),
+  changeViewProfile: (currentView) => dispatch(changeViewProfile(currentView))
 });
 
 export default connect(

@@ -12,7 +12,8 @@ import ForgottenPassword from 'src/components/Login/ForgottenPassword';
 import { handleLoginChange, forgottenSubmit } from 'src/store/reducer';
 
 const mapStateToProps = (state) => ({
-  email: state.loginForm.email
+  email: state.loginForm.email,
+  loading: state.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

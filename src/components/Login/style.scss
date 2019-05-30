@@ -8,6 +8,11 @@
   box-shadow: 0px 0px 20px -6px #000;
   padding: 1.5em;
   border-radius: 6px;
+
+  p {
+    margin: 0 0 10px 10px;
+    font-size: 1.2em;
+  }
 }
 
 .app-link {
@@ -47,4 +52,8 @@
 h1 {
   font-size: 1.4em;
   font-weight: bold;
+}
+
+.treatment {
+  margin-top: 10px;
 }

@@ -22,7 +22,8 @@ import {
   receivedDataPuzzle,
   GET_USER_INFOS,
   TOGGLE_FAVORIS,
-  FORGOTTEN_SUBMIT
+  FORGOTTEN_SUBMIT,
+  receivedNewPassword,
 } from './reducer';
 
 const ajaxMiddleware = store => next => action => {
@@ -163,17 +164,13 @@ const ajaxMiddleware = store => next => action => {
       next(action);
       return axios
         .post(`${process.env.API_URL}/api/password/forgotten`, {
-          headers: {
-            Authorization : `bearer ${store.getState().loggedUserInfos.token}`
-          }
+          email: store.getState().loginForm.email,
         })
         .then(response => {
-          console.log("middleware");
-          console.log(response.data);
+          store.dispatch(receivedNewPassword())
         })
         .catch(error => {
           /* if (error.response.status === 404) store.dispatch(getPage404()); */
-          console.log(error);
         });
     case GET_USER_INFOS:
       if (!store.getState().loggedIn) return next({ type: '' });

@@ -11,7 +11,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 // Composants
 import Header from '../../containers/Header';
 import Home from '../../containers/Home';
-import Login from '../Login';
+import Login from '../../containers/LoginIndex';
 import Register from '../../containers/Register';
 import HomeGame from '../../containers/HomeGame';
 import CategoriesQuizzs from '../../containers/CategoriesQuizzs';

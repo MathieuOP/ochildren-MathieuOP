@@ -40,7 +40,7 @@ class ForgottenPassword extends VerifyForm {
   };
 
   render() {
-    const { email, handleForgottenSubmit } = this.props;
+    const { email, handleForgottenSubmit, loading } = this.props;
     return (
       <Fragment>
         <h1>Changez votre mot de passe</h1>
@@ -74,6 +74,7 @@ class ForgottenPassword extends VerifyForm {
             ok
           </Button>
         </Form>
+        { loading && <p className="treatment">Traitement en cours ...</p> }
       </Fragment>
     );
   }
