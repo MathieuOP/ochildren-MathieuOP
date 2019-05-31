@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { FaRegHeart } from 'react-icons/fa';
@@ -24,40 +24,45 @@ class Quizzs extends Component {
   };
 
   handleClickFav = quizId => () => {
-    console.log('send');
     const { toggleFavoris } = this.props;
     toggleFavoris(quizId);
   };
 
   render() {
-    const { quizzsByWorldId, worldId } = this.props;
-    console.log(worldId)
+    const { quizzsByWorldId, loaded } = this.props;
+
     return (
       <div className="quizzs">
-        <h1>Nos quiz</h1>
-        <div className="wrapper-quizzs">
-          {quizzsByWorldId.map(({ image, id, title }) => (
-            <div className="quizzs-quiz" key={id}>
-              <img
-                src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
-                  image
-                }`}
-                alt="icon"
-              />
-              <Link
-                onClick={this.handleClick(id)}
-                to={`/quiz/${id}`}
-              >
-                {title}
-              </Link>
-              <FaRegHeart
-                onClick={this.handleClickFav(id)}
-                color="#000"
-                className="quizzs-fav"
-              />
-            </div>
-          ))}
-        </div>
+        {
+          loaded && (
+            <Fragment>
+              <h1>Nos quiz</h1>
+              <div className="wrapper-quizzs">
+                {quizzsByWorldId.map(({ image, id, title }) => (
+                  <div className="quizzs-quiz" key={id}>
+                    <img
+                      src={`http://92.243.9.67/plateforme-educative-api/public/uploads/images/${
+                        image
+                      }`}
+                      alt="icon"
+                    />
+                    <Link
+                      onClick={this.handleClick(id)}
+                      to={`/quiz/${id}`}
+                    >
+                      {title}
+                    </Link>
+                    <FaRegHeart
+                      onClick={this.handleClickFav(id)}
+                      color="#000"
+                      className="quizzs-fav"
+                    />
+                  </div>
+                ))}
+              </div>
+            </Fragment>
+          )
+        }
       </div>
     );
   }
