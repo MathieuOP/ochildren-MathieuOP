@@ -12,7 +12,7 @@ const Score = ({ score, messageScore, currentNameQuiz, arrayQuizzes }) => {
       <div className="score-title">
         <h2> {score}/{arrayQuizzes.length}</h2>
         <img
-          src={`/src/assets/img/${messageScore}.svg`}
+          src={`./src/assets/img/${messageScore}.svg`}
           alt=""
         />
       </div>

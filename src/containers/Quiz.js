@@ -15,7 +15,7 @@ import {
   updateScore,
   getMessage,
   getMyScore,
-  answerIsTrue,
+  userResponse,
   messageScore,
   getQuestionsByQuizId
 } from 'src/store/reducer';
@@ -29,7 +29,6 @@ const mapStateToProps = (state, ownProps) => ({
   message: state.message,
   score: state.score,
   myScore: state.myScore,
-  answerTrue: state.answerTrue,
   messageScore: messageScore(state, ownProps.arrayQuizzes.length),
   descriptionCurrentQuiz: state.descriptionCurrentQuiz,
   currentNameQuiz: state.currentNameQuiz
@@ -51,8 +50,8 @@ const mapDispatchToProps = dispatch => ({
   getMyScore: () => {
     dispatch(getMyScore());
   },
-  answerIsTrue: () => {
-    dispatch(answerIsTrue());
+  userResponse: (userAnswer, bool, id) => {
+    dispatch(userResponse(userAnswer, bool, id));
   },
   getQuestionsByQuizId: id => {
     dispatch(getQuestionsByQuizId(id));

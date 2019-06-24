@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
+import { Redirect } from 'react-router-dom';
 
 import './index.scss';
 
@@ -12,7 +13,9 @@ const Profile = ({ handleGetUserInfos, loggedIn, userInfos }) => {
     handleGetUserInfos();
   }, []);
 
-  if (!loggedIn) return <Page404 />;
+  if (!loggedIn) {
+    return <Redirect to="/not-found" />
+  }
 
   return (
     <div className="profile">

@@ -26,6 +26,8 @@ import Profile from '../../containers/Profile';
 
 // Styles et assets
 import './app.scss';
+// import background from '../../assets/img/background.jpg';
+
 
 /**
  * Code

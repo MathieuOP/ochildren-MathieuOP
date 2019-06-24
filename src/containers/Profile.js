@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
  */
 import Profile from 'src/components/Profile';
 
-import { getUserInfos, changeViewProfile } from 'src/store/reducer';
+import { getUserInfos } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
   userData: state.userLoggedData,
@@ -18,7 +18,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   handleGetUserInfos: () => dispatch(getUserInfos()),
-  changeViewProfile: (currentView) => dispatch(changeViewProfile(currentView))
 });
 
 export default connect(

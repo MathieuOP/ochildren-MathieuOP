@@ -80,11 +80,15 @@ const ajaxMiddleware = store => next => action => {
       return axios
         .get(`${process.env.API_URL}/api/quizzs/${action.id}`, {})
         .then(({ data }) => {
-          data.questions.map(question => shuffle(question.answers));
+          const newArrayDataQuestion = data.questions.map(question => {
+            shuffle(question.answers)
+            return question;
+          });
 
+          console.log(newArrayDataQuestion);
           store.dispatch(
             receivedDataQuestions(
-              shuffle(data.questions),
+              shuffle(newArrayDataQuestion),
               data.description,
               data.title
             )
@@ -131,6 +135,7 @@ const ajaxMiddleware = store => next => action => {
       return axios
         .post(`${process.env.API_URL}/api/login`, LoginObject)
         .then(({ data }) => {
+          console.log('Connexion réussie, vous êtes connecté.');
           const { userId } = jwt.decode(data.token);
           store.dispatch(loggedIn({ token: data.token, userId }));
         })
@@ -186,19 +191,6 @@ const ajaxMiddleware = store => next => action => {
           }
         )
         .then(({ data }) => next({ ...action, data }));
-    case TOGGLE_FAVORIS:
-      return axios
-        .get(`${process.env.API_URL}/api/users/${store.getState().loggedUserInfos.userId}/bookmarks/quizzs/${action.quizId}/toggle`, {
-          headers: {
-            Authorization : `bearer ${store.getState().loggedUserInfos.token}`
-          }
-        })
-        .then(response => {
-          console.log(response.data);
-        })
-        .catch(error => {
-          if (error.response.status === 404) store.dispatch(getPage404());
-        });
     default:
       return next(action);
   }

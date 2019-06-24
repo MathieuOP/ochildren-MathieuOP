@@ -7,6 +7,7 @@ import { FaSignInAlt, FaHome } from 'react-icons/fa';
 
 // fichier scss
 import './index.scss';
+import logo from '../../assets/img/logo.png';
 
 const Header = ({ loggedIn, handleLogOut }) => (
   <header className="header">
@@ -51,7 +52,7 @@ const Header = ({ loggedIn, handleLogOut }) => (
     <NavLink className="header-link" to="/">
       <img
         className="header-img"
-        src="/src/assets/img/logo.png"
+        src="./src/assets/img/logo.png"
         alt="logo du site"
       />
     </NavLink>

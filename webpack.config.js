@@ -105,20 +105,20 @@ module.exports = {
           // SASS
           'sass-loader'
         ]
-      }
+      },
       // Images
-      // {
-      //   test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|svg|ico)$/,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         outputPath: 'src/assets/img',
-      //         name: '[name].[ext]'
-      //       }
-      //     }
-      //   ]
-      // }
+      {
+        test: /\.(png|svg|jpg|gif|woff|woff2|eot|ttf|svg|ico)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: 'src/assets/img',
+              name: '[name].[ext]'
+            }
+          }
+        ]
+      }
     ]
   },
   devServer: {

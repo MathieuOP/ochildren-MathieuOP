@@ -18,35 +18,42 @@ class Quiz extends Component {
     const {
       questionsOfQuiz,
       getMessage,
-      answerIsTrue,
+      userResponse,
       disabledButton,
       indexQuiz,
       updateScore,
       userChosenAnswer
     } = this.props;
-    const userAnswer = e.currentTarget;
-    const goodAnswer = () => questionsOfQuiz[indexQuiz].right_answer.content;
+    
+    const userAnswer = e.currentTarget.textContent.trim();
+    const goodAnswer = questionsOfQuiz[indexQuiz].right_answer.content;
+    const idCurrentQuestion = questionsOfQuiz[indexQuiz].id;
 
     if (disabledButton) {
-      // si disabledButton vaut true c'est que l'user a deja repondu, il ne peut donc plus choisir de reponse
 
-      if (userAnswer.textContent.trim() === goodAnswer()) {
-        e.currentTarget.classList.add('quiz-responses--good'); // add green color on right answer
-        this.quizQuestion.current.classList.add('quiz-answer--good'); // add animation if right answer
+      if (userAnswer === goodAnswer) {
+        e.currentTarget.classList.add('quiz-responses--good'); 
+        this.quizQuestion.current.classList.add('quiz-answer--good');
+
         const messageForUser = 'Bravo, tu as trouvé la bonne réponse !';
-        getMessage(messageForUser);
-        answerIsTrue();
-        updateScore();
-      } else {
-        e.currentTarget.classList.add('quiz-responses--bad'); // add red color on right answer
-        this.quizQuestion.current.classList.add('quiz-answer--bad'); // add animation if right answer
 
-        const messageForUser = `Désolé! Mauvaise réponse. La réponse est ${goodAnswer()}`;
+        userResponse(userAnswer, true, idCurrentQuestion);
         getMessage(messageForUser);
+        updateScore();
+
+      } 
+      else {
+        e.currentTarget.classList.add('quiz-responses--bad');
+        this.quizQuestion.current.classList.add('quiz-answer--bad');
+
+        const messageForUser = `Désolé! Mauvaise réponse. La réponse est ${goodAnswer}`;
+        userResponse(userAnswer, false, idCurrentQuestion);
+        getMessage(messageForUser);    
 
         const allAnswers = e.currentTarget.parentNode.childNodes;
+
         for (let i = 0; i < allAnswers.length; i++) {
-          if (allAnswers[i].textContent.trim() === goodAnswer()) {
+          if (allAnswers[i].textContent.trim() === goodAnswer) {
             allAnswers[i].classList.add('quiz-responses--good');
           }
         }
@@ -58,7 +65,7 @@ class Quiz extends Component {
 
   handleClickNextQuestion = () => {
     this.props.handleClickButtonNext();
-    // delete class
+    
     this.quizQuestion.current.classList.remove('quiz-answer--bad');
     this.quizQuestion.current.classList.remove('quiz-answer--good');
   };
@@ -71,15 +78,15 @@ class Quiz extends Component {
       currentNameQuiz,
       questionsOfQuiz,
       indexQuiz,
-      message,
-      answerTrue,
       disabledButton,
       getMyScore,
       score,
+      message,
       messageScore
     } = this.props;
+    
     return loaded && !myScore ? (
-      <div ref={this.quiz} className="quiz">
+      <div className="quiz">
         <h1>{descriptionCurrentQuiz}</h1>
         <div ref={this.quizQuestion} className="quiz-questions">
           <p className="quiz-question">{questionsOfQuiz[indexQuiz].content}</p>
@@ -95,9 +102,7 @@ class Quiz extends Component {
           {message !== '' && (
             <p
               className={
-                answerTrue
-                  ? 'quiz-message quiz-message--good'
-                  : 'quiz-message quiz-message--bad'
+                questionsOfQuiz[indexQuiz].isRightUserResponse ? 'quiz-message quiz-message--good' : 'quiz-message quiz-message--bad'
               }
             >
               {message}
@@ -153,8 +158,7 @@ Quiz.propTypes = {
   getMessage: PropTypes.func.isRequired,
   myScore: PropTypes.bool.isRequired,
   getMyScore: PropTypes.func.isRequired,
-  answerTrue: PropTypes.bool.isRequired,
-  answerIsTrue: PropTypes.func.isRequired,
+  userResponse: PropTypes.func.isRequired,
   messageScore: PropTypes.string.isRequired,
   descriptionCurrentQuiz: PropTypes.string.isRequired,
   currentNameQuiz: PropTypes.string.isRequired,

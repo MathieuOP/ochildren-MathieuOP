@@ -53,10 +53,8 @@
   perspective: 600px;
   height: 200px;
   margin: 5px 5px;
-  position: relative;
 
   @media screen and (min-width: 769px) {
-    width: calc(100% / 4 - 10px);
     height: 250px;
   }
 }
@@ -67,18 +65,13 @@
   perspective: 600px;
   height: 200px;
   margin: 5px 5px;
-  position: relative;
-
-  @media screen and (min-width: 769px) {
-    width: calc(100% / 4 - 10px);
-    height: 200px;
-  }
 }
   
 .memory-card {
-  transition: transform 1s;
   transform-style: preserve-3d;
+  position: relative;
   transform-origin: center right;
+  transition: transform 1s;
   width: 100%;
   height: 100%;
   border: 1px solid black;
@@ -104,6 +97,7 @@
     
     span {
       transform: rotate(60deg);
+      backface-visibility: hidden;
 
       @media screen and (min-width: 600px) {
         font-size: 1.4em;
@@ -139,7 +133,7 @@
   text-align: center;
   font-size: 1.5em;
   color: orange;
-  text-shadow: 2px 2px #000;
+  text-shadow: 1px 1px #000;
 
   @media screen and (min-width: 769px) {
     font-size: 3em;
@@ -176,7 +170,7 @@
     margin-bottom: 0;
     font-weight: bold;
     color: orange;
-    text-shadow: 2px 2px #000;
+    text-shadow: 1px 1px #000;
   }
 }
 
@@ -210,7 +204,7 @@
     margin-bottom: 0;
     font-weight: bold;
     color: orange;
-    text-shadow: 2px 2px #000;
+    text-shadow: 1px 1px #000;
   }
 }
   

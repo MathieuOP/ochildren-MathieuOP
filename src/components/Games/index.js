@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+
 import './index.scss';
+import memroy from '../../assets/img/memory.svg';
 
 class Games extends Component {
   componentDidMount() {
@@ -29,7 +31,7 @@ class Games extends Component {
           {dataMemory.map(({ id, title, icon }) => (
             <div key={id} className="games-memory">
               <img
-                src={`/src/assets/img/${icon}`}
+                src={`./src/assets/img/${icon}`}
                 alt={title}
               />
               <Link to={`/memory/${id}`}> {title} </Link>

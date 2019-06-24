@@ -7,8 +7,9 @@ class CardFlip extends Component {
 
   componentDidMount() {
     const cards = this.container.current.childNodes;
+    
     cards.forEach((card, index) => {
-      card.childNodes[0].addEventListener('click', this.handleClickCard(index, card.name));
+      card.addEventListener('click', this.handleClickCard(index));
     });
   }
 
@@ -26,9 +27,11 @@ class CardFlip extends Component {
       countPairs();
 
       setTimeout(() => {
-        dataMemory.memory[openedCard[0].index].complete = true;
-        dataMemory.memory[openedCard[1].index].complete = true;
-        updatedData([dataMemory]);
+        const newdataMemory = {...JSON.parse(JSON.stringify(dataMemory))}
+        newdataMemory.memory[openedCard[0].index].complete = true;
+        newdataMemory.memory[openedCard[1].index].complete = true;
+        
+        updatedData([newdataMemory]);
 
         resetCountClick();
         updatedOpenedCard([]);
@@ -43,10 +46,11 @@ class CardFlip extends Component {
     if (openedCard.length === 2 && openedCard[0].name !== openedCard[1].name && openedCard[0].index !== openedCard[1].index) {
       
       setTimeout(() => {
-        dataMemory.memory[openedCard[0].index].close = true;
-        dataMemory.memory[openedCard[1].index].close = true;
+        const newdataMemory = {...JSON.parse(JSON.stringify(dataMemory))}
+        newdataMemory.memory[openedCard[0].index].close = true;
+        newdataMemory.memory[openedCard[1].index].close = true;
 
-        updatedData([dataMemory]);
+        updatedData([newdataMemory]);
 
         updatedOpenedCard([]);
         tentative();
@@ -77,9 +81,10 @@ class CardFlip extends Component {
     incrementeCountClick();
 
     if (this.props.getCountClick <= 2 && dataMemory.memory[indexCard].close) {
-      dataMemory.memory[indexCard].close = false;
+      const newdataMemory = {...JSON.parse(JSON.stringify(dataMemory))}
+      newdataMemory.memory[indexCard].close = false;
 
-      updatedData([dataMemory]);
+      updatedData([newdataMemory]);
       
       updatedOpenedCard({
         ...dataMemory.memory[indexCard],
@@ -113,7 +118,7 @@ class CardFlip extends Component {
                   </div>
                   <div className="memory-card__face memory-card__face--back">
                     <div className="memory-category memory-category--link">
-                      <img className={`memory-category-img-${dataMemory.world.id}`} src={`/src/assets/img/${card.image}`} alt="card.name" />
+                      <img className={`memory-category-img-${dataMemory.world.id}`} src={`./src/assets/img/${card.image}`} alt="card.name" />
                     </div>
                   </div>
                 </div>
@@ -146,6 +151,7 @@ CardFlip.propTypes = {
   openedCard: PropTypes.array.isRequired,
   incrementeCountClick: PropTypes.func.isRequired,
   memoryFinished: PropTypes.func.isRequired,
+  getCountClick: PropTypes.number.isRequired
 }
 
 export default CardFlip;

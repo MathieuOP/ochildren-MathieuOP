@@ -45,7 +45,6 @@ const initialState = {
   questionsOfQuiz: [],
   loaded: false,
   disabledButton: true,
-  answerTrue: false,
   error404: false,
   getCountPaire: 0,
   getCountClick: 0,
@@ -100,7 +99,7 @@ const UPDATE_SCORE = 'UPDATE_SCORE';
 const GET_MESSAGE = 'GET_MESSAGE';
 const MY_SCORE = 'MY_SCORE';
 const INITIAL_QUIZ = 'INITIAL_QUIZ';
-const ANSWER_IS_TRUE = 'ANSWER_IS_TRUE';
+const USER_RESPONSE = 'USER_RESPONSE';
 export const QUIZ_BY_WORLD_ID = 'QUIZ_BY_WORLD_ID';
 export const ERROR_404 = 'ERROR_404';
 export const RECEIVED_DATA_QUIZZES = 'RECEIVED_DATA_QUIZZES';
@@ -123,8 +122,6 @@ const RECEIVED_DATA_PUZZLE = 'RECEIVED_DATA_PUZZLE';
 // User
 export const GET_USER_INFOS = 'GET_USER_INFOS';
 
-// Favoris
-export const TOGGLE_FAVORIS = 'TOGGLE_FAVORIS';
 /**
  * Traitements
  */
@@ -257,7 +254,6 @@ const reducer = (state = initialState, action = {}) => {
         indexQuiz: state.indexQuiz + 1,
         disabledButton: true,
         message: '',
-        answerTrue: false
       };
     case DATA_HOME_GAME:
       return {
@@ -337,12 +333,22 @@ const reducer = (state = initialState, action = {}) => {
         myScore: false,
         score: 0,
         disabledButton: true,
-        answerTrue: false
       };
-    case ANSWER_IS_TRUE:
+    case USER_RESPONSE:
       return {
         ...state,
-        answerTrue: true
+        questionsOfQuiz: state.questionsOfQuiz.map(data => {
+          if (data.id === action.id) {
+            return {
+              ...data,
+              userResponse: action.userAnswer,
+              isRightUserResponse: action.bool,
+            }
+          }
+          return {
+            ...data,
+          }
+        })
       };
     case ERROR_404:
       return {
@@ -366,14 +372,16 @@ const reducer = (state = initialState, action = {}) => {
         loaded: false
       };
     case COUNT_PAIRS:
+      // eslint-disable-next-line no-return-assign
       return {
         ...state,
-        getCountPaire: (state.getCountPaire += 1)
+        getCountPaire: state.getCountPaire += 1
       };
     case TENTATIVE:
+      // eslint-disable-next-line no-return-assign
       return {
         ...state,
-        getTentative: (state.getTentative += 1)
+        getTentative: state.getTentative += 1
       };
     case FINISHED:
       return {
@@ -381,9 +389,10 @@ const reducer = (state = initialState, action = {}) => {
         finished: true
       };
     case INCREMENTE_COUNT_CLICK:
+      // eslint-disable-next-line no-return-assign
       return {
         ...state,
-        getCountClick: (state.getCountClick += 1)
+        getCountClick: state.getCountClick += 1
       };
     case RESET_COUNT_CLICK:
       return {
@@ -393,15 +402,14 @@ const reducer = (state = initialState, action = {}) => {
     case UPDATED_DATA:
       return {
         ...state,
-        dataMemory: action.data
+        dataMemory: [
+          ...action.data
+        ]
       };
     case UPDATED_OPENED_CARD:
       return {
         ...state,
-        openedCard:
-          state.openedCard.length === 2
-            ? action.data
-            : [...state.openedCard, action.data]
+        openedCard: state.openedCard.length === 2 ? action.data : [...state.openedCard, action.data]
       };
     case RESET_MEMORY:
       memory.map(data => shuffle(data.memory));
@@ -540,8 +548,11 @@ export const messageScore = (state, ownProps) => {
   return score < ownProps / 2 ? 'bad' : 'good';
 };
 
-export const answerIsTrue = () => ({
-  type: ANSWER_IS_TRUE
+export const userResponse = (userAnswer, bool, id) => ({
+  type: USER_RESPONSE,
+  userAnswer,
+  bool,
+  id,
 });
 
 export const handleClickButtonNext = () => ({
@@ -621,11 +632,6 @@ export const dataForPuzzle = puzzleId => ({
 export const getUserInfos = data => ({
   type: GET_USER_INFOS,
   data
-});
-
-export const toggleFavoris = quizId => ({
-  type: TOGGLE_FAVORIS,
-  quizId
 });
 
 export const receivedDataPuzzle = data => ({

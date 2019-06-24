@@ -12,7 +12,6 @@ import {
   getQuestionsByQuizId,
   initialQuiz,
   getQuizByWorldId,
-  toggleFavoris,
 } from 'src/store/reducer';
 
 const mapStateToProps = state => ({
@@ -31,9 +30,6 @@ const mapDispatchToProps = dispatch => ({
   getQuizByWorldId: worldId => {
     dispatch(getQuizByWorldId(worldId));
   },
-  toggleFavoris: quizId => {
-    dispatch(toggleFavoris(quizId));
-  }
 });
 
 export default connect(

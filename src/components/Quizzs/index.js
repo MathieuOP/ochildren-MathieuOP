@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { FaRegHeart } from 'react-icons/fa';
 
 import './index.scss';
 
@@ -21,11 +20,6 @@ class Quizzs extends Component {
   handleClick = () => () => {
     const { initialQuiz } = this.props;
     initialQuiz();
-  };
-
-  handleClickFav = quizId => () => {
-    const { toggleFavoris } = this.props;
-    toggleFavoris(quizId);
   };
 
   render() {
@@ -52,11 +46,6 @@ class Quizzs extends Component {
                     >
                       {title}
                     </Link>
-                    <FaRegHeart
-                      onClick={this.handleClickFav(id)}
-                      color="#000"
-                      className="quizzs-fav"
-                    />
                   </div>
                 ))}
               </div>
@@ -80,7 +69,7 @@ Quizzs.propTypes = {
   worldId: PropTypes.string.isRequired,
   handleGetUserInfos: PropTypes.func,
   loggedIn: PropTypes.bool,
-  toggleFavoris: PropTypes.func.isRequired,
+  loaded: PropTypes.bool.isRequired,
 };
 
 export default Quizzs;
